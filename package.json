@@ -11,7 +11,7 @@
     "ava": "ava --verbose --require babel-register",
     "test": "nyc npm run ava",
     "clean": "rimraf './public/*.+(js|css|html)'",
-    "build": "webpack --config ./webpack.production.config.js --progress",
+    "postinstall": "webpack --config ./webpack.production.config.js --progress",
     "dev": "webpack-dev-server --progress",
     "lint": "eslint './+(app|test)/**/*.js'"
   },
