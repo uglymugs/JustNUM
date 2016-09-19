@@ -3,6 +3,7 @@ import { VisibilityFilters } from '../constants';
 import { toggleTodo } from '../action_creators';
 import TodoList from '../components/todo_list';
 
+
 // type State = { todos: [Todo], visibilityFilter: String }
 
 // getVisibleTodos :: State -> [Todo]
@@ -25,7 +26,7 @@ const mapStateToProps = state =>
 
 // mapDispatchToProps :: Function -> { onTodoClick: Function }
 const mapDispatchToProps = dispatch =>
-  ({ onTodoClick: idx => dispatch(toggleTodo(idx)) });
+  ({ onTodoClick: id => dispatch(toggleTodo(id)) });
 
 // connector :: Function
 const connector =
