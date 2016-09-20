@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { renderCheckbox } from './material_ui_form/index';
+import { renderCheckbox } from '../material_ui_form_lib/index';
 
 const CaseCheckboxes = () =>
   <div className="case_checkboxes">

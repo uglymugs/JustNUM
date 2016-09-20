@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 
 // validator function specific to the form that you have to write
-import validate from '../form_validators/case_form_validator';
+import validate from '../../form_validators/case_form_validator';
 
 import CaseCheckboxes from './case_checkboxes';
 import CaseTextFields from './case_text_fields';
@@ -10,7 +10,7 @@ import CaseContacts from './case_contacts';
 import CaseTimeline from './case_timeline';
 import CaseNotesCreate from './case_notes_create';
 
-const CaseReduxForm = props => {
+const CaseForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -28,7 +28,7 @@ const CaseReduxForm = props => {
   );
 };
 
-CaseReduxForm.propTypes = {
+CaseForm.propTypes = {
   handleSubmit: PropTypes.function,
   reset: PropTypes.function,
   pristine: PropTypes.boolean,
@@ -36,6 +36,6 @@ CaseReduxForm.propTypes = {
 };
 
 export default reduxForm({
-  form: 'CaseReduxForm',  // a unique identifier for this form
+  form: 'CaseForm',  // a unique identifier for this form
   validate,
-})(CaseReduxForm);
+})(CaseForm);

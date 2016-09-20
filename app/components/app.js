@@ -1,10 +1,10 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import CaseReduxForm from './case_redux_form';
+import CaseForm from './case_form/index';
 
 const App = () =>
   <MuiThemeProvider>
-    <CaseReduxForm />
+    <CaseForm />
   </MuiThemeProvider>;
 
 export default App;
