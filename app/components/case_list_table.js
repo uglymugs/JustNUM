@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
 
-const CaseListHeader = () => (
+const CaseListTable = () => (
   <Table>
     <TableHeader>
       <TableRow>
@@ -10,7 +10,8 @@ const CaseListHeader = () => (
         <TableHeaderColumn>Operation</TableHeaderColumn>
       </TableRow>
     </TableHeader>
+    <TableBody />
   </Table>
 );
 
-export default CaseListHeader;
+export default CaseListTable;

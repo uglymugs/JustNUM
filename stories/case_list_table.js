@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import CaseListHeader from '../app/components/case_list_header';
+import CaseListTable from '../app/components/case_list_table';
 
-storiesOf('Case List Header', module)
+storiesOf('Case List Table', module)
   .add('', () =>
     <MuiThemeProvider>
-      <CaseListHeader />
+      <CaseListTable />
     </MuiThemeProvider>);
