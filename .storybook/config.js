@@ -4,7 +4,9 @@ import { configure } from '@kadira/storybook';
 const loadStories = () => {
   require('../stories/index');
   require('../stories/icon_menu');
-  require('../stories/square');
+  require('../stories/case_list_table');
+  require('../stories/case_form');
+  require('../stories/side_bar');
 };
 
 configure(loadStories, module);

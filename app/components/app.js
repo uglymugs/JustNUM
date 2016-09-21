@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LeftNav from './left_nav';
 
 const appStyles = {
@@ -12,10 +13,12 @@ const appStyles = {
 };
 
 const App = ({ children }) =>
-  <div style={appStyles}>
-    <LeftNav styles={{ width: '200px', backgroundColor: 'blue' }} />
-    {children}
-  </div>;
+  <MuiThemeProvider>
+    <div style={appStyles}>
+      <LeftNav styles={{ width: '200px', backgroundColor: 'green' }} />
+      {children}
+    </div>
+  </MuiThemeProvider>;
 
 App.propTypes = {
   children: PropTypes.node.isRequired,

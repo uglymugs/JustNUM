@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import CaseForm from './case_form';
 
 const caseViewStyles = {
   display: 'flex',
@@ -12,10 +13,10 @@ const caseViewStyles = {
 
 const CaseView = ({ styles, params: { caseId } }) =>
   <div style={Object.assign({}, caseViewStyles, styles)}>
-    <p>Case View</p>
-    {caseId
+    <CaseForm caseId={caseId} />
+    {/* {caseId
       ? `Showing Case: ${caseId}`
-      : 'New Case'}
+      : 'New Case'} */}
   </div>;
 
 CaseView.propTypes = {
