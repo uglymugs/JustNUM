@@ -13,18 +13,20 @@ import CaseNotesCreate from './case_notes_create';
 const CaseForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props;
   return (
-    <form onSubmit={handleSubmit}>
-      <CaseCheckboxes />
-      <CaseTextFields />
-      <CaseContacts />
-      <CaseTimeline />
-      <CaseNotesCreate />
-      <div className="CaseForm__buttons">
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
-        </button>
-      </div>
-    </form>
+    <div style={{ backgroundColor: 'red', width: '100%', maxWidth: '500px' }}>
+      <form onSubmit={handleSubmit}>
+        <CaseCheckboxes />
+        <CaseTextFields />
+        <CaseContacts />
+        <CaseTimeline />
+        <CaseNotesCreate />
+        <div className="CaseForm__buttons">
+          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
