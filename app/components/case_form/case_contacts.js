@@ -3,10 +3,10 @@ import { Field } from 'redux-form';
 import { renderTextField } from '../material_ui_form_lib/index';
 
 const CaseContacts = () =>
-  <div className="case_contacts">
+  <div className="CaseContacts">
     <div>
       <Field
-        name="contacts"
+        name="CaseContacts__contacts"
         component={renderTextField}
         label="Contacts"
         multiLine
