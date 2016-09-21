@@ -1,23 +1,24 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
+import React, { PropTypes } from 'react';
+import LeftNav from './left_nav';
 
-import Header from './header';
-import VisibleTodoList from '../containers/visible_todo_list';
-
-const style = {
-  padding: '10px',
+const appStyles = {
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  alignItems: 'top',
+  border: '1px solid green',
+  width: '100vw',
+  height: '100vh',
 };
 
-const App = () =>
-  <MuiThemeProvider>
-    <Paper style={style}>
-      <Header />
-      <VisibleTodoList />
-    </Paper>
-  </MuiThemeProvider>;
+const App = ({ children }) =>
+  <div style={appStyles}>
+    <LeftNav styles={{ width: '200px', backgroundColor: 'blue' }} />
+    {children}
+  </div>;
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default App;

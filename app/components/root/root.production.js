@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import App from '../app';
+import RouteHandler from '../route_handler';
 
 const Root = ({ store }) =>
   <Provider store={store}>
-    <App />
+    <RouteHandler />
   </Provider>;
 
 Root.propTypes = {
