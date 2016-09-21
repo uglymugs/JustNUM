@@ -3,36 +3,36 @@ import { Field } from 'redux-form';
 import { renderCheckbox } from '../material_ui_form_lib/index';
 
 const CaseCheckboxes = () =>
-  <div className="case_checkboxes">
+  <div className="CaseCheckboxes">
     <div>
-      <Field name="web" component={renderCheckbox} label="WEB" />
+      <Field name="CaseCheckboxes__web" component={renderCheckbox} label="WEB" />
     </div>
     <div>
-      <Field name="email" component={renderCheckbox} label="EMAIL" />
+      <Field name="CaseCheckboxes__email" component={renderCheckbox} label="EMAIL" />
     </div>
     <div>
-      <Field name="sms" component={renderCheckbox} label="SMS" />
+      <Field name="CaseCheckboxes__sms" component={renderCheckbox} label="SMS" />
     </div>
     <div>
-      <Field name="nc" component={renderCheckbox} label="NC" />
+      <Field name="CaseCheckboxes__nc" component={renderCheckbox} label="NC" />
     </div>
     <div>
-      <Field name="police" component={renderCheckbox} label="POLICE" />
+      <Field name="CaseCheckboxes__police" component={renderCheckbox} label="POLICE" />
     </div>
     <div>
-      <Field name="app" component={renderCheckbox} label="APP" />
+      <Field name="CaseCheckboxes__app" component={renderCheckbox} label="APP" />
     </div>
     <div>
-      <Field name="pc" component={renderCheckbox} label="PC" />
+      <Field name="CaseCheckboxes__pc" component={renderCheckbox} label="PC" />
     </div>
     <div>
-      <Field name="db" component={renderCheckbox} label="DB" />
+      <Field name="CaseCheckboxes__db" component={renderCheckbox} label="DB" />
     </div>
     <div>
-      <Field name="s/p" component={renderCheckbox} label="SP" />
+      <Field name="CaseCheckboxes__s/p" component={renderCheckbox} label="SP" />
     </div>
     <div>
-      <Field name="info" component={renderCheckbox} label="INFO" />
+      <Field name="CaseCheckboxes__info" component={renderCheckbox} label="INFO" />
     </div>
   </div>;
 
