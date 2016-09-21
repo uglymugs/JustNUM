@@ -19,7 +19,7 @@ const CaseForm = props => {
       <CaseContacts />
       <CaseTimeline />
       <CaseNotesCreate />
-      <div>
+      <div className="CaseForm__buttons">
         <button type="submit" disabled={pristine || submitting}>Submit</button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
         </button>
