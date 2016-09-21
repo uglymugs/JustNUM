@@ -6,6 +6,7 @@ const renderCheckbox = ({ input, label }) => (
     label={label}
     checked={input.value}
     onCheck={input.onChange}
+    labelStyle={{ color: '#5E7B8D' }}
   />
 );
 

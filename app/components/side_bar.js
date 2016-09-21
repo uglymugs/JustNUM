@@ -11,9 +11,11 @@ import Divider from 'material-ui/Divider';
 const style = {
   paper: {
     height: '100vh',
+    width: '255px',
     backgroundColor: '#5E7B8D',
     display: 'inline-block',
     float: 'left',
+    position: 'fixed',
     margin: '16px 32px 16px 0',
   },
   rightIcon: {
@@ -33,7 +35,7 @@ const SideNavBar = () =>
       <Menu>
         <MenuItem primaryText="Home" style={menuItemStyles} leftIcon={<Home color={white} />} />
         <MenuItem primaryText="Cases" style={menuItemStyles} leftIcon={<Work color={white} />} />
-        <Divider />
+        <Divider style={{ width: '155px' }} />
         <MenuItem
           primaryText="Add Case"
           style={menuItemStyles}

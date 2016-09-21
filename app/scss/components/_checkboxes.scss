@@ -1,5 +1,52 @@
-.checkboxes {
+.CaseCheckboxes {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 20%;
   display: flex;
   flex-direction: row;
-  background-color: red;
-}
+  justify-content: space-around;
+  .CaseCheckboxes__ChckLeftColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0px 120px 0px 0px;
+  }
+  .CaseCheckboxes__ChckMiddleColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0px 120px 0px 0px;
+  }
+  .CaseCheckboxes__ChckRightColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0px 120px 0px 0px;
+  }
+  .CaseCheckboxes__infoColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 0px;
+    padding-top: 3%;
+    // padding: 0px 0px 0px 25px;
+  }
+};
+
+.CaseTextFields {
+  padding-bottom: 6%;
+};
+
+.CaseContacts {
+  padding-bottom: 6%;
+};
+
+.CaseTimeline {
+  padding-bottom: 6%;
+};
+
+.CaseNotesCreate {
+  padding-bottom: 6%;
+};
+// top/right/bottom/left

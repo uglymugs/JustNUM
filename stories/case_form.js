@@ -10,7 +10,6 @@ const store = configureStore();
 
 const wrapperStyles = {
   width: '100%',
-  border: '1px solid blue',
   display: 'flex',
   justifyContent: 'center',
 };
