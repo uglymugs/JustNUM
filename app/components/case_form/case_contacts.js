@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { renderTextField } from '../material_ui_form_lib/index';
+import TextField from '../material_ui_form_lib/text_field';
 
 const CaseContacts = () =>
   <div className="CaseContacts">
     <div>
       <Field
         name="CaseContacts__contacts"
-        component={renderTextField}
+        component={TextField}
         label="Contacts"
         multiLine
         rows={4}

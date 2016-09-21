@@ -31,10 +31,10 @@ const CaseForm = props => {
 };
 
 CaseForm.propTypes = {
-  handleSubmit: PropTypes.function,
-  reset: PropTypes.function,
-  pristine: PropTypes.boolean,
-  submitting: PropTypes.boolean,
+  handleSubmit: PropTypes.any,
+  reset: PropTypes.any,
+  pristine: PropTypes.any,
+  submitting: PropTypes.any,
 };
 
 export default reduxForm({
