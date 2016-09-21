@@ -5,8 +5,9 @@ import '../app/scss/main.scss';
 const loadStories = () => {
   require('../stories/index');
   require('../stories/icon_menu');
-  require('../stories/case_list_table');
+  require('../stories/case_list');
   require('../stories/case_form');
+  require('../stories/case_list_table_rows');
   require('../stories/side_bar');
 };
 

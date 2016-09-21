@@ -2,8 +2,8 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import CaseLayout from './case_layout';
-import CaseView from './case_view';
-import CaseList from './case_list';
+import CaseView from './case_form/case_view';
+import CaseList from './case_list/index';
 
 const RouteHandler = () =>
   <Router history={hashHistory}>
