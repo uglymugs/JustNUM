@@ -21,29 +21,25 @@ const formWrapper = {
   justifyContent: 'center',
 };
 
-const CaseForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
-  return (
-    <div style={formWrapper}>
-      <form onSubmit={handleSubmit}>
-        <CaseCheckboxes />
-        <Divider />
-        <CaseTextFields />
-        <Divider />
-        <CaseContacts />
-        <Divider />
-        <CaseTimeline />
-        <Divider />
-        <CaseNotesCreate />
-        <div className="CaseForm__buttons">
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-};
+const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
+  <div style={formWrapper}>
+    <form onSubmit={handleSubmit}>
+      <CaseCheckboxes />
+      <Divider />
+      <CaseTextFields />
+      <Divider />
+      <CaseContacts />
+      <Divider />
+      <CaseTimeline />
+      <Divider />
+      <CaseNotesCreate />
+      <div className="CaseForm__buttons">
+        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
+        </button>
+      </div>
+    </form>
+  </div>;
 
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
