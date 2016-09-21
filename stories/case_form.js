@@ -7,6 +7,14 @@ import configureStore from '../app/configure_store/configure_store.dev';
 
 const store = configureStore();
 
+
+const wrapperStyles = {
+  width: '100%',
+  border: '1px solid blue',
+  display: 'flex',
+  justifyContent: 'center',
+};
+
 storiesOf('CaseForm', module)
   .addDecorator(getStory =>
     (<Provider store={store}>
@@ -15,5 +23,7 @@ storiesOf('CaseForm', module)
     ))
   .add('simple', () =>
     <MuiThemeProvider>
-      <CaseForm />
+      <div style={wrapperStyles}>
+        <CaseForm />
+      </div>
     </MuiThemeProvider>);

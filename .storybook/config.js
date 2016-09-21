@@ -6,6 +6,7 @@ const loadStories = () => {
   require('../stories/icon_menu');
   require('../stories/case_list_table');
   require('../stories/case_form');
+  require('../stories/side_bar');
 };
 
 configure(loadStories, module);
