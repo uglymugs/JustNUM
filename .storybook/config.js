@@ -6,6 +6,7 @@ const loadStories = () => {
   require('../stories/icon_menu');
   require('../stories/case_checkboxes');
   require('../stories/case_list_table');
+  require('../stories/case_text_field');
 };
 
 configure(loadStories, module);
