@@ -8,18 +8,19 @@ const appStyles = {
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'top',
-  border: '1px solid green',
   width: '100%',
   height: '100%',
 };
 
 const App = ({ children }) =>
-  <MuiThemeProvider>
-    <div style={appStyles}>
-      <SideBar />
-      {children}
-    </div>
-  </MuiThemeProvider>;
+  <div style={{ height: '100%' }}>
+    <MuiThemeProvider>
+      <div style={appStyles}>
+        <SideBar />
+        {children}
+      </div>
+    </MuiThemeProvider>
+  </div>;
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
