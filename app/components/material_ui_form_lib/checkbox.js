@@ -1,17 +1,19 @@
 import React, { PropTypes } from 'react';
-import Checkbox from 'material-ui/Checkbox';
+import UICheckbox from 'material-ui/Checkbox';
 
-const renderCheckbox = ({ input, label }) => (
-  <Checkbox
+const Checkbox = ({ input: { value, onChange }, label }) =>
+  <UICheckbox
     label={label}
-    checked={input.value}
-    onCheck={input.onChange}
-  />
-);
+    checked={!!value}
+    onCheck={onChange}
+  />;
 
-renderCheckbox.propTypes = {
-  input: PropTypes.string,
-  label: PropTypes.string,
+Checkbox.propTypes = {
+  input: PropTypes.shape({
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+    onChange: PropTypes.func.isRequired,
+  }).isRequired,
+  label: PropTypes.string.isRequired,
 };
 
-export default renderCheckbox;
+export default Checkbox;

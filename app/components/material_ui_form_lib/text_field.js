@@ -12,9 +12,9 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 );
 
 renderTextField.propTypes = {
-  input: PropTypes.string,
-  label: PropTypes.string,
-  meta: PropTypes.object,
+  input: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.object.isRequired,
 };
 
 export default renderTextField;
