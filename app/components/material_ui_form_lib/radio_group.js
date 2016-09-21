@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import { RadioButtonGroup } from 'material-ui/RadioButton';
+import { RadioButtonGroup as UIRadioButtonGroup } from 'material-ui/RadioButton';
 
-const renderRadioGroup = ({ input, ...rest }) => (
-  <RadioButtonGroup
+const RadioButtonGroup = ({ input, ...rest }) => (
+  <UIRadioButtonGroup
     {...input}
     {...rest}
     valueSelected={input.value}
@@ -10,9 +10,9 @@ const renderRadioGroup = ({ input, ...rest }) => (
   />
 );
 
-renderRadioGroup.propTypes = {
+RadioButtonGroup.propTypes = {
   input: PropTypes.string,
   label: PropTypes.string,
 };
 
-export default renderRadioGroup;
+export default RadioButtonGroup;

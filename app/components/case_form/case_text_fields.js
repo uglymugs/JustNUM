@@ -1,17 +1,17 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { renderTextField } from '../material_ui_form_lib/index';
+import TextField from '../material_ui_form_lib/text_field';
 
 const CaseTextFields = () =>
   <div className="CaseTextFields">
     <div>
-      <Field name="CaseTextFields__referral" component={renderTextField} label="Referral" />
+      <Field name="CaseTextFields__referral" component={TextField} label="Referral" />
     </div>
     <div>
-      <Field name="CaseTextFields__area" component={renderTextField} label="Area" />
+      <Field name="CaseTextFields__area" component={TextField} label="Area" />
     </div>
     <div>
-      <Field name="CaseTextFields__operation" component={renderTextField} label="Operation" />
+      <Field name="CaseTextFields__operation" component={TextField} label="Operation" />
     </div>
   </div>;
 
