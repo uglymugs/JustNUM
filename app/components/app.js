@@ -1,23 +1,10 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-
-import Header from './header';
-import VisibleTodoList from '../containers/visible_todo_list';
-
-const style = {
-  padding: '10px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-};
+import CaseForm from './case_form/index';
 
 const App = () =>
   <MuiThemeProvider>
-    <Paper style={style}>
-      <Header />
-      <VisibleTodoList />
-    </Paper>
+    <CaseForm />
   </MuiThemeProvider>;
 
 export default App;
