@@ -6,6 +6,7 @@ const Checkbox = ({ input: { value, onChange }, label }) =>
     label={label}
     checked={!!value}
     onCheck={onChange}
+    labelStyle={{ color: '#5E7B8D' }}
   />;
 
 Checkbox.propTypes = {
