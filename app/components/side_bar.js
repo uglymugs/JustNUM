@@ -7,16 +7,14 @@ import Home from 'material-ui/svg-icons/action/home';
 import Work from 'material-ui/svg-icons/action/work';
 import NoteAdd from 'material-ui/svg-icons/action/note-add';
 import Divider from 'material-ui/Divider';
+import { Link } from 'react-router';
+
 
 const style = {
   paper: {
-    height: '100vh',
-    width: '255px',
+    height: '100%',
+    width: '280px',
     backgroundColor: '#5E7B8D',
-    display: 'inline-block',
-    float: 'left',
-    position: 'fixed',
-    margin: '16px 32px 16px 0',
   },
   rightIcon: {
     textAlign: 'center',
@@ -30,16 +28,26 @@ const menuItemStyles = {
 
 const SideNavBar = () =>
 
-  <div className="sideNavBar">
+  <div>
     <Paper style={style.paper}>
       <Menu>
-        <MenuItem primaryText="Home" style={menuItemStyles} leftIcon={<Home color={white} />} />
-        <MenuItem primaryText="Cases" style={menuItemStyles} leftIcon={<Work color={white} />} />
-        <Divider style={{ width: '155px' }} />
+        <MenuItem
+          primaryText="Home"
+          style={menuItemStyles}
+          leftIcon={<Home color={white} />}
+        />
+        <MenuItem
+          primaryText="Cases"
+          style={menuItemStyles}
+          leftIcon={<Work color={white} />}
+          containerElement={<Link to="/cases" />}
+        />
+        <Divider />
         <MenuItem
           primaryText="Add Case"
           style={menuItemStyles}
           leftIcon={<NoteAdd color={white} />}
+          containerElement={<Link to="/cases/new" />}
         />
         <Divider />
       </Menu>

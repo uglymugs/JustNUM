@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import LeftNav from './left_nav';
+// import LeftNav from './left_nav';
+import SideBar from './side_bar';
 
 const appStyles = {
   display: 'flex',
@@ -8,14 +9,14 @@ const appStyles = {
   justifyContent: 'flex-start',
   alignItems: 'top',
   border: '1px solid green',
-  width: '100vw',
-  height: '100vh',
+  width: '100%',
+  height: '100%',
 };
 
 const App = ({ children }) =>
   <MuiThemeProvider>
     <div style={appStyles}>
-      <LeftNav styles={{ width: '200px', backgroundColor: 'green' }} />
+      <SideBar />
       {children}
     </div>
   </MuiThemeProvider>;
