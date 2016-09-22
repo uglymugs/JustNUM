@@ -39,13 +39,13 @@ const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
       <CaseTimeline />
       <CaseNotesCreate />
       <FormButton
-        className="CaseForm__button"
+        className="Case__button"
         label="Submit"
         disabled={pristine || submitting}
         type="submit"
       />
       <FormButton
-        className="CaseForm__button"
+        className="Case__button"
         label="Reset"
         disabled={pristine || submitting}
         onClick={reset}
