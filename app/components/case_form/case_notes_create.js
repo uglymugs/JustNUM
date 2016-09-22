@@ -6,7 +6,7 @@ const CaseNotesCreate = () =>
   <div className="CaseNotesCreate">
     <div>
       <Field
-        name="CaseNotesCreate__notesCreate"
+        name="caseNotesCreate"
         component={TextField}
         label="Create a new note"
         multiLine

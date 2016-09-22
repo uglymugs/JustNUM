@@ -2,21 +2,21 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 
-const CaseListRow = ({ caseId, createdDate, operation }) =>
+const CaseListRow = ({ caseCaseId, caseCreatedDate, caseOperation }) =>
   <TableRow>
     <TableRowColumn>
-      <Link to={`/cases/edit/${caseId}`}>
-      {caseId}
+      <Link to={`/cases/edit/${caseCaseId}`}>
+      {caseCaseId}
       </Link>
     </TableRowColumn>
-    <TableRowColumn>{createdDate || ''}</TableRowColumn>
-    <TableRowColumn>{operation || ''}</TableRowColumn>
+    <TableRowColumn>{caseCreatedDate || ''}</TableRowColumn>
+    <TableRowColumn>{caseOperation || ''}</TableRowColumn>
   </TableRow>;
 
 CaseListRow.propTypes = {
-  caseId: PropTypes.string.isRequired,
-  createdDate: PropTypes.any,
-  operation: PropTypes.any,
+  caseCaseId: PropTypes.string.isRequired,
+  caseCreatedDate: PropTypes.any,
+  caseOperation: PropTypes.any,
   // name: PropTypes.string.isRequired,
   // status: PropTypes.string.isRequired,
 };

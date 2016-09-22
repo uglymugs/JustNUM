@@ -11,7 +11,7 @@ import CaseContacts from './case_contacts';
 import CaseTimeline from './case_timeline';
 import CaseNotesCreate from './case_notes_create';
 import FormButton from '../material_ui_form_lib/form_button';
-import { addCase } from '../../action_creators';
+// import { addCase } from '../../action_creators';
 
 
 const formWrapper = {
@@ -23,13 +23,16 @@ const formWrapper = {
   justifyContent: 'center',
 };
 
-const dispatchAddCase = (values, dispatch) => {
-  dispatch(addCase(values));
+const dispatchEditCase = (values) => {
+  // dispatch(addCase(values));
+  console.log('Editing case ', values);
 };
 
-const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
-  <div style={formWrapper}>
-    <form onSubmit={handleSubmit(dispatchAddCase)} style={{ width: '100%' }}>
+const CaseForm = (props) => {
+  console.log(props);
+  const { handleSubmit, pristine, reset, submitting } = props;
+  return (<div style={formWrapper}>
+    <form onSubmit={handleSubmit(dispatchEditCase)} style={{ width: '100%' }}>
       <CaseIdFields />
       <Divider />
       <CaseCheckboxes />
@@ -41,7 +44,8 @@ const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
       <FormButton label="Submit" disabled={pristine || submitting} type="submit" />
       <FormButton label="Reset" disabled={pristine || submitting} onClick={reset} />
     </form>
-  </div>;
+  </div>);
+};
 
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
