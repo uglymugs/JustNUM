@@ -4,6 +4,7 @@ import Divider from 'material-ui/Divider';
 // validator function specific to the form that you have to write
 import validate from '../../form_validators/case_form_validator';
 
+import CaseIdFields from './case_id_field';
 import CaseCheckboxes from './case_checkboxes';
 import CaseTextFields from './case_text_fields';
 import CaseContacts from './case_contacts';
@@ -27,6 +28,8 @@ const addCase = (values, dispatch) =>
 const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
   <div style={formWrapper}>
     <form onSubmit={handleSubmit(addCase)} style={{ width: '100%' }}>
+      <CaseIdFields />
+      <Divider />
       <CaseCheckboxes />
       <Divider />
       <CaseTextFields />

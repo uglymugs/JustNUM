@@ -1,6 +1,6 @@
 const caseFormValidator = values => {
   const errors = {};
-  const requiredFields = ['notes_create'];
+  const requiredFields = ['CaseIdFields_id', 'CaseNotesCreate__notesCreate'];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Required';
