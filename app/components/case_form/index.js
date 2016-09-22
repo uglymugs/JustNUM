@@ -11,6 +11,7 @@ import CaseContacts from './case_contacts';
 import CaseTimeline from './case_timeline';
 import CaseNotesCreate from './case_notes_create';
 import FormButton from '../material_ui_form_lib/form_button';
+import { addCase } from '../../action_creators';
 
 
 const formWrapper = {
@@ -22,12 +23,14 @@ const formWrapper = {
   justifyContent: 'center',
 };
 
-const addCase = (values, dispatch) =>
+const dispatchAddCase = (values, dispatch) => {
   console.log('values: ', values, dispatch);
+  dispatch(addCase(values));
+};
 
 const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
   <div style={formWrapper}>
-    <form onSubmit={handleSubmit(addCase)} style={{ width: '100%' }}>
+    <form onSubmit={handleSubmit(dispatchAddCase)} style={{ width: '100%' }}>
       <CaseIdFields />
       <Divider />
       <CaseCheckboxes />

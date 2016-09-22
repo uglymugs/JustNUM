@@ -34,7 +34,7 @@ const CaseCheckboxes = () =>
         <Field name="CaseCheckboxes__db" component={Checkbox} label="DB" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__s/p" component={Checkbox} label="SP" />
+        <Field name="CaseCheckboxes__sp" component={Checkbox} label="SP" />
       </div>
     </div>
     <div className="CaseCheckboxes__infoColumn">

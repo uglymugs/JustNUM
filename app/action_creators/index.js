@@ -1,23 +1,16 @@
-// @flow
 import uuid from 'uuid';
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER } from '../action_types';
+import { ADD_CASE, EDIT_CASE } from '../action_types';
 
-
-export const addTodo = (text: string): Object =>
+export const addCase = (formData) =>
   ({
-    type: ADD_TODO,
-    text,
+    type: ADD_CASE,
+    formData,
     id: uuid.v1(),
   });
 
-export const toggleTodo = (id: string): Object =>
+export const editCase = (id, formData) =>
   ({
-    type: TOGGLE_TODO,
+    type: EDIT_CASE,
+    formData,
     id,
-  });
-
-export const setVisibilityFilter = (filter: string): Object =>
-  ({
-    type: SET_VISIBILITY_FILTER,
-    filter,
   });

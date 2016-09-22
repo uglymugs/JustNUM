@@ -6,6 +6,7 @@ const caseFormValidator = values => {
       errors[field] = 'Required';
     }
   });
+  console.log('ERRORS:', errors);
   return errors;
 };
 
