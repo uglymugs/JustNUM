@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 
 const topBarStyles = {
-  backgroundColor: '#FEFEFE',
+  backgroundColor: '#AFD1E0',
 };
 
 const TopAppBar = ({ styles }) =>
-  <div style={Object.assign({}, topBarStyles, styles)}>
-    <AppBar />
+  <div >
+    <AppBar style={Object.assign({}, topBarStyles, styles)} />
   </div>;
 
 TopAppBar.propTypes = {
