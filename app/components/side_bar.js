@@ -27,31 +27,28 @@ const menuItemStyles = {
 };
 
 const SideNavBar = () =>
-
-  <div>
-    <Paper style={style.paper}>
-      <Menu>
-        <MenuItem
-          primaryText="Home"
-          style={menuItemStyles}
-          leftIcon={<Home color={white} />}
-        />
-        <MenuItem
-          primaryText="Cases"
-          style={menuItemStyles}
-          leftIcon={<Work color={white} />}
-          containerElement={<Link to="/cases" />}
-        />
-        <Divider />
-        <MenuItem
-          primaryText="Add Case"
-          style={menuItemStyles}
-          leftIcon={<NoteAdd color={white} />}
-          containerElement={<Link to="/cases/new" />}
-        />
-        <Divider />
-      </Menu>
-    </Paper>
-  </div>;
+  <Paper style={style.paper}>
+    <Menu>
+      <MenuItem
+        primaryText="Home"
+        style={menuItemStyles}
+        leftIcon={<Home color={white} />}
+      />
+      <MenuItem
+        primaryText="Cases"
+        style={menuItemStyles}
+        leftIcon={<Work color={white} />}
+        containerElement={<Link to="/cases" />}
+      />
+      <Divider />
+      <MenuItem
+        primaryText="Add Case"
+        style={menuItemStyles}
+        leftIcon={<NoteAdd color={white} />}
+        containerElement={<Link to="/cases/new" />}
+      />
+      <Divider />
+    </Menu>
+  </Paper>;
 
 export default SideNavBar;

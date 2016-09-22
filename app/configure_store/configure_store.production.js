@@ -1,15 +1,7 @@
-import { createStore, combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import { createStore } from 'redux';
 import rootReducer from '../reducers';
 
-const reducers = {
-  rootReducer,
-  form: formReducer,
-};
-
-const reducer = combineReducers(reducers);
-
 const configureStore = initialState =>
-  createStore(reducer, initialState);
+  createStore(rootReducer, initialState);
 
 export default configureStore;

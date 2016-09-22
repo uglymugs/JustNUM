@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 import Checkbox from '../material_ui_form_lib/checkbox';
 
 const CaseCheckboxes = () =>
-  <div className="CaseCheckboxes">
+  <div className="CaseCheckboxes" style={{ width: '100%' }}>
     <div className="CaseCheckboxes__ChckLeftColumn">
       <div>
         <Field name="CaseCheckboxes__web" component={Checkbox} label="WEB" />

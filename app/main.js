@@ -13,6 +13,8 @@ injectTapEventPlugin();
 
 const store = configureStore();
 
+// store.subscribe(state => console.log('-->', store.getState()));
+
 render(
   <AppContainer>
     <Root store={store} />

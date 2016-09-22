@@ -13,14 +13,12 @@ const appStyles = {
 };
 
 const App = ({ children }) =>
-  <div style={{ height: '100%' }}>
-    <MuiThemeProvider>
-      <div style={appStyles}>
-        <SideBar />
-        {children}
-      </div>
-    </MuiThemeProvider>
-  </div>;
+  <MuiThemeProvider>
+    <div style={appStyles}>
+      <SideBar />
+      {children}
+    </div>
+  </MuiThemeProvider>;
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
