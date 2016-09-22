@@ -1,10 +1,14 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 
 const CaseListRow = ({ caseId, createdDate, operation }) =>
   <TableRow>
-    <TableRowColumn>x</TableRowColumn>
-    <TableRowColumn>{caseId}</TableRowColumn>
+    <TableRowColumn>
+      <Link to={`/cases/edit/${caseId}`}>
+      {caseId}
+      </Link>
+    </TableRowColumn>
     <TableRowColumn>{createdDate || ''}</TableRowColumn>
     <TableRowColumn>{operation || ''}</TableRowColumn>
   </TableRow>;
