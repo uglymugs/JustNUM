@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import visibilityFilter from './visibility_filter';
-import todos from './todos';
+import { reducer as form } from 'redux-form';
+import cases from './cases';
 
 // rootReducer :: State -> State
 const rootReducer = combineReducers({
-  visibilityFilter,
-  todos,
+  cases,
+  form,
 });
 
 export default rootReducer;

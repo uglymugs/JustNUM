@@ -5,7 +5,7 @@ import DevTools from '../../containers/dev_tools';
 
 const Root = ({ store }) =>
   <Provider store={store}>
-    <div>
+    <div style={{ height: '100%' }}>
       <RouteHandler />
       <DevTools />
     </div>
