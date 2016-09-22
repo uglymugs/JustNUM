@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 
-const CaseListRow = ({ id, name, status }) =>
+const CaseListRow = ({ caseId }) =>
   <TableRow>
     <TableRowColumn>x</TableRowColumn>
-    <TableRowColumn>{id}</TableRowColumn>
-    <TableRowColumn>{name}</TableRowColumn>
-    <TableRowColumn>{status}</TableRowColumn>
+    <TableRowColumn>{caseId}</TableRowColumn>
+    <TableRowColumn>tbd</TableRowColumn>
+    <TableRowColumn>tbd</TableRowColumn>
   </TableRow>;
 
 CaseListRow.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
+  caseId: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
+  // status: PropTypes.string.isRequired,
 };
 
 export default CaseListRow;
