@@ -6,7 +6,7 @@ const CaseListRow = ({ caseCaseId, caseCreatedDate, caseOperation }) =>
   <TableRow>
     <TableRowColumn>
       <Link to={`/cases/edit/${caseCaseId}`}>
-      {caseCaseId}
+        {caseCaseId}
       </Link>
     </TableRowColumn>
     <TableRowColumn>{caseCreatedDate || ''}</TableRowColumn>
