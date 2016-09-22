@@ -41,10 +41,16 @@ const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
       <CaseNotesCreate />
       <FormButton
         className="CaseForm__button"
-        label="Submit" disabled={pristine || submitting}
+        label="Submit"
+        disabled={pristine || submitting}
         type="submit"
       />
-      <FormButton className="CaseForm__button" label="Reset" onClick={reset} />
+      <FormButton
+        className="CaseForm__button"
+        label="Reset"
+        disabled={pristine || submitting}
+        onClick={reset}
+      />
     </form>
   </div>;
 
