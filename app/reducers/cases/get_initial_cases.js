@@ -18,7 +18,7 @@ const genCaseData = () =>
     caseInfo: coinFlip(),
     caseNc: coinFlip(),
     caseNotesCreate: faker.lorem.paragraph(),
-    caseOperation: null,
+    caseOperation: faker.commerce.color(),
     casePc: coinFlip(),
     casePolice: coinFlip(),
     caseReferral: null,
@@ -26,7 +26,7 @@ const genCaseData = () =>
     caseSms: coinFlip(),
     caseTimeline: null,
     caseWeb: coinFlip(),
-    caseCreatedDate: faker.date.past().toString(),
+    caseCreatedDate: faker.date.past().toString().split(' G')[0].slice(0, -8),
   });
 
 const getInitialCases = () =>
