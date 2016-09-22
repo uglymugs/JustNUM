@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import TopBar from './top_bar';
+import TopAppBar from './top_app_bar';
 
 const caseLayoutStyles = {
   display: 'flex',
@@ -26,7 +26,7 @@ const mainContentBoxStyles = {
 
 const CaseLayout = ({ children }) =>
   <div style={caseLayoutStyles}>
-    <TopBar />
+    <TopAppBar />
     <div style={mainContentAreaStyles}>
       <div style={mainContentBoxStyles}>
         { children }
