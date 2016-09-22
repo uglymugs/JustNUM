@@ -7,7 +7,13 @@ const topBarStyles = {
 
 const TopAppBar = ({ styles }) =>
   <div >
-    <AppBar style={Object.assign({}, topBarStyles, styles)} />
+    <AppBar
+      style={Object.assign({}, topBarStyles, styles)}
+      showMenuIconButton={false}
+      className="TopAppBar"
+    >
+      <img className="TopAppBar__avatar" src="app/assets/avatar.png" role="presentation" />
+    </AppBar>
   </div>;
 
 TopAppBar.propTypes = {
