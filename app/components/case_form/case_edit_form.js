@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 import Divider from 'material-ui/Divider';
 // validator function specific to the form that you have to write
@@ -11,7 +12,7 @@ import CaseContacts from './case_contacts';
 import CaseTimeline from './case_timeline';
 import CaseNotesCreate from './case_notes_create';
 import FormButton from '../material_ui_form_lib/form_button';
-// import { addCase } from '../../action_creators';
+import { editCase } from '../../action_creators';
 
 
 const formWrapper = {
@@ -23,16 +24,18 @@ const formWrapper = {
   justifyContent: 'center',
 };
 
-const dispatchEditCase = (values) => {
-  // dispatch(addCase(values));
-  console.log('Editing case ', values);
+const dispatchEditCase = (caseId, router) => (values, dispatch) => {
+  dispatch(editCase(caseId, values));
+  router.push('/cases');
 };
 
-const CaseForm = (props) => {
-  console.log(props);
-  const { handleSubmit, pristine, reset, submitting } = props;
-  return (<div style={formWrapper}>
-    <form onSubmit={handleSubmit(dispatchEditCase)} style={{ width: '100%' }}>
+const CaseForm = withRouter(({
+  handleSubmit, pristine, reset, submitting, router, initialValues }) =>
+  <div style={formWrapper}>
+    <form
+      onSubmit={handleSubmit(dispatchEditCase(initialValues.caseCaseId, router))}
+      style={{ width: '100%' }}
+    >
       <CaseIdFields />
       <Divider />
       <CaseCheckboxes />
@@ -45,14 +48,18 @@ const CaseForm = (props) => {
       <FormButton label="Reset" disabled={pristine || submitting} onClick={reset} />
     </form>
   </div>);
-};
 
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
   reset: PropTypes.any,
   pristine: PropTypes.any,
   submitting: PropTypes.any,
+  initialValues: PropTypes.object,
 };
+
+// CaseForm.contextTypes = {
+//   router: PropTypes.any,
+// };
 
 export default reduxForm({
   form: 'CaseForm',  // a unique identifier for this form

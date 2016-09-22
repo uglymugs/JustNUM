@@ -8,9 +8,9 @@ export const addCase = (formData) =>
     id: uuid.v1(),
   });
 
-export const editCase = (id, formData) =>
+export const editCase = (caseId, formData) =>
   ({
     type: EDIT_CASE,
     formData,
-    id,
+    caseId,
   });
