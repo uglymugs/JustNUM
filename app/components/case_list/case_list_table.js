@@ -6,7 +6,7 @@ const CaseListTable = ({ cases }) =>
   <Table>
     <TableHeader>
       <TableRow>
-        <TableHeaderColumn>Case Id</TableHeaderColumn>
+        <TableHeaderColumn>Case ID</TableHeaderColumn>
         <TableHeaderColumn>Date Created</TableHeaderColumn>
         <TableHeaderColumn>Operation</TableHeaderColumn>
       </TableRow>
