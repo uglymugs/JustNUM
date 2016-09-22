@@ -37,6 +37,7 @@ const SideNavBar = () =>
         primaryText="Home"
         style={menuItemStyles}
         leftIcon={<Home color={white} />}
+        containerElement={<Link to="/" />}
       />
       <MenuItem
         primaryText="Cases"

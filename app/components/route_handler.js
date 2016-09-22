@@ -4,10 +4,12 @@ import App from './app';
 import CaseLayout from './case_layout';
 import CaseView from './case_form/case_view';
 import ConnectedCaseList from '../containers/connected_case_list';
+import FakeHome from './homepage';
 
 const RouteHandler = () =>
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={FakeHome} />
       <Route path="cases" component={CaseLayout}>
         <IndexRoute component={ConnectedCaseList} />
         <Route path="new" component={CaseView} />
