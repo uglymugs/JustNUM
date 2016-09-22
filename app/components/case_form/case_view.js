@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CaseForm from './index';
+import CaseForm from './case_form';
 
 const caseViewStyles = {
   display: 'flex',

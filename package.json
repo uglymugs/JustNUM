@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-material-ui",
+  "name": "ugly-mugs-just-num",
   "version": "1.0.0",
-  "description": "React, redux, material-ui front end",
+  "description": "Prototype webapp task manager for Ugly Mugs",
   "main": "index.js",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matthewglover/react-redux-material-ui.git"
+    "url": "git+https://github.com/uglymugs/JustNUM.git"
   },
   "author": "Matt Glover (https://github.com/matthewglover)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matthewglover/react-redux-material-ui/issues"
+    "url": "https://github.com/uglymugs/JustNUM/issues"
   },
-  "homepage": "https://github.com/matthewglover/react-redux-material-ui#readme",
+  "homepage": "https://github.com/uglymugs/JustNUM#readme",
   "devDependencies": {
     "@kadira/storybook": "^2.9.1",
     "ava": "^0.16.0",
