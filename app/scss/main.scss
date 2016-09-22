@@ -12,6 +12,13 @@ body {
   background-color: $main-background;
 }
 
+a {
+  color: $sidebar;
+  &:focus {
+    color: darken($sidebar, 10%);
+  }
+}
+
 #app {
   width: 100%;
   height: 100%;
