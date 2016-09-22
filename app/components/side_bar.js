@@ -30,7 +30,7 @@ const SideNavBar = () =>
   <Paper style={style.paper}>
     <Menu>
       <div className="SideNavBar__header">
-        <img src="app/assets/logo_sml.png" role="presentation" />
+        <img src="public/logo_sml.png" role="presentation" />
         <h1>JustNUM</h1>
       </div>
       <MenuItem
