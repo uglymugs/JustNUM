@@ -26,6 +26,7 @@ const genCaseData = () =>
     sms: coinFlip(),
     timeline: null,
     web: coinFlip(),
+    createdDate: faker.date.past().toString(),
   });
 
 const getInitialCases = () =>
