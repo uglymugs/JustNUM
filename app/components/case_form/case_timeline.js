@@ -6,7 +6,7 @@ const CaseTimeline = () =>
   <div className="CaseTimeline">
     <div>
       <Field
-        name="CaseTimeline__timeline"
+        name="caseTimeline"
         component={TextField}
         label="Timeline"
         multiLine
