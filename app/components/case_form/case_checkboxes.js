@@ -6,40 +6,40 @@ const CaseCheckboxes = () =>
   <div className="CaseCheckboxes" style={{ width: '100%' }}>
     <div className="CaseCheckboxes__ChckLeftColumn">
       <div>
-        <Field name="CaseCheckboxes__web" component={Checkbox} label="WEB" />
+        <Field name="caseWeb" component={Checkbox} label="WEB" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__email" component={Checkbox} label="EMAIL" />
+        <Field name="caseEmail" component={Checkbox} label="EMAIL" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__sms" component={Checkbox} label="SMS" />
+        <Field name="caseSms" component={Checkbox} label="SMS" />
       </div>
     </div>
     <div className="CaseCheckboxes__ChckMiddleColumn">
       <div>
-        <Field name="CaseCheckboxes__nc" component={Checkbox} label="NC" />
+        <Field name="caseNc" component={Checkbox} label="NC" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__police" component={Checkbox} label="POLICE" />
+        <Field name="casePolice" component={Checkbox} label="POLICE" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__app" component={Checkbox} label="APP" />
+        <Field name="caseApp" component={Checkbox} label="APP" />
       </div>
     </div>
     <div className="CaseCheckboxes__ChckRightColumn">
       <div>
-        <Field name="CaseCheckboxes__pc" component={Checkbox} label="PC" />
+        <Field name="casePc" component={Checkbox} label="PC" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__db" component={Checkbox} label="DB" />
+        <Field name="caseDb" component={Checkbox} label="DB" />
       </div>
       <div>
-        <Field name="CaseCheckboxes__sp" component={Checkbox} label="SP" />
+        <Field name="caseSp" component={Checkbox} label="SP" />
       </div>
     </div>
     <div className="CaseCheckboxes__infoColumn">
       <div>
-        <Field name="CaseCheckboxes__info" component={Checkbox} label="INFO" />
+        <Field name="case_info" component={Checkbox} label="INFO" />
       </div>
     </div>
   </div>;
