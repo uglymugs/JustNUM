@@ -1,4 +1,5 @@
 @import './components/checkboxes';
+@import './base/_colors';
 
 html, body {
   margin: 0;
@@ -7,7 +8,7 @@ html, body {
 }
 
 body {
-  background-color: #FFF;
+  background-color: $main-background;
 }
 
 #app {
