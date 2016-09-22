@@ -36,11 +36,8 @@ const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
       <CaseCheckboxes />
       <Divider />
       <CaseTextFields />
-      <Divider />
       <CaseContacts />
-      <Divider />
       <CaseTimeline />
-      <Divider />
       <CaseNotesCreate />
       <FormButton label="Submit" disabled={pristine || submitting} type="submit" />
       <FormButton label="Reset" disabled={pristine || submitting} onClick={reset} />

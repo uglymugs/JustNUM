@@ -35,22 +35,26 @@
 };
 
 .CaseIdFields {
+  padding-left: 3%;
   padding-bottom: 6%;
 };
 
 .CaseTextFields {
-  padding-bottom: 6%;
+  @extend .CaseIdFields;
 };
 
 .CaseContacts {
-  padding-bottom: 6%;
+  padding: 0% 3% 3% 3%;
+  border: 2px solid rgb(224, 224, 224);
+  margin-bottom: 6%;
 };
 
 .CaseTimeline {
-  padding-bottom: 6%;
+  @extend .CaseContacts;
 };
 
 .CaseNotesCreate {
-  padding-bottom: 6%;
+  @extend .CaseContacts;
 };
+
 // top/right/bottom/left
