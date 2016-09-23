@@ -1,4 +1,8 @@
 import faker from 'faker';
+import { compose } from 'ramda';
+import {
+  getCasesFromLocalStorage,
+  saveCasesToLocalStorage } from './local_storage';
 
 const coinFlip = () => Math.random() > 0.5;
 
@@ -29,7 +33,14 @@ const genCaseData = () =>
     caseCreatedDate: faker.date.past().toString().split(' G')[0].slice(0, -8),
   });
 
-const getInitialCases = () =>
+
+const generateCases = () =>
   Array.from({ length: 20 }).map(genCaseData);
+
+const generateAndSaveCases =
+  compose(saveCasesToLocalStorage, generateCases);
+
+const getInitialCases = () =>
+  getCasesFromLocalStorage() || generateAndSaveCases();
 
 export default getInitialCases;

@@ -1,7 +1,6 @@
 
-const editCase = (cases, formData, caseId) => {
-  console.log('---->', formData, caseId);
-  return cases.map(crntCase => {
+const editCase = (cases, formData, caseId) =>
+  cases.map(crntCase => {
     if (crntCase.caseCaseId !== caseId) return crntCase;
     return Object.assign(
       {},
@@ -9,6 +8,5 @@ const editCase = (cases, formData, caseId) => {
       formData,
     );
   });
-};
 
 export default editCase;
