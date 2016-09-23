@@ -12,7 +12,7 @@ const TopAppBar = ({ styles }) =>
       showMenuIconButton={false}
       className="TopAppBar"
     >
-      <img className="TopAppBar__avatar" src="app/assets/avatar.png" role="presentation" />
+      <img className="TopAppBar__avatar" src="public/avatar.png" role="presentation" />
     </AppBar>
   </div>;
 
