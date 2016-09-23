@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 import Divider from 'material-ui/Divider';
 // validator function specific to the form that you have to write
@@ -23,13 +24,18 @@ const formWrapper = {
   justifyContent: 'center',
 };
 
-const dispatchAddCase = (values, dispatch) => {
+const dispatchAddCase = (router) => (values, dispatch) => {
   dispatch(addCase(values));
+  router.push('/cases');
 };
 
-const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
+const CaseForm = withRouter(({
+  handleSubmit, pristine, reset, submitting, router }) =>
   <div style={formWrapper}>
-    <form onSubmit={handleSubmit(dispatchAddCase)} style={{ width: '100%' }}>
+    <form
+      onSubmit={handleSubmit(dispatchAddCase(router))}
+      style={{ width: '100%' }}
+    >
       <CaseIdFields />
       <Divider />
       <CaseCheckboxes />
@@ -51,7 +57,7 @@ const CaseForm = ({ handleSubmit, pristine, reset, submitting }) =>
         onClick={reset}
       />
     </form>
-  </div>;
+  </div>);
 
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
