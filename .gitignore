@@ -39,3 +39,6 @@ jspm_packages
 public/*.html
 public/*.css
 public/*.js
+
+#vim
+.tern-project

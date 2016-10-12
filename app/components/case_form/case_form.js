@@ -29,35 +29,37 @@ const dispatchAddCase = (router) => (values, dispatch) => {
   router.push('/cases');
 };
 
-const CaseForm = withRouter(({
-  handleSubmit, pristine, reset, submitting, router }) =>
-  <div style={formWrapper}>
-    <form
-      onSubmit={handleSubmit(dispatchAddCase(router))}
-      style={{ width: '100%' }}
-    >
-      <CaseIdFields />
-      <Divider />
-      <CaseCheckboxes />
-      <Divider />
-      <CaseTextFields />
-      <CaseContacts />
-      <CaseTimeline />
-      <CaseNotesCreate />
-      <FormButton
-        className="Case__button"
-        label="Submit"
-        disabled={pristine || submitting}
-        type="submit"
-      />
-      <FormButton
-        className="Case__button"
-        label="Reset"
-        disabled={pristine || submitting}
-        onClick={reset}
-      />
-    </form>
-  </div>);
+const CaseForm = withRouter(
+  ({ handleSubmit, pristine, reset, submitting, router }) => (
+    <div style={formWrapper}>
+      <form
+        onSubmit={handleSubmit(dispatchAddCase(router))}
+        style={{ width: '100%' }}
+      >
+        <CaseIdFields />
+        <Divider />
+        <CaseCheckboxes />
+        <Divider />
+        <CaseTextFields />
+        <CaseContacts />
+        <CaseTimeline />
+        <CaseNotesCreate />
+        <FormButton
+          className="Case__button"
+          label="Submit"
+          disabled={pristine || submitting}
+          type="submit"
+        />
+        <FormButton
+          className="Case__button"
+          label="Reset"
+          disabled={pristine || submitting}
+          onClick={reset}
+        />
+      </form>
+    </div>
+  )
+);
 
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
