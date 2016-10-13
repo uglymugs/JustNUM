@@ -1,6 +1,7 @@
 // NOTE: module only included in development mode, so can use dev-dependencies
 
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { persistState } from 'redux-devtools';
@@ -8,7 +9,10 @@ import { persistState } from 'redux-devtools';
 import rootReducer from '../reducers';
 import DevTools from '../containers/dev_tools';
 
+const middleware = [thunk];
+
 const enhancer = compose(
+  applyMiddleware(...middleware),
   DevTools.instrument(),
   persistState(window.location.href.match(/[?&]debug_session=([^&#]+)\b/))
 );
