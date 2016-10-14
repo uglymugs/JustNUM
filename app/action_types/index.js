@@ -1,3 +1,6 @@
 export const FETCH_CASES_SUCCESS = 'FETCH_CASES_SUCCESS';
+export const EDIT_CASE_SUCCESS = 'EDIT_CASE_SUCCESS';
+export const CREATE_CASE_SUCCESS = 'CREATE_CASE_SUCCESS';
+
 
 export default {};

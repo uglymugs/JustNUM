@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react';
-import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
-import Divider from 'material-ui/Divider';
-// validator function specific to the form that you have to write
-import validate from '../../form_validators/case_form_validator';
 
+import Divider from 'material-ui/Divider';
 import CaseIdFields from './case_id_field';
 import CaseCheckboxes from './case_checkboxes';
 import CaseTextFields from './case_text_fields';
@@ -12,8 +9,8 @@ import CaseContacts from './case_contacts';
 import CaseTimeline from './case_timeline';
 import CaseNotesCreate from './case_notes_create';
 import FormButton from '../material_ui_form_lib/form_button';
-import { editCase } from '../../action_creators';
 
+// import validate from './form_validators';
 
 const formWrapper = {
   width: '100%',
@@ -24,16 +21,13 @@ const formWrapper = {
   justifyContent: 'center',
 };
 
-const dispatchEditCase = (caseId, router) => (values, dispatch) => {
-  dispatch(editCase(caseId, values));
-  router.push('/cases');
-};
 
-const CaseForm = withRouter(
-  ({ handleSubmit, pristine, reset, submitting, router, initialValues }) => (
+const CaseForm = (props) => {
+  const { submitHandler, handleSubmit, pristine, reset, submitting } = props;
+  return (
     <div style={formWrapper}>
       <form
-        onSubmit={handleSubmit(dispatchEditCase(initialValues.caseCaseId, router))}
+        onSubmit={handleSubmit(submitHandler)}
         style={{ width: '100%' }}
       >
         <CaseIdFields />
@@ -58,22 +52,20 @@ const CaseForm = withRouter(
         />
       </form>
     </div>
-  )
-);
+  );
+};
 
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
   reset: PropTypes.any,
   pristine: PropTypes.any,
   submitting: PropTypes.any,
-  initialValues: PropTypes.object,
+  view: PropTypes.string.isRequired,
+  case: PropTypes.object,
+  submitHandler: PropTypes.func,
 };
 
-// CaseForm.contextTypes = {
-//   router: PropTypes.any,
-// };
-
 export default reduxForm({
-  form: 'CaseForm',  // a unique identifier for this form
-  validate,
+  form: 'CaseForm',
+  // validate,
 })(CaseForm);

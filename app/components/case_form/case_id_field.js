@@ -5,7 +5,7 @@ import TextField from '../material_ui_form_lib/text_field';
 const CaseIdFields = () =>
   <div className="CaseIdFields">
     <div>
-      <Field name="caseCaseId" component={TextField} label="Case ID" />
+      <Field name="caseId" component={TextField} label="Case ID" />
     </div>
   </div>;
 

@@ -1,14 +1,18 @@
-import { FETCH_CASES_SUCCESS } from '../../action_types';
+import {
+  FETCH_CASES_SUCCESS,
+  EDIT_CASE_SUCCESS,
+} from '../../action_types';
 
 // cases :: [Case] -> Action -> [Case]
 const casesById = (state = {}, action) => {
-  const newState = {};
   switch (action.type) {
     case FETCH_CASES_SUCCESS:
-      action.response.forEach(eachCase => {
-        newState[eachCase.caseId] = eachCase;
-      });
-      return newState;
+      return action.response;
+    case EDIT_CASE_SUCCESS:
+      return {
+        ...state,
+        [action.response.caseId]: action.response,
+      };
     default:
       return state;
   }

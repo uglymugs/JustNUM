@@ -1,5 +1,8 @@
-const CASE_TEMPLATE = {}; // temp
-const addCase = (cases, formData, uuid) =>
-  [Object.assign({ uuid }, CASE_TEMPLATE, formData), ...cases];
+import CASE_TEMPLATE from './case_template.js';
 
-export default addCase;
+const fillDefaults = (newCase) => ({
+  ...CASE_TEMPLATE,
+  ...newCase,
+});
+
+export default fillDefaults;

@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 // connector :: Function
 const connector = connect(
   mapStateToProps,
-  actions
+  actions,
 );
 
 // ConnectedCaseList :: React.Component
