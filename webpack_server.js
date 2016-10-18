@@ -3,6 +3,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config');
 
 const server = new WebpackDevServer(webpack(config), {
+  proxy: { '*': 'http://localhost:2403' },
   publicPath: config.output.publicPath,
   contentBase: 'public',
   hot: true,

@@ -12,6 +12,8 @@
     "clean": "rimraf './public/*.+(js|css|html)'",
     "build": "webpack --config ./webpack.production.config.js --progress",
     "dev": "node webpack_server",
+    "dpd": "dpd",
+    "go": "npm-run-all --parallel dev dpd",
     "lint": "eslint './+(app|test|stories)/**/*.js'",
     "start": "node server",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
