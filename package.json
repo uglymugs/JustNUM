@@ -59,7 +59,6 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
-    "@matthewglover/hapi-wrapper": "^0.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "faker": "^3.1.0",
     "material-ui": "^0.15.4",
