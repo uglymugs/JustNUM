@@ -12,6 +12,9 @@ import { Link } from 'react-router';
 
 const style = {
   paper: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
     height: '100%',
     width: '280px',
     backgroundColor: '#5E7B8D',
