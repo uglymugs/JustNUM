@@ -12,6 +12,8 @@
     "clean": "rimraf './public/*.+(js|css|html)'",
     "build": "webpack --config ./webpack.production.config.js --progress",
     "dev": "node webpack_server",
+    "dpd": "dpd",
+    "go": "npm-run-all --parallel dev dpd",
     "lint": "eslint './+(app|test|stories)/**/*.js'",
     "start": "node server",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
@@ -57,7 +59,6 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
-    "@matthewglover/hapi-wrapper": "^0.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "faker": "^3.1.0",
     "material-ui": "^0.15.4",
@@ -71,6 +72,7 @@
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
     "redux-form": "^6.0.5",
+    "redux-thunk": "^2.1.0",
     "uuid": "^2.0.2"
   },
   "engines": {

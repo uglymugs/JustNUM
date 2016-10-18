@@ -1,19 +1,23 @@
-import { ADD_CASE, EDIT_CASE } from '../../action_types';
-import addCase from './add_case';
-import editCase from './edit_case';
-import getInitialCases from './get_initial_cases';
-import { saveCasesToLocalStorage } from './local_storage';
+import {
+  FETCH_CASES_SUCCESS,
+  EDIT_CASE_SUCCESS,
+} from '../../action_types';
 
 // cases :: [Case] -> Action -> [Case]
-const cases = (state = getInitialCases(), action) => {
+const casesById = (state = {}, action) => {
   switch (action.type) {
-    case ADD_CASE:
-      return saveCasesToLocalStorage(addCase(state, action.formData, action.id));
-    case EDIT_CASE:
-      return saveCasesToLocalStorage(editCase(state, action.formData, action.caseId));
+    case FETCH_CASES_SUCCESS:
+      return action.response;
+    case EDIT_CASE_SUCCESS:
+      return {
+        ...state,
+        [action.response.caseId]: action.response,
+      };
     default:
       return state;
   }
 };
 
-export default cases;
+export default casesById;
+
+export const getCaseById = (state, id) => state[id];

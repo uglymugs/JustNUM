@@ -1,11 +1,16 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import cases from './cases';
+import casesById, * as fromCases from './cases';
 
 // rootReducer :: State -> State
 const rootReducer = combineReducers({
-  cases,
+  casesById,
   form,
 });
 
 export default rootReducer;
+export const getCasesById = (state) => state.casesById;
+export const getCaseById = (state, id) => fromCases.getCaseById(
+  getCasesById(state),
+  id
+);

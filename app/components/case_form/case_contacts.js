@@ -6,7 +6,7 @@ const CaseContacts = () =>
   <div className="CaseContacts">
     <div>
       <Field
-        name="caseContacts"
+        name="contacts"
         component={TextField}
         label="Contacts"
         multiLine

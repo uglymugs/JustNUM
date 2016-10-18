@@ -5,13 +5,13 @@ import TextField from '../material_ui_form_lib/text_field';
 const CaseTextFields = () =>
   <div className="CaseTextFields">
     <div>
-      <Field name="caseReferral" component={TextField} label="Referral" />
+      <Field name="referral" component={TextField} label="Referral" />
     </div>
     <div>
-      <Field name="caseArea" component={TextField} label="Area" />
+      <Field name="area" component={TextField} label="Area" />
     </div>
     <div>
-      <Field name="caseOperation" component={TextField} label="Operation" />
+      <Field name="operation" component={TextField} label="Operation" />
     </div>
   </div>;
 

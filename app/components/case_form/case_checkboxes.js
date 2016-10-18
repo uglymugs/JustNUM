@@ -6,35 +6,35 @@ const CaseCheckboxes = () =>
   <div className="CaseCheckboxes" style={{ width: '100%' }}>
     <div className="CaseCheckboxes__ChckLeftColumn">
       <div>
-        <Field name="caseWeb" component={Checkbox} label="WEB" />
+        <Field name="web" component={Checkbox} label="WEB" />
       </div>
       <div>
-        <Field name="caseEmail" component={Checkbox} label="EMAIL" />
+        <Field name="email" component={Checkbox} label="EMAIL" />
       </div>
       <div>
-        <Field name="caseSms" component={Checkbox} label="SMS" />
+        <Field name="sms" component={Checkbox} label="SMS" />
       </div>
     </div>
     <div className="CaseCheckboxes__ChckMiddleColumn">
       <div>
-        <Field name="caseNc" component={Checkbox} label="NC" />
+        <Field name="nc" component={Checkbox} label="NC" />
       </div>
       <div>
-        <Field name="casePolice" component={Checkbox} label="POLICE" />
+        <Field name="police" component={Checkbox} label="POLICE" />
       </div>
       <div>
-        <Field name="caseApp" component={Checkbox} label="APP" />
+        <Field name="app" component={Checkbox} label="APP" />
       </div>
     </div>
     <div className="CaseCheckboxes__ChckRightColumn">
       <div>
-        <Field name="casePc" component={Checkbox} label="PC" />
+        <Field name="pc" component={Checkbox} label="PC" />
       </div>
       <div>
-        <Field name="caseDb" component={Checkbox} label="DB" />
+        <Field name="db" component={Checkbox} label="DB" />
       </div>
       <div>
-        <Field name="caseSp" component={Checkbox} label="SP" />
+        <Field name="sp" component={Checkbox} label="SP" />
       </div>
     </div>
     <div className="CaseCheckboxes__infoColumn">

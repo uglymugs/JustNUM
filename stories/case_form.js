@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import CaseForm from '../app/components/case_form/case_form';
+import CaseForm from '../app/components/case_form/';
 import configureStore from '../app/configure_store/configure_store.dev';
 
 const store = configureStore();

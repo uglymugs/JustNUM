@@ -22,7 +22,6 @@ render(
   document.getElementById('app')
 );
 
-
 // See https://github.com/gaearon/redux-devtools/tree/master/examples/todomvc
 if (module.hot) {
   module.hot.accept('./components/root', () => {
@@ -37,3 +36,4 @@ if (module.hot) {
     );
   });
 }
+
