@@ -1,27 +1,28 @@
 import React, { PropTypes } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import LeftNav from './left_nav';
-import SideBar from './side_bar';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import Main from './main';
+import CaseLayout from './case_layout';
+import ConnectedCaseList from '../containers/connected_case_list';
+import ConnectedCaseForm from '../containers/connected_case_form';
+import FakeHome from './homepage';
 
-const appStyles = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-  alignItems: 'top',
-  width: '100%',
-  height: '100%',
-};
 
-const App = ({ children }) =>
-  <MuiThemeProvider>
-    <div style={appStyles}>
-      <SideBar />
-      {children}
-    </div>
-  </MuiThemeProvider>;
+const App = ({ store }) =>
+  <Provider store={store}>
+    <Router history={hashHistory}>
+      <Route path="/" component={Main}>
+        <IndexRoute component={FakeHome} />
+        <Route path="cases" component={CaseLayout}>
+          <IndexRoute component={ConnectedCaseList} />
+          <Route path=":view(/:caseId)" component={ConnectedCaseForm} />
+        </Route>
+      </Route>
+    </Router>
+  </Provider>;
 
 App.propTypes = {
-  children: PropTypes.node.isRequired,
+  store: PropTypes.object.isRequired,
 };
 
 export default App;
