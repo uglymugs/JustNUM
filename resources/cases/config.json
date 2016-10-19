@@ -1,0 +1,149 @@
+{
+	"type": "Collection",
+	"properties": {
+		"app": {
+			"name": "app",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "app",
+			"order": 0
+		},
+		"area": {
+			"name": "area",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "area",
+			"order": 1
+		},
+		"contacts": {
+			"name": "contacts",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "contacts",
+			"order": 2
+		},
+		"db": {
+			"name": "db",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "db",
+			"order": 3
+		},
+		"email": {
+			"name": "email",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "email",
+			"order": 4
+		},
+		"caseId": {
+			"name": "caseId",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "caseId",
+			"order": 5
+		},
+		"info": {
+			"name": "info",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "info",
+			"order": 6
+		},
+		"nc": {
+			"name": "nc",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "nc",
+			"order": 7
+		},
+		"notes": {
+			"name": "notes",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "notes",
+			"order": 8
+		},
+		"operation": {
+			"name": "operation",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "operation",
+			"order": 9
+		},
+		"pc": {
+			"name": "pc",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "pc",
+			"order": 10
+		},
+		"police": {
+			"name": "police",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "police",
+			"order": 11
+		},
+		"referral": {
+			"name": "referral",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "referral",
+			"order": 12
+		},
+		"sp": {
+			"name": "sp",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "sp",
+			"order": 13
+		},
+		"sms": {
+			"name": "sms",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "sms",
+			"order": 14
+		},
+		"tasks": {
+			"name": "tasks",
+			"type": "array",
+			"typeLabel": "array",
+			"required": true,
+			"id": "tasks",
+			"order": 15
+		},
+		"web": {
+			"name": "web",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": true,
+			"id": "web",
+			"order": 16
+		},
+		"dateCreated": {
+			"name": "dateCreated",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "dateCreated",
+			"order": 17
+		}
+	}
+}
