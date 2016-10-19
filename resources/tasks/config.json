@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"deadline": {
+			"name": "deadline",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "deadline",
+			"order": 0
+		},
+		"case": {
+			"name": "case",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "case",
+			"order": 1
+		},
+		"description": {
+			"name": "description",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "description",
+			"order": 2
+		}
+	}
+}
