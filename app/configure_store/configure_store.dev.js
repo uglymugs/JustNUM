@@ -1,19 +1,24 @@
-// NOTE: module only included in development mode, so can use dev-dependencies
-
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { identity } from 'ramda';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { persistState } from 'redux-devtools';
 
 import rootReducer from '../reducers';
-import DevTools from '../containers/dev_tools';
 
 const middleware = [thunk];
 
+/* eslint-disable no-underscore-dangle */
+const devToolsEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__
+  ? window.__REDUX_DEVTOOLS_EXTENSION__()
+  : identity;
+/* eslint-enable */
+
+
 const enhancer = compose(
   applyMiddleware(...middleware),
-  DevTools.instrument(),
+  devToolsEnhancer,
   persistState(window.location.href.match(/[?&]debug_session=([^&#]+)\b/))
 );
 

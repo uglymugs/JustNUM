@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import './scss/main.scss';
-import Root from './components/root';
+import App from './components/app';
 import configureStore from './configure_store';
 
 // Needed for onTouchTap
@@ -13,27 +13,25 @@ injectTapEventPlugin();
 
 const store = configureStore();
 
-// store.subscribe(state => console.log('-->', store.getState()));
 
 render(
   <AppContainer>
-    <Root store={store} />
+    <App store={store} />
   </AppContainer>,
   document.getElementById('app')
 );
 
 // See https://github.com/gaearon/redux-devtools/tree/master/examples/todomvc
 if (module.hot) {
-  module.hot.accept('./components/root', () => {
+  module.hot.accept('./components/app', () => {
     // eslint-disable-next-line global-require
-    const RootContainer = require('./components/root').default;
+    const AppHmr = require('./components/app').default;
 
     render(
       <AppContainer>
-        <RootContainer store={store} />
+        <AppHmr store={store} />
       </AppContainer>,
       document.getElementById('app')
     );
   });
 }
-

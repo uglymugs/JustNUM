@@ -6,13 +6,22 @@
 
 The master branch automatically deploys to Heroku after every push and can be found [here](http://just-num.herokuapp.com/). To run the app locally, use the following terminal commands:
 
+If you do not already have `npm-run-all` installed globally, first install it:
+
+```bash
+npm install -g npm-run-all
+```
+
+Then to setup the app run:
+
 ```bash
 git clone https://github.com/uglymugs/JustNUM.git && cd JustNUM
 npm install
 npm install  
-npm run dev
+npm run go
 ```
 
 Yes, `npm install` must be run twice!
+
 
 Then go to `http://localhost:8080/` in your browser.
