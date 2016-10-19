@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"dateCreated": {
+			"name": "dateCreated",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "dateCreated",
+			"order": 0
+		},
+		"text": {
+			"name": "text",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "text",
+			"order": 1
+		},
+		"case": {
+			"name": "case",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "case",
+			"order": 2
+		}
+	}
+}
