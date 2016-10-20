@@ -7,7 +7,11 @@ import {
 
 import * as api from '../api';
 
-export { loginSuccess, loginFailure, authenticateCookie } from './login';
+export {
+  loginSuccess,
+  loginFailure,
+  logout,
+  authenticateCookie } from './authenticate';
 
 export const fetchCases = () => (dispatch) =>
   api.getCaseList().then(response =>

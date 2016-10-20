@@ -23,6 +23,21 @@ const style = {
     textAlign: 'center',
     lineHeight: '24px',
   },
+  header: {
+    display: 'flex',
+    marginLeft: '10px',
+    marginBottom: '5px',
+  },
+  headerImg: {
+    marginTop: '5px',
+    width: '54px',
+    height: '54px',
+  },
+  headerText: {
+    color: 'white',
+    marginLeft: '8px',
+    fontSize: '1.6em',
+  },
 };
 
 const menuItemStyles = {
@@ -31,11 +46,11 @@ const menuItemStyles = {
 
 const SideNavBar = () =>
   <Paper style={style.paper}>
+    <div style={style.header}>
+      <img src="logo_sml.png" role="presentation" style={style.headerImg} />
+      <h1 style={style.headerText}>JustNUM</h1>
+    </div>
     <Menu>
-      <div className="SideNavBar__header">
-        <img src="logo_sml.png" role="presentation" />
-        <h1>JustNUM</h1>
-      </div>
       <MenuItem
         primaryText="Home"
         style={menuItemStyles}

@@ -1,5 +1,4 @@
 @import './components/checkboxes';
-@import './components/leftappbar';
 @import './base/_colors';
 
 html, body {
@@ -27,10 +26,4 @@ a {
 #content {
   width: 100%;
   height: 100%;
-}
-
-.HomepageImage {
-  margin: 5em;
-  margin-top: 2em;
-  width: 80%;
 }
