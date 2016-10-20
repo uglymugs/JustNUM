@@ -12,14 +12,7 @@ class ConnectedCaseList extends Component {
 
   fetchData() {
     const { fetchCases } = this.props;
-
-    // auto login for testing purposes only
-    dpd.users.login({
-      username: 'a',
-      password: 'a',
-    }).then(() => {
-      fetchCases();
-    });
+    fetchCases();
   }
 
   render() {
