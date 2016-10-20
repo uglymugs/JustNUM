@@ -1,9 +1,11 @@
-import { FETCHING } from '../action_types';
+import { START_FETCHING, STOP_FETCHING } from '../action_types';
 
 const fetching = (state = false, action) => {
   switch (action.type) {
-    case FETCHING:
-      return action.value;
+    case START_FETCHING:
+      return true;
+    case STOP_FETCHING:
+      return false;
     default:
       return state;
   }
