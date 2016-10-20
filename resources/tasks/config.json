@@ -3,18 +3,18 @@
 	"properties": {
 		"deadline": {
 			"name": "deadline",
-			"type": "string",
-			"typeLabel": "string",
+			"type": "number",
+			"typeLabel": "number",
 			"required": true,
 			"id": "deadline",
 			"order": 0
 		},
-		"case": {
-			"name": "case",
+		"caseId": {
+			"name": "caseId",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "case",
+			"id": "caseId",
 			"order": 1
 		},
 		"description": {
@@ -24,6 +24,14 @@
 			"required": true,
 			"id": "description",
 			"order": 2
+		},
+		"author": {
+			"name": "author",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "author",
+			"order": 3
 		}
 	}
 }

@@ -1,21 +1,32 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import Main from './main';
-import CaseLayout from './case_layout';
+import requiresAuthentication from '../containers/requires_authentication';
 import ConnectedCaseList from '../containers/connected_case_list';
 import ConnectedCaseForm from '../containers/connected_case_form';
-import FakeHome from './homepage';
+import Tasks from '../containers/tasks.js';
+import Login from '../containers/login.js';
+import PageLayout from './page_layout.js';
+
+const redirectIfNotAuthenticated = (Component, redirectPath) =>
+  requiresAuthentication(Component, redirectPath, true);
+
+const redirectIfAuthenticated = (Component, redirectPath) =>
+  requiresAuthentication(Component, redirectPath, false);
 
 
 const App = ({ store }) =>
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={Main}>
-        <IndexRoute component={FakeHome} />
-        <Route path="cases" component={CaseLayout}>
-          <IndexRoute component={ConnectedCaseList} />
-          <Route path=":view(/:caseId)" component={ConnectedCaseForm} />
+        <IndexRedirect to="/authenticated" />
+        <Route path="login" component={redirectIfAuthenticated(Login, '/authenticated')} />
+        <Route path="authenticated" component={redirectIfNotAuthenticated(PageLayout, '/login')}>
+          <IndexRedirect to="cases" />
+          <Route path="tasks" component={Tasks} />
+          <Route path="cases" component={ConnectedCaseList} />
+          <Route path="cases/:view/:caseId" component={ConnectedCaseForm} />
         </Route>
       </Route>
     </Router>

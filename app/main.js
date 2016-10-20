@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import './scss/main.scss';
 import App from './components/app';
 import configureStore from './configure_store';
+import * as actionCreators from './action_creators';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -13,6 +14,7 @@ injectTapEventPlugin();
 
 const store = configureStore();
 
+store.dispatch(actionCreators.authenticateCookie());
 
 render(
   <AppContainer>

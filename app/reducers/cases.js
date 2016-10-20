@@ -1,7 +1,7 @@
 import {
   FETCH_CASES_SUCCESS,
   EDIT_CASE_SUCCESS,
-} from '../../action_types';
+} from '../action_types';
 
 // cases :: [Case] -> Action -> [Case]
 const casesById = (state = {}, action) => {

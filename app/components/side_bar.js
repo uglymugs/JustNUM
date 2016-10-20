@@ -46,14 +46,14 @@ const SideNavBar = () =>
         primaryText="Cases"
         style={menuItemStyles}
         leftIcon={<Work color={white} />}
-        containerElement={<Link to="/cases" />}
+        containerElement={<Link to="/authenticated/cases" />}
       />
       <Divider />
       <MenuItem
         primaryText="Add Case"
         style={menuItemStyles}
         leftIcon={<NoteAdd color={white} />}
-        containerElement={<Link to="/cases/new" />}
+        containerElement={<Link to="/authenticated/cases/new" />}
       />
       <Divider />
     </Menu>

@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 const topBarStyles = {
   backgroundColor: '#AFD1E0',
@@ -8,12 +10,11 @@ const topBarStyles = {
 const TopAppBar = ({ styles }) =>
   <div >
     <AppBar
-      style={Object.assign({}, topBarStyles, styles)}
+      style={{ ...topBarStyles, ...styles }}
       showMenuIconButton={false}
+      iconElementRight={<IconButton><NavigationClose /></IconButton>}
       className="TopAppBar"
-    >
-      <img className="TopAppBar__avatar" src="avatar.png" role="presentation" />
-    </AppBar>
+    />
   </div>;
 
 TopAppBar.propTypes = {

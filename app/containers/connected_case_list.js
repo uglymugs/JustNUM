@@ -1,3 +1,4 @@
+/* global dpd */
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import CaseListTable from '../components/case_list/case_list_table';
@@ -11,7 +12,14 @@ class ConnectedCaseList extends Component {
 
   fetchData() {
     const { fetchCases } = this.props;
-    fetchCases();
+
+    // auto login for testing purposes only
+    dpd.users.login({
+      username: 'a',
+      password: 'a',
+    }).then(() => {
+      fetchCases();
+    });
   }
 
   render() {
