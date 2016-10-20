@@ -16,3 +16,8 @@ export const login = (credentials) =>
       resolve,
       (err) =>
         reject(new SubmissionError(err.message))));
+
+export const logout = () =>
+  new Promise((resolve, reject) =>
+    dpd.users.logout()
+    .then(resolve, reject));

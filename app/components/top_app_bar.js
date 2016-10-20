@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import LoggedInMenu from '../containers/logged_in_menu';
 
 const topBarStyles = {
   backgroundColor: '#AFD1E0',
 };
+
 
 const TopAppBar = ({ styles }) =>
   <div >
     <AppBar
       style={{ ...topBarStyles, ...styles }}
       showMenuIconButton={false}
-      iconElementRight={<IconButton><NavigationClose /></IconButton>}
+      iconElementRight={<LoggedInMenu />}
       className="TopAppBar"
     />
   </div>;

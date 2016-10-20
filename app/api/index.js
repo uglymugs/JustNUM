@@ -2,7 +2,7 @@
 import generateCases from './get_initial_cases';
 import fillDefaults from './add_case.js';
 
-export { login, authenticateCookie } from './login';
+export { login, logout, authenticateCookie } from './authenticate';
 
 export const createCase = (newCase) =>
   dpd.cases.post(

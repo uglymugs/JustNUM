@@ -1,6 +1,7 @@
 import {
   AUTH_LOGGING_IN,
   AUTH_LOGIN,
+  AUTH_LOGOUT,
   AUTH_FAILURE } from '../action_types';
 import * as api from '../api';
 
@@ -19,3 +20,8 @@ export const authenticateCookie = () => (dispatch) => {
     payload => dispatch({ type: AUTH_LOGIN, payload }),
     error => dispatch({ type: AUTH_FAILURE, error }));
 };
+
+export const logout = () => (dispatch) =>
+  api
+  .logout()
+  .then(() => dispatch({ type: AUTH_LOGOUT }));
