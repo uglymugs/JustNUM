@@ -1,5 +1,8 @@
 import { SubmissionError } from 'redux-form';
+import { compose } from 'ramda';
 
+const toSubmissionError = err =>
+  new SubmissionError({ _error: err.message });
 
 export const authenticateCookie = () =>
   new Promise((resolve, reject) =>
@@ -14,8 +17,7 @@ export const login = (credentials) =>
     .then(authenticateCookie)
     .then(
       resolve,
-      (err) =>
-        reject(new SubmissionError(err.message))));
+      compose(reject, toSubmissionError)));
 
 export const logout = () =>
   new Promise((resolve, reject) =>
