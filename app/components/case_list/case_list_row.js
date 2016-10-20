@@ -5,7 +5,7 @@ import { TableRow, TableRowColumn } from 'material-ui/Table';
 const CaseListRow = ({ caseId, dateCreated, operation }) =>
   <TableRow>
     <TableRowColumn>
-      <Link to={`/cases/edit/${caseId}`}>
+      <Link to={`/authenticated/cases/edit/${caseId}`}>
         {caseId}
       </Link>
     </TableRowColumn>
