@@ -11,22 +11,21 @@ const genCaseData = () =>
   ({
     app: coinFlip(),
     area: faker.address.city(),
-    contacts: genContacts(),
+    contacts: genContacts().join('\n'),
     db: coinFlip(),
     email: coinFlip(),
     caseId: faker.random.uuid(),
     info: coinFlip(),
     nc: coinFlip(),
-    notesCreate: faker.lorem.paragraph(),
+    notes: [],
+    tasks: [],
     operation: faker.commerce.color(),
     pc: coinFlip(),
     police: coinFlip(),
-    referral: null,
+    referral: 'referral',
     sp: coinFlip(),
     sms: coinFlip(),
-    timeline: null,
     web: coinFlip(),
-    createdDate: faker.date.past().toString().split(' G')[0].slice(0, -8),
   });
 
 

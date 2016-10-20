@@ -5,7 +5,7 @@
 			"name": "app",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "app",
 			"order": 0
 		},
@@ -29,7 +29,7 @@
 			"name": "db",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "db",
 			"order": 3
 		},
@@ -37,7 +37,7 @@
 			"name": "email",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "email",
 			"order": 4
 		},
@@ -53,7 +53,7 @@
 			"name": "info",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "info",
 			"order": 6
 		},
@@ -61,7 +61,7 @@
 			"name": "nc",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "nc",
 			"order": 7
 		},
@@ -85,7 +85,7 @@
 			"name": "pc",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "pc",
 			"order": 10
 		},
@@ -93,7 +93,7 @@
 			"name": "police",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "police",
 			"order": 11
 		},
@@ -109,7 +109,7 @@
 			"name": "sp",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "sp",
 			"order": 13
 		},
@@ -117,7 +117,7 @@
 			"name": "sms",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "sms",
 			"order": 14
 		},
@@ -133,17 +133,25 @@
 			"name": "web",
 			"type": "boolean",
 			"typeLabel": "boolean",
-			"required": true,
+			"required": false,
 			"id": "web",
 			"order": 16
 		},
 		"dateCreated": {
 			"name": "dateCreated",
-			"type": "string",
-			"typeLabel": "string",
-			"required": true,
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
 			"id": "dateCreated",
 			"order": 17
+		},
+		"author": {
+			"name": "author",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "author",
+			"order": 18
 		}
 	}
 }

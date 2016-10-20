@@ -3,9 +3,9 @@
 	"properties": {
 		"dateCreated": {
 			"name": "dateCreated",
-			"type": "string",
-			"typeLabel": "string",
-			"required": true,
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
 			"id": "dateCreated",
 			"order": 0
 		},
@@ -17,13 +17,21 @@
 			"id": "text",
 			"order": 1
 		},
-		"case": {
-			"name": "case",
+		"caseId": {
+			"name": "caseId",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "case",
+			"id": "caseId",
 			"order": 2
+		},
+		"author": {
+			"name": "author",
+			"type": "object",
+			"typeLabel": "object",
+			"required": false,
+			"id": "author",
+			"order": 3
 		}
 	}
 }

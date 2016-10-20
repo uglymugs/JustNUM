@@ -1,34 +1,23 @@
+/* global dpd */
 import generateCases from './get_initial_cases';
 import fillDefaults from './add_case.js';
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
 export const createCase = (newCase) =>
-  delay(500).then(() => {
-    const completeCase = fillDefaults(newCase);
-    const cases = JSON.parse(window.localStorage.getItem('cases'));
-    const newCases = {
-      ...cases,
-      [completeCase.caseId]: completeCase,
-    };
-    window.localStorage.setItem('cases', JSON.stringify(newCases));
-    return completeCase;
-  });
+  dpd.cases.post(
+    fillDefaults(newCase)
+  );
 
-export const getLastTwentyCases = () =>
-  delay(500).then(() => {
-    const cases = JSON.parse(window.localStorage.getItem('cases'));
-    if (!cases) return Promise.all(generateCases().map(createCase));
-    return cases;
-  });
+export const getCase = (caseId) =>
+  dpd.cases.get({ caseId }).then((currentCase) => currentCase[0]);
+
+export const getCaseList = () =>
+  dpd.cases
+    .get({
+      $sort: { dateCreated: -1 },
+      $limit: 20,
+    })
+    .then((cases) =>
+      (cases.length === 0 ? Promise.all(generateCases().map(createCase)) : cases));
 
 export const editCase = (newCase) =>
-  delay(500).then(() => {
-    const cases = JSON.parse(window.localStorage.getItem('cases'));
-    const newCases = {
-      ...cases,
-      [newCase.caseId]: newCase,
-    };
-    window.localStorage.setItem('cases', JSON.stringify(newCases));
-    return newCase;
-  });
+  dpd.cases.put(newCase);
