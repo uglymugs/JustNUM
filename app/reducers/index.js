@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import casesById, * as fromCases from './cases.js';
-import currentCase from './case.js';
+import currentCase from './case';
 import auth, * as fromAuth from './auth';
+import fetching from './fetching';
+
 
 // rootReducer :: State -> State
 const rootReducer = combineReducers({
@@ -10,6 +12,7 @@ const rootReducer = combineReducers({
   form,
   currentCase,
   auth,
+  fetching,
 });
 
 export default rootReducer;
@@ -27,3 +30,5 @@ export const getIsLoggedIn = (state) =>
 
 export const getIsLoggingIn = (state) =>
   fromAuth.getIsLoggingIn(state.auth);
+
+export const isFetching = (state) => state.fetching;

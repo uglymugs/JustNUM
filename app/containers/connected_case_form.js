@@ -1,27 +1,23 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import CaseForm from '../components/case_form';
-// import { getCaseById } from '../reducers';
 import * as actions from '../action_creators';
-import { getCurrentCase } from '../reducers';
+import { isFetching, getCurrentCase } from '../reducers';
 
 
 const mapStateToProps = (state, { params }) => {
+  let initialValues;
   const currentCase = getCurrentCase(state);
   if (
     (params.view === 'edit')
     && (Object.keys(currentCase).length > 0)
-    /* && !isFetching() */
-  ) {
-    const initialValues = currentCase;
-    return ({
-      view: 'edit',
-      initialValues,
-      caseId: params.caseId,
-    });
-  }
+    && !isFetching(state)
+  ) initialValues = currentCase;
+
   return ({
     view: params.view,
+    initialValues,
+    caseId: params.caseId,
   });
 };
 
