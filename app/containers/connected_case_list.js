@@ -1,4 +1,3 @@
-/* global dpd */
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import CaseListTable from '../components/case_list/case_list_table';
