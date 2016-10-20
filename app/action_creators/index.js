@@ -7,6 +7,8 @@ import {
 
 import * as api from '../api';
 
+export { loginSuccess, loginFailure, authenticateCookie } from './login';
+
 export const fetchCases = () => (dispatch) =>
   api.getCaseList().then(response =>
       dispatch({
@@ -38,5 +40,3 @@ export const createCase = (newCase) => (dispatch) =>
         response,
       })
   );
-
-export default {};

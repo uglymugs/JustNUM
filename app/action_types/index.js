@@ -1,7 +1,11 @@
+export const AUTH_LOGGING_IN = 'AUTH_LOGGING_IN';
+export const AUTH_LOGIN = 'AUTH_LOGIN';
+export const AUTH_FAILURE = 'AUTH_FAILURE';
+
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
+export const AUTH_LOGGING_OUT = 'AUTH_LOGGING_OUT';
+
 export const FETCH_CASES_SUCCESS = 'FETCH_CASES_SUCCESS';
 export const FETCH_CASE_SUCCESS = 'FETCH_CASE_SUCCESS';
 export const EDIT_CASE_SUCCESS = 'EDIT_CASE_SUCCESS';
 export const CREATE_CASE_SUCCESS = 'CREATE_CASE_SUCCESS';
-
-
-export default {};
