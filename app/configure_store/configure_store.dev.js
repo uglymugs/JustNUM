@@ -2,9 +2,6 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { identity } from 'ramda';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { persistState } from 'redux-devtools';
-
 import rootReducer from '../reducers';
 
 const middleware = [thunk];
@@ -16,11 +13,10 @@ const devToolsEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__
 /* eslint-enable */
 
 
-const enhancer = compose(
-  applyMiddleware(...middleware),
-  devToolsEnhancer,
-  persistState(window.location.href.match(/[?&]debug_session=([^&#]+)\b/))
-);
+const enhancer =
+  compose(
+    applyMiddleware(...middleware),
+    devToolsEnhancer);
 
 const configureStore = initialState => {
   const store = createStore(rootReducer, initialState, enhancer);

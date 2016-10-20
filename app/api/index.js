@@ -1,6 +1,8 @@
 import generateCases from './get_initial_cases';
 import fillDefaults from './add_case.js';
 
+export { login, authenticateCookie } from './login';
+
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const createCase = (newCase) =>

@@ -1,13 +1,6 @@
 import React, { PropTypes } from 'react';
+import SideBar from './side_bar';
 import TopAppBar from './top_app_bar';
-
-const caseLayoutStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'flex-start',
-  height: '100%',
-  width: '100%',
-};
 
 const mainContentAreaStyles = {
   display: 'flex',
@@ -24,18 +17,22 @@ const mainContentBoxStyles = {
   margin: '10px',
 };
 
-const CaseLayout = ({ children }) =>
-  <div style={caseLayoutStyles}>
-    <TopAppBar />
-    <div style={mainContentAreaStyles}>
-      <div style={mainContentBoxStyles}>
-        { children }
+const PageLayout = ({ children }) =>
+  <div>
+    <SideBar />
+    <div style={{ marginLeft: '280px' }}>
+      <TopAppBar />
+      <div style={mainContentAreaStyles}>
+        <div style={mainContentBoxStyles}>
+          { children }
+        </div>
       </div>
     </div>
   </div>;
 
-CaseLayout.propTypes = {
+
+PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default CaseLayout;
+export default PageLayout;
