@@ -81,13 +81,13 @@ SimpleLogin.propTypes = {
   muiTheme: PropTypes.object.isRequired,
 };
 
-const Login = muiThemeable()(reduxForm({
+const Login = compose(muiThemeable(), reduxForm({
   form: 'login',
   validate,
   onSubmit: api.login,
   onSubmitSuccess: (payload, dispatch) => dispatch(loginSuccess(payload)),
   onSubmitFail: (error, dispatch) => dispatch(loginFailure(error)),
-})(SimpleLogin));
+}))(SimpleLogin);
 
 
 export default Login;
