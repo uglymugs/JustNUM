@@ -9,7 +9,6 @@ import CaseContacts from './case_contacts';
 // import CaseTasks from './case_tasks';
 // import CaseNotes from './case_notes';
 import FormButton from '../material_ui_form_lib/form_button';
-// import validate from './form_validators';
 
 const formWrapper = {
   width: '100%',
@@ -23,8 +22,14 @@ const formWrapper = {
 
 class CaseForm extends Component {
   componentDidMount() {
-    const { fetchCase, caseId } = this.props;
-    fetchCase(caseId);
+    const { view, fetchCase, caseId, clearCaseForm } = this.props;
+    clearCaseForm();
+    if (view === 'edit') fetchCase(caseId);
+  }
+  componentWillReceiveProps(nextProps) {
+    const { view, clearCaseForm } = this.props;
+    const nextView = nextProps.view;
+    if (view === 'edit' && nextView === 'new') clearCaseForm();
   }
   render() {
     const { muiTheme, error, handleSubmit, pristine, submitting, reset } = this.props;
@@ -36,7 +41,8 @@ class CaseForm extends Component {
           marginTop: '30px',
         }}
       >
-        Submit failed: {error}
+        {error}
+        <br />
       </div> : undefined;
     return (
       <div style={formWrapper}>
@@ -80,6 +86,7 @@ CaseForm.propTypes = {
   submitting: PropTypes.any,
   view: PropTypes.string.isRequired,
   fetchCase: PropTypes.func,
+  clearCaseForm: PropTypes.func,
   caseId: PropTypes.string,
 };
 

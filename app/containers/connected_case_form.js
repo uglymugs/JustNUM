@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
+import muiThemeable from 'material-ui/styles/muiThemeable';
+import { compose } from 'ramda';
 import { reduxForm } from 'redux-form';
 import { withRouter } from 'react-router';
 import CaseForm from '../components/case_form';
 import * as actions from '../action_creators';
-import submitCaseForm from '../api';
+import { submitCaseForm } from '../api';
 import { isFetching, getCurrentCase } from '../reducers';
 
+// import validate from './form_validators';
 
 const mapStateToProps = (state, { params }) => {
   let initialValues;
@@ -30,6 +33,7 @@ const mapDispatchToProps = (dispatch, { params, router }) => ({
   onSubmitFail: (error) =>
       dispatch(actions.submitCaseFormFailure(params.view, error)),
   fetchCase: (id) => dispatch(actions.fetchCase(id)),
+  clearCaseForm: () => dispatch(actions.clearCaseForm()),
 });
 
 
@@ -40,14 +44,14 @@ const connector = connect(
   );
 
 // ConnectedCaseForm :: React.Component
-const ConnectedCaseForm =
-  withRouter(
-    connector(
-      reduxForm({
-        form: 'CaseForm',
-        // validate,
-      })(CaseForm)
-    )
-  );
+const ConnectedCaseForm = compose(
+  withRouter,
+  connector,
+  muiThemeable(),
+  reduxForm({
+    form: 'CaseForm',
+    // validate,
+  })
+)(CaseForm);
 
 export default ConnectedCaseForm;

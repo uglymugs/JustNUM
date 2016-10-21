@@ -46,14 +46,17 @@ export const fetchCases = () => (dispatch) => {
   dispatch(preventingRace(api.getCaseList(), success, failure));
 };
 
-export const fetchCase = (caseId) => (dispatch) => {
+export const clearCaseForm = () => (dispatch) => {
   // for some reason the destroy called automatically does not remove form values
   dispatch(destroy('CaseForm'));
-
   dispatch({
     type: DESELECT_CASE,
     response: {},
   });
+};
+
+export const fetchCase = (caseId) => (dispatch) => {
+  dispatch(clearCaseForm());
   const success = (response) => {
     dispatch({
       type: FETCH_CASE_SUCCESS,
@@ -76,16 +79,16 @@ const editCaseSuccess = (response) => (dispatch) =>
     response,
   });
 
-const editCaseFailure = (response) => (dispatch) =>
+const editCaseFailure = (error) => (dispatch) =>
   dispatch({
     type: EDIT_CASE_FAILURE,
-    response,
+    error,
   });
 
-const createCaseFailure = (response) => (dispatch) =>
+const createCaseFailure = (error) => (dispatch) =>
   dispatch({
     type: CREATE_CASE_FAILURE,
-    response,
+    error,
   });
 
 const createCaseSuccess = (response) => (dispatch) =>
@@ -100,7 +103,7 @@ export const submitCaseFormSuccess = (view, router, response) => (dispatch) => {
   router.push('/');
 };
 
-export const submitCaseFormFailure = (view, response) => (dispatch) => {
-  if (view === 'edit') dispatch(editCaseFailure(response));
-  if (view === 'new') dispatch(createCaseFailure(response));
+export const submitCaseFormFailure = (view, error) => (dispatch) => {
+  if (view === 'edit') dispatch(editCaseFailure(error));
+  if (view === 'new') dispatch(createCaseFailure(error));
 };

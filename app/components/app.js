@@ -26,7 +26,7 @@ const App = ({ store }) =>
           <IndexRedirect to="cases" />
           <Route path="tasks" component={Tasks} />
           <Route path="cases" component={ConnectedCaseList} />
-          <Route path="cases/:view/:caseId" component={ConnectedCaseForm} />
+          <Route path="cases/:view(/:caseId)" component={ConnectedCaseForm} />
         </Route>
       </Route>
     </Router>

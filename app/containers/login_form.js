@@ -70,7 +70,7 @@ const SimpleLogin = ({ error, handleSubmit, muiTheme }) =>
         label="Login"
         primary
         type="submit"
-        etyle={{ marginTop: '30px' }}
+        style={{ marginTop: '30px' }}
       />
     </form>
   </div>;
