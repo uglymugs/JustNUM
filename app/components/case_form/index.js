@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { Field } from 'redux-form';
+import { red500 } from 'material-ui/styles/colors';
 import { renderTextField } from '../material_ui_form_lib';
 import CaseCheckboxes from './case_checkboxes';
 import FormButton from '../material_ui_form_lib/form_button';
 // import TaskList from '../task_list';
 
-import validate from './validate';
+// import validate from './validate';
 
 
 const style = {
@@ -30,16 +31,33 @@ const style = {
 class CaseForm extends Component {
 
   componentDidMount() {
-    const { fetchCase, caseId } = this.props;
-    fetchCase(caseId);
+    const { view, fetchCase, caseId, clearCaseForm } = this.props;
+    clearCaseForm();
+    if (view === 'edit') fetchCase(caseId);
+  }
+  componentWillReceiveProps(nextProps) {
+    const { view, clearCaseForm } = this.props;
+    const nextView = nextProps.view;
+    if (view === 'edit' && nextView === 'new') clearCaseForm();
   }
 
   render() {
-    const { handleSubmit, submitHandler, pristine, submitting, reset } = this.props;
+    const { muiTheme, error, handleSubmit, pristine, submitting, reset } = this.props;
+    const errorComponent = error ?
+      <div
+        style={{
+          fontFamily: muiTheme.fontFamily,
+          color: red500,
+          marginTop: '30px',
+        }}
+      >
+        {error}
+        <br />
+      </div> : undefined;
     return (
       <div>
         <form
-          onSubmit={handleSubmit(submitHandler)}
+          onSubmit={handleSubmit}
           style={style.form}
         >
           <Field
@@ -100,6 +118,7 @@ class CaseForm extends Component {
             />
           </div>
         </form>
+        { errorComponent }
         <div>
           {/* <TaskList /> */}
         </div>
@@ -109,17 +128,16 @@ class CaseForm extends Component {
 }
 
 CaseForm.propTypes = {
-  handleSubmit: PropTypes.func,
-  reset: PropTypes.func,
-  pristine: PropTypes.bool,
-  submitting: PropTypes.bool,
+  handleSubmit: PropTypes.any,
+  reset: PropTypes.any,
+  error: PropTypes.any,
+  muiTheme: PropTypes.any,
+  pristine: PropTypes.any,
+  submitting: PropTypes.any,
   view: PropTypes.string.isRequired,
-  submitHandler: PropTypes.func,
   fetchCase: PropTypes.func,
+  clearCaseForm: PropTypes.func,
   caseId: PropTypes.string,
 };
 
-export default reduxForm({
-  form: 'CaseForm',
-  validate,
-})(CaseForm);
+export default CaseForm;

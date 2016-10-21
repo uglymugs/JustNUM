@@ -3,8 +3,9 @@ import { START_FETCHING, STOP_FETCHING } from '../action_types';
 export {
   fetchCase,
   fetchCases,
-  editCase,
-  createCase,
+  submitCaseFormFailure,
+  submitCaseFormSuccess,
+  clearCaseForm,
 } from './cases';
 
 export {
