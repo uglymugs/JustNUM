@@ -3,8 +3,8 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow } from 'mate
 import CaseListRow from './case_list_row';
 
 const CaseListTable = ({ cases }) =>
-  <Table>
-    <TableHeader>
+  <Table selectable={false}>
+    <TableHeader displaySelectAll={false}>
       <TableRow>
         <TableHeaderColumn>Case ID</TableHeaderColumn>
         <TableHeaderColumn>Date Created</TableHeaderColumn>

@@ -1,16 +1,21 @@
 import React, { PropTypes } from 'react';
-import UIDatePicker from 'material-ui/DatePicker';
+import DatePicker from 'material-ui/DatePicker';
 
-const DatePicker = ({ input, hintText }) => (
-  <UIDatePicker
-    hintText={hintText}
-    onChange={(event, index, value) => input.onChange(value)}
+
+const renderDatePicker = ({ label, meta: { touched, error }, ...custom }) => (
+  <DatePicker
+    hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    // {...input}
+    {...custom}
   />
 );
 
-DatePicker.propTypes = {
-  input: PropTypes.string,
-  hintText: PropTypes.string,
+renderDatePicker.propTypes = {
+  input: PropTypes.object,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.object.isRequired,
 };
 
-export default DatePicker;
+export default renderDatePicker;

@@ -16,7 +16,7 @@ const containerStyles = {
   justifyContent: 'center',
 };
 
-const validators = {
+const validator = {
   username: (username) => {
     if (!username) return 'Required';
     if (username.length < 3) return 'Must be 4 characters or more';
@@ -32,8 +32,8 @@ const validators = {
 
 const validate =
   compose(
-    evolve(validators),
-    pickAll(keys(validators)));
+    evolve(validator),
+    pickAll(keys(validator)));
 
 const SimpleLogin = ({ error, handleSubmit, muiTheme }) =>
   <div style={containerStyles}>

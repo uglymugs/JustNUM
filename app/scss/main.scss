@@ -1,4 +1,3 @@
-@import './components/checkboxes';
 @import './base/_colors';
 
 html, body {
@@ -9,6 +8,10 @@ html, body {
 
 body {
   background-color: $main-background;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 a {

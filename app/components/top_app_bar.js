@@ -7,10 +7,10 @@ const topBarStyles = {
 };
 
 
-const TopAppBar = ({ styles }) =>
+const TopAppBar = ({ style }) =>
   <div >
     <AppBar
-      style={{ ...topBarStyles, ...styles }}
+      style={{ ...topBarStyles, ...style }}
       showMenuIconButton={false}
       iconElementRight={<LoggedInMenu />}
       className="TopAppBar"
@@ -18,7 +18,7 @@ const TopAppBar = ({ styles }) =>
   </div>;
 
 TopAppBar.propTypes = {
-  styles: PropTypes.object,
+  style: PropTypes.object,
 };
 
 export default TopAppBar;

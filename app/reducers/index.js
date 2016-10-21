@@ -31,4 +31,8 @@ export const getIsLoggedIn = (state) =>
 export const getIsLoggingIn = (state) =>
   fromAuth.getIsLoggingIn(state.auth);
 
-export const isFetching = (state) => state.fetching;
+export const isFetching = (state) =>
+  state.fetching;
+
+export const getLastUrl = (state) =>
+  fromAuth.getLastUrl(state.auth);

@@ -1,26 +1,35 @@
 import React, { Component, PropTypes } from 'react';
+import { Field } from 'redux-form';
 import { red500 } from 'material-ui/styles/colors';
-
-import Divider from 'material-ui/Divider';
-import CaseIdFields from './case_id_field';
+import { renderTextField } from '../material_ui_form_lib';
 import CaseCheckboxes from './case_checkboxes';
-import CaseTextFields from './case_text_fields';
-import CaseContacts from './case_contacts';
-// import CaseTasks from './case_tasks';
-// import CaseNotes from './case_notes';
 import FormButton from '../material_ui_form_lib/form_button';
+// import TaskList from '../task_list';
 
-const formWrapper = {
-  width: '100%',
-  maxWidth: '900px',
-  minWidth: '300px',
-  backgroundColor: '#F6F7FA',
-  display: 'flex',
-  justifyContent: 'center',
+// import validate from './validate';
+
+
+const style = {
+  form: {
+    width: '100%',
+    maxWidth: '900px',
+    minWidth: '300px',
+    backgroundColor: '#F6F7FA',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  textField: {
+    width: '500px',
+  },
+  formButtons: {
+    marginTop: '50px',
+  },
 };
 
 
 class CaseForm extends Component {
+
   componentDidMount() {
     const { view, fetchCase, caseId, clearCaseForm } = this.props;
     clearCaseForm();
@@ -31,6 +40,7 @@ class CaseForm extends Component {
     const nextView = nextProps.view;
     if (view === 'edit' && nextView === 'new') clearCaseForm();
   }
+
   render() {
     const { muiTheme, error, handleSubmit, pristine, submitting, reset } = this.props;
     const errorComponent = error ?
@@ -45,33 +55,73 @@ class CaseForm extends Component {
         <br />
       </div> : undefined;
     return (
-      <div style={formWrapper}>
+      <div>
         <form
           onSubmit={handleSubmit}
-          style={{ width: '100%' }}
+          style={style.form}
         >
-          <CaseIdFields />
-          <Divider />
-          <CaseCheckboxes />
-          <Divider />
-          <CaseTextFields />
-          <CaseContacts />
-          { /* <CaseTasks /> */ }
-          { /* <CaseNotes /> */ }
-          { errorComponent }
-          <FormButton
-            className="Case__button"
-            label="Submit"
-            disabled={pristine || submitting}
-            type="submit"
+          <Field
+            name="caseId"
+            component={renderTextField}
+            label="Case ID"
+            style={style.textField}
           />
-          <FormButton
-            className="Case__button"
-            label="Reset"
-            disabled={pristine || submitting}
-            onClick={reset}
+
+          <div style={{ display: 'flex' }}>
+            <div style={{ width: '50%' }}>
+              <CaseCheckboxes />
+            </div>
+            <div style={{ width: '50%', paddingLeft: '10px' }}>
+              <Field
+                name="referral"
+                component={renderTextField}
+                label="Referral"
+                fullWidth
+              />
+
+              <Field
+                name="area"
+                component={renderTextField}
+                label="Area"
+                fullWidth
+              />
+
+              <Field
+                name="operation"
+                component={renderTextField}
+                label="Operation"
+                fullWidth
+              />
+            </div>
+          </div>
+
+          <Field
+            name="contacts"
+            component={renderTextField}
+            label="Contacts"
+            multiLine
+            rows={4}
+            style={style.textField}
           />
+
+          <div style={style.formButtons}>
+            <FormButton
+              label="Submit"
+              disabled={pristine || submitting}
+              type="submit"
+              style={{ marginRight: '20px' }}
+            />
+            <FormButton
+              label="Reset"
+              disabled={pristine || submitting}
+              onClick={reset}
+            />
+          </div>
         </form>
+        { errorComponent }
+        <div>
+          {/* <TaskList /> */}
+        </div>
       </div>
     );
   }
