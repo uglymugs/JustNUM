@@ -8,6 +8,7 @@ const mapStateToProps =
   (state) =>
     ({
       isLoggedIn: fromReducers.getIsLoggedIn(state),
+      lastUrl: fromReducers.getLastUrl(state),
     });
 
 
@@ -21,6 +22,7 @@ const requiresAuthentication =
 
       static propTypes = {
         isLoggedIn: PropTypes.bool.isRequired,
+        lastUrl: PropTypes.string,
         router: PropTypes.object.isRequired,
       }
 
@@ -38,7 +40,7 @@ const requiresAuthentication =
 
       checkAuth(): void {
         if (this.props.isLoggedIn !== requiredAuthStatus) {
-          this.props.router.push(redirectPath);
+          this.props.router.push(this.props.lastUrl || redirectPath);
         }
       }
 

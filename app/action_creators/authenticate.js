@@ -11,13 +11,13 @@ export const loginSuccess = (payload) =>
 export const loginFailure = (error) =>
   ({ type: AUTH_FAILURE, error });
 
-export const authenticateCookie = () => (dispatch) => {
+export const authenticateCookie = (lastUrl) => (dispatch) => {
   dispatch({ type: AUTH_LOGGING_IN });
 
   api
   .authenticateCookie()
   .then(
-    payload => dispatch({ type: AUTH_LOGIN, payload }),
+    payload => dispatch({ type: AUTH_LOGIN, payload, lastUrl }),
     error => dispatch({ type: AUTH_FAILURE, error }));
 };
 

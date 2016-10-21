@@ -14,7 +14,7 @@ injectTapEventPlugin();
 
 const store = configureStore();
 
-store.dispatch(actionCreators.authenticateCookie());
+store.dispatch(actionCreators.authenticateCookie(document.location.hash.slice(1)));
 
 render(
   <AppContainer>

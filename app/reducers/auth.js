@@ -5,10 +5,11 @@ import {
   AUTH_LOGGING_IN } from '../action_types';
 
 
-const login = (state, payload) =>
+const login = (state, { payload, lastUrl }) =>
   ({
     status: 'loggedIn',
     ...payload,
+    lastUrl,
   });
 
 
@@ -26,7 +27,7 @@ const authReducer =
       case AUTH_LOGGING_IN:
         return loggingIn;
       case AUTH_LOGIN:
-        return login(state, action.payload);
+        return login(state, action);
       case AUTH_FAILURE:
       case AUTH_LOGOUT:
         return loggedOut;
@@ -45,3 +46,6 @@ export const getIsLoggingIn = (state) =>
 
 export const getIsLoggedIn = (state) =>
   state.status === 'loggedIn';
+
+export const getLastUrl = (state) =>
+  state.lastUrl;

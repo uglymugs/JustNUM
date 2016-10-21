@@ -33,7 +33,7 @@ export const fetchCases = () => (dispatch) => {
       response,
     });
   };
-  dispatch(preventingRace(api.getCaseList(), success, console.log));
+  dispatch(preventingRace(api.getCaseList(), success));
 };
 
 export const fetchCase = (caseId) => (dispatch) => {
@@ -50,7 +50,7 @@ export const fetchCase = (caseId) => (dispatch) => {
       response,
     });
   };
-  dispatch(preventingRace(api.getCase(caseId), success, console.log));
+  dispatch(preventingRace(api.getCase(caseId), success));
 };
 
 export const editCase = (newCase) => (dispatch) =>

@@ -2,28 +2,40 @@ import React, { PropTypes } from 'react';
 import SideBar from './side_bar';
 import TopAppBar from './top_app_bar';
 
-const mainContentAreaStyles = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-  width: '100%',
+const style = {
+  leftContent: {
+    marginLeft: '280px',
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    width: '100%',
+  },
+  box: {
+    width: '100%',
+    maxWidth: '900px',
+    minWidth: '300px',
+    margin: '10px',
+    marginLeft: '30px',
+    marginTop: '80px',
+  },
+  topBar: {
+    position: 'fixed',
+    width: '100%',
+    zIndex: 10,
+  },
 };
 
-const mainContentBoxStyles = {
-  width: '100%',
-  maxWidth: '900px',
-  minWidth: '300px',
-  margin: '10px',
-};
 
 const PageLayout = ({ children }) =>
   <div>
+    <TopAppBar style={style.topBar} />
     <SideBar />
-    <div style={{ marginLeft: '280px' }}>
-      <TopAppBar />
-      <div style={mainContentAreaStyles}>
-        <div style={mainContentBoxStyles}>
+    <div style={style.leftContent}>
+      <div style={style.container}>
+        <div style={style.box}>
           { children }
         </div>
       </div>
