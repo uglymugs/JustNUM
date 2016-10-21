@@ -1,6 +1,11 @@
 /* global dpd */
+import { SubmissionError } from 'redux-form';
+import { compose } from 'ramda';
 import generateCases from './get_initial_cases';
 import fillDefaults from './add_case.js';
+
+const toSubmissionError = err =>
+  new SubmissionError({ _error: err.message });
 
 export { login, logout, authenticateCookie } from './authenticate';
 
@@ -23,3 +28,10 @@ export const getCaseList = () =>
 
 export const editCase = (newCase) =>
   dpd.cases.put(newCase);
+
+export const submitCaseForm = (view) => (newCase) =>
+  new Promise((resolve, reject) => {
+    if (view === 'new') createCase(newCase).then(resolve, compose(reject, toSubmissionError));
+    if (view === 'edit') editCase(newCase).then(resolve, compose(reject, toSubmissionError));
+  });
+

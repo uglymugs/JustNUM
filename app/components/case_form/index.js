@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { reduxForm } from 'redux-form';
+import { red500 } from 'material-ui/styles/colors';
 
 import Divider from 'material-ui/Divider';
 import CaseIdFields from './case_id_field';
@@ -9,7 +9,6 @@ import CaseContacts from './case_contacts';
 // import CaseTasks from './case_tasks';
 // import CaseNotes from './case_notes';
 import FormButton from '../material_ui_form_lib/form_button';
-
 // import validate from './form_validators';
 
 const formWrapper = {
@@ -28,11 +27,21 @@ class CaseForm extends Component {
     fetchCase(caseId);
   }
   render() {
-    const { handleSubmit, submitHandler, pristine, submitting, reset } = this.props;
+    const { muiTheme, error, handleSubmit, pristine, submitting, reset } = this.props;
+    const errorComponent = error ?
+      <div
+        style={{
+          fontFamily: muiTheme.fontFamily,
+          color: red500,
+          marginTop: '30px',
+        }}
+      >
+        Submit failed: {error}
+      </div> : undefined;
     return (
       <div style={formWrapper}>
         <form
-          onSubmit={handleSubmit(submitHandler)}
+          onSubmit={handleSubmit}
           style={{ width: '100%' }}
         >
           <CaseIdFields />
@@ -43,6 +52,7 @@ class CaseForm extends Component {
           <CaseContacts />
           { /* <CaseTasks /> */ }
           { /* <CaseNotes /> */ }
+          { errorComponent }
           <FormButton
             className="Case__button"
             label="Submit"
@@ -64,15 +74,13 @@ class CaseForm extends Component {
 CaseForm.propTypes = {
   handleSubmit: PropTypes.any,
   reset: PropTypes.any,
+  error: PropTypes.any,
+  muiTheme: PropTypes.any,
   pristine: PropTypes.any,
   submitting: PropTypes.any,
   view: PropTypes.string.isRequired,
-  submitHandler: PropTypes.func,
   fetchCase: PropTypes.func,
   caseId: PropTypes.string,
 };
 
-export default reduxForm({
-  form: 'CaseForm',
-  // validate,
-})(CaseForm);
+export default CaseForm;
