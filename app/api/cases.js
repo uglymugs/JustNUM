@@ -1,4 +1,5 @@
 /* global dpd */
+import escaperegexp from 'lodash.escaperegexp';
 import { SubmissionError } from 'redux-form';
 import { compose } from 'ramda';
 import generateCases from './get_initial_cases';
@@ -23,14 +24,23 @@ const editCase = (newCase) =>
 export const getCase = (caseId) =>
   dpd.cases.get({ caseId }).then((currentCase) => currentCase[0]);
 
-export const getCaseList = () =>
-  dpd.cases
-    .get({
-      $sort: { dateCreated: -1 },
-      $limit: 20,
-    })
+export const getCaseList = (filter) => {
+  const opts = {};
+  opts.$sort = { dateCreated: -1 };
+  opts.$limit = 20;
+  opts.$fields = {
+    caseId: 1,
+    dateCreated: 1,
+    operation: 1,
+  };
+  if (filter.length > 3) opts.caseId = { $regex: `^${escaperegexp(filter)}`, $options: 'i' };
+
+  return dpd.cases
+    .get(opts)
     .then((cases) =>
-      (cases.length === 0 ? Promise.all(generateCases().map(createCase)) : cases));
+        (!cases.length && !filter.length ?
+          Promise.all(generateCases().map(createCase)) : cases));
+};
 
 export const submitCaseForm = (view) => (newCase) =>
   new Promise((resolve, reject) => {

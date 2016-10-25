@@ -14,6 +14,7 @@ import {
 import * as api from '../api';
 import { setFetching } from '../action_creators';
 import { isFetching } from '../reducers';
+import { updateActivatedFilter } from './filter';
 
 const preventingRace = (apiPromise, success, failure) => (dispatch, getState) => {
   const state = getState();
@@ -30,12 +31,13 @@ const preventingRace = (apiPromise, success, failure) => (dispatch, getState) =>
   return Promise.reject(new Error('Already fetching data'));
 };
 
-export const fetchCases = () => (dispatch) => {
+export const fetchCases = (filter = '') => (dispatch) => {
   const success = (response) => {
     dispatch({
       type: FETCH_CASES_SUCCESS,
       response,
     });
+    dispatch(updateActivatedFilter(filter));
   };
   const failure = (err) => {
     dispatch({
@@ -43,7 +45,7 @@ export const fetchCases = () => (dispatch) => {
       err,
     });
   };
-  dispatch(preventingRace(api.getCaseList(), success, failure));
+  dispatch(preventingRace(api.getCaseList(filter), success, failure));
 };
 
 export const clearCaseForm = () => (dispatch) => {
