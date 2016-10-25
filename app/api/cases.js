@@ -37,7 +37,7 @@ export const getCaseList = (filter) => {
   return dpd.cases
     .get(opts)
     .then((cases) =>
-        (cases.length === 0 && filter.length ?
+        (!cases.length && !filter.length ?
           Promise.all(generateCases().map(createCase)) : cases));
 };
 
