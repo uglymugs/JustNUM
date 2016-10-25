@@ -1,4 +1,5 @@
 /* global dpd */
+import escaperegexp from 'lodash.escaperegexp';
 import { SubmissionError } from 'redux-form';
 import { compose } from 'ramda';
 import generateCases from './get_initial_cases';
@@ -32,7 +33,7 @@ export const getCaseList = (filter) => {
     dateCreated: 1,
     operation: 1,
   };
-  if (filter.length > 3) opts.caseId = { $regex: `^${filter}`, $options: 'i' };
+  if (filter.length > 3) opts.caseId = { $regex: `^${escaperegexp(filter)}`, $options: 'i' };
 
   return dpd.cases
     .get(opts)
