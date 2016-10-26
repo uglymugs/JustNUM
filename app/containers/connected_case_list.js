@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
 import CaseListTable from '../components/case_list/case_list_table';
 import * as actions from '../action_creators';
@@ -34,7 +35,10 @@ const mapStateToProps = state => {
   // filter results on client if we are still waiting for api call
   return ({
     cases: Object.keys(cases)
-    .map((id) => cases[id])
+    .map((id) => ({
+      ...cases[id],
+      dateCreated: moment(cases[id].dateCreated, 'x').format('DD/MM/YY'),
+    }))
     .filter((caseObj) => caseObj.caseId.startsWith(filter)),
   });
 };
