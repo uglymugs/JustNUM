@@ -8,7 +8,7 @@ const Task = ({ caseId, done, description, deadline }) =>
     <CardHeader
       title={deadline}
       subtitle={
-        <Link to={`/authenticated/cases/${caseId}`}>
+        <Link to={`/authenticated/cases/edit/${caseId}`}>
           {`Case: ${caseId}`}
         </Link>
       }
