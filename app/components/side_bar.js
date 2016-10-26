@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { white } from 'material-ui/styles/colors';
-import Home from 'material-ui/svg-icons/action/home';
+import AssignmentLate from 'material-ui/svg-icons/action/assignment-late';
 import Work from 'material-ui/svg-icons/action/work';
 import NoteAdd from 'material-ui/svg-icons/action/note-add';
 import Divider from 'material-ui/Divider';
@@ -55,7 +55,7 @@ const SideNavBar = () =>
       <MenuItem
         primaryText="Tasks"
         style={menuItemStyles}
-        leftIcon={<Home color={white} />}
+        leftIcon={<AssignmentLate color={white} />}
         containerElement={<Link to="/authenticated/tasks" />}
       />
       <MenuItem
