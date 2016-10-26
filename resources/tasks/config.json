@@ -32,6 +32,14 @@
 			"required": false,
 			"id": "author",
 			"order": 3
+		},
+		"done": {
+			"name": "done",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "done",
+			"order": 4
 		}
 	}
 }
