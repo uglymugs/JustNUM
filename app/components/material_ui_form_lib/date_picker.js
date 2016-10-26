@@ -1,18 +1,21 @@
 import React, { PropTypes } from 'react';
 import DatePicker from 'material-ui/DatePicker';
+import { omit } from 'ramda';
 
 
-const renderDatePicker = ({ label, meta: { touched, error }, ...custom }) => (
+const renderDatePicker = ({ input, customValue, label, meta: { touched, error }, ...custom }) => (
   <DatePicker
     hintText={label}
     floatingLabelText={label}
     errorText={touched && error}
-    // {...input}
+    value={customValue}
+    {...omit(['value'], input)}
     {...custom}
   />
 );
 
 renderDatePicker.propTypes = {
+  customValue: PropTypes.object,
   input: PropTypes.object,
   label: PropTypes.string.isRequired,
   meta: PropTypes.object.isRequired,
