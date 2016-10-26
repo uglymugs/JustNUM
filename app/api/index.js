@@ -1,3 +1,3 @@
 export { login, logout, authenticateCookie } from './authenticate';
 export { getCase, getCaseList, submitCaseForm } from './cases';
-export { addTask } from './tasks';
+export { getTaskList, addTask } from './tasks';

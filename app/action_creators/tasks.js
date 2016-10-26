@@ -1,20 +1,26 @@
-// import * as fromReducers from '../reducers';
-// // import * as api from '../api';
-//
-// export const addTask = (taskData) => (dispatch, getState) => {
-//   const caseId = fromReducers().getCurrentCase(getState());
-//   dispatch({ type: 'ADDING TASK', caseId });
-//   console.log('wtf');
-//
-//   console.log('-->', caseId, taskData);
-//   // api
-//   // .addTask(caseId, taskData)
-//   // .then(res => {
-//   //   console.log('-------->', res);  // eslint-disable-line
-//   // });
-// };
-//
-//
-// export const editTask = () => {
-//   // To be implemented;
-// };
+import {
+  FETCH_TASKS_SUCCESS,
+  FETCH_TASKS_FAILURE,
+} from '../action_types';
+
+import * as api from '../api';
+import { preventingRace } from '../action_creators';
+
+
+export const fetchTasks = () => (dispatch) => {
+  const success = (response) => {
+    dispatch({
+      type: FETCH_TASKS_SUCCESS,
+      response,
+    });
+  };
+  const failure = (err) => {
+    dispatch({
+      type: FETCH_TASKS_FAILURE,
+      err,
+    });
+  };
+  dispatch(preventingRace(api.getTaskList(), success, failure));
+};
+
+export const dummy = () => null;
