@@ -35,6 +35,7 @@ const validate =
     evolve(validator),
     pickAll(keys(validator)));
 
+
 const SimpleLogin = ({ error, handleSubmit, muiTheme }) =>
   <div style={containerStyles}>
     <form

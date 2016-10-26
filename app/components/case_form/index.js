@@ -4,7 +4,7 @@ import { red500 } from 'material-ui/styles/colors';
 import { renderTextField } from '../material_ui_form_lib';
 import CaseCheckboxes from './case_checkboxes';
 import FormButton from '../material_ui_form_lib/form_button';
-// import TaskList from '../task_list';
+import TaskList from '../task_list';
 
 // import validate from './validate';
 
@@ -120,7 +120,7 @@ class CaseForm extends Component {
         </form>
         { errorComponent }
         <div>
-          {/* <TaskList /> */}
+          <TaskList />
         </div>
       </div>
     );
