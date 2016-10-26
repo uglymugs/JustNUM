@@ -4,6 +4,7 @@ import casesById, * as fromCases from './cases.js';
 import currentCase from './case';
 import auth, * as fromAuth from './auth';
 import fetching from './fetching';
+import filter from './filter';
 
 
 // rootReducer :: State -> State
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   currentCase,
   auth,
   fetching,
+  filter,
 });
 
 export default rootReducer;
@@ -33,6 +35,12 @@ export const getIsLoggingIn = (state) =>
 
 export const isFetching = (state) =>
   state.fetching;
+
+export const getActivatedFilter = (state) =>
+  state.filter.activated;
+
+export const getEnteredFilter = (state) =>
+  state.filter.entered;
 
 export const getLastUrl = (state) =>
   fromAuth.getLastUrl(state.auth);

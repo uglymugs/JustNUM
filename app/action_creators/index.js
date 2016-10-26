@@ -15,6 +15,11 @@ export {
   authenticateCookie,
 } from './authenticate';
 
+export {
+  updateActivatedFilter,
+  updateEnteredFilter,
+} from './filter';
+
 export const setFetching = (bool) => {
   if (bool) return { type: START_FETCHING };
   return { type: STOP_FETCHING };
