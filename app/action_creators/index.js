@@ -20,6 +20,12 @@ export {
   updateEnteredFilter,
 } from './filter';
 
+
+// export {
+//   addTask,
+// } from './tasks';
+
+
 export const setFetching = (bool) => {
   if (bool) return { type: START_FETCHING };
   return { type: STOP_FETCHING };

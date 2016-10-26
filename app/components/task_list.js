@@ -1,8 +1,5 @@
 import React from 'react';
-import { Field } from 'redux-form';
-import moment from 'moment';
-import { renderTextField, renderDatePicker } from './material_ui_form_lib';
-import FormButton from './material_ui_form_lib/form_button';
+import ConnectedTaskForm from '../containers/connected_task_form';
 
 
 const style = {
@@ -22,26 +19,7 @@ const style = {
 
 const TaskList = () =>
   <div style={style.addTask}>
-    <Field
-      name="taskName"
-      component={renderTextField}
-      label="Task"
-      fullWidth
-      multiLine
-      rows={1}
-      style={style.textField}
-    />
-    <Field
-      name="taskDate"
-      component={renderDatePicker}
-      label="Due date"
-      customValue={moment().subtract(10, 'days').toDate()}
-    />
-    <FormButton
-      label="Add"
-      type="submit"
-      style={style.button}
-    />
+    <ConnectedTaskForm />
   </div>;
 
 export default TaskList;
