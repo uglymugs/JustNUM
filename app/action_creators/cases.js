@@ -12,24 +12,9 @@ import {
 } from '../action_types';
 
 import * as api from '../api';
-import { setFetching } from '../action_creators';
-import { isFetching } from '../reducers';
+import { preventingRace } from '../action_creators';
 import { updateActivatedFilter } from './filter';
 
-const preventingRace = (apiPromise, success, failure) => (dispatch, getState) => {
-  const state = getState();
-  if (!isFetching(state)) {
-    dispatch(setFetching(true));
-    return apiPromise.then((res) => {
-      success(res);
-      dispatch(setFetching(false));
-    }, (err) => {
-      failure(err);
-      dispatch(setFetching(false));
-    });
-  }
-  return Promise.reject(new Error('Already fetching data'));
-};
 
 export const fetchCases = (filter = '') => (dispatch) => {
   const success = (response) => {

@@ -53,10 +53,10 @@ const SideNavBar = () =>
     </div>
     <Menu>
       <MenuItem
-        primaryText="Home"
+        primaryText="Tasks"
         style={menuItemStyles}
         leftIcon={<Home color={white} />}
-        containerElement={<Link to="/" />}
+        containerElement={<Link to="/authenticated/tasks" />}
       />
       <MenuItem
         primaryText="Cases"

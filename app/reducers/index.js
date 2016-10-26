@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import casesById, * as fromCases from './cases.js';
+import casesById, * as fromCases from './cases';
 import currentCase from './case';
 import auth, * as fromAuth from './auth';
 import fetching from './fetching';
 import filter from './filter';
+import tasks from './tasks';
 
 
 // rootReducer :: State -> State
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   auth,
   fetching,
   filter,
+  tasks,
 });
 
 export default rootReducer;
@@ -44,3 +46,5 @@ export const getEnteredFilter = (state) =>
 
 export const getLastUrl = (state) =>
   fromAuth.getLastUrl(state.auth);
+
+export const getTasks = (state) => state.tasks;
