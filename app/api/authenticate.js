@@ -8,8 +8,8 @@ export const authenticateCookie = () =>
         ? resolve(payload)
         : reject(err || new Error('No payload')))));
 
-export const login =
-  dpdRun(dpd.users.login);
+export const login = (credentials) =>
+  dpdRun(dpd.users.login, credentials);
 
-export const logout =
-  dpdRun(dpd.users.logout);
+export const logout = () =>
+  dpdRun(dpd.users.logout, undefined);

@@ -1,6 +1,11 @@
 import { SubmissionError } from 'redux-form';
 import { curry, compose } from 'ramda';
 
+// const trace = m => v => {
+//   console.log(m, v);
+//   return v;
+// };
+
 // toSubmissionError :: Error -> SubmissionError
 const toSubmissionError = err =>
   new SubmissionError({
