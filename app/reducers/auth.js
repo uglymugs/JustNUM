@@ -49,3 +49,6 @@ export const getIsLoggedIn = (state) =>
 
 export const getLastUrl = (state) =>
   state.lastUrl;
+
+export const getUserId = (state) =>
+  state.id;

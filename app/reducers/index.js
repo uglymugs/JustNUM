@@ -47,4 +47,7 @@ export const getEnteredFilter = (state) =>
 export const getLastUrl = (state) =>
   fromAuth.getLastUrl(state.auth);
 
+export const getUserId = (state) =>
+  fromAuth.getUserId(state.auth);
+
 export const getTasks = (state) => state.tasks;

@@ -1,4 +1,8 @@
-/* global dpd */
+import dpdRun from '../lib/dpd_run';
+
+export const addTask =
+  dpdRun(dpd.tasks.post);
+
 
 export const getTaskList = () => {
   const opts = {};
@@ -6,5 +10,3 @@ export const getTaskList = () => {
   opts.$limit = 20;
   return dpd.tasks.get(opts);
 };
-
-export const dummy = () => null;
