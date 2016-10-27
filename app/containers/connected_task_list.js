@@ -29,7 +29,8 @@ const mapStateToProps = state => {
   const tasks = getTasks(state);
   return ({
     tasks: Object.keys(tasks)
-    .map((id) => tasks[id]),
+    .map((id) => tasks[id])
+    .filter((task) => !task.done),
   });
 };
 
