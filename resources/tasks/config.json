@@ -33,12 +33,12 @@
 			"id": "author",
 			"order": 3
 		},
-		"done": {
-			"name": "done",
-			"type": "boolean",
-			"typeLabel": "boolean",
-			"required": false,
-			"id": "done",
+		"status": {
+			"name": "status",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "status",
 			"order": 4
 		}
 	}
