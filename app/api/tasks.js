@@ -1,5 +1,7 @@
-export const addTask = (userId, caseId, task) =>
-  console.log('----->', userId, caseId, task);
+import dpdRun from '../lib/dpd_run';
+
+export const addTask =
+  dpdRun(dpd.tasks.post);
 
 
 export const getTaskList = () => {
