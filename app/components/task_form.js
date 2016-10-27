@@ -26,17 +26,17 @@ const TaskForm = ({ handleSubmit }) =>
     onSubmit={handleSubmit}
   >
     <Field
-      name="taskName"
+      name="description"
       component={renderTextField}
-      label="Task"
+      label="Task description"
       multiLine
       rows={1}
       style={style.textField}
     />
     <Field
-      name="taskDate"
+      name="deadline"
       component={renderTextField}
-      label="Due date"
+      label="Deadline (DD/MM/YY )"
     />
     <RaisedButton
       label="Add task"
