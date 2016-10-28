@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Field } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
-import { renderTextField } from './material_ui_form_lib';
+import MenuItem from 'material-ui/MenuItem';
+import { renderTextField, renderSelectField } from './material_ui_form_lib';
 
 
 const style = {
@@ -20,7 +21,17 @@ const style = {
   },
 };
 
-const TaskForm = ({ handleSubmit }) =>
+const formLabel = formType => {
+  switch (formType) {
+    case 'edit':
+      return 'Edit Task';
+    case 'add':
+    default:
+      return 'Add Task';
+  }
+};
+
+const TaskForm = ({ handleSubmit, formType }) =>
   <form
     style={style.addTask}
     onSubmit={handleSubmit}
@@ -38,17 +49,25 @@ const TaskForm = ({ handleSubmit }) =>
       component={renderTextField}
       label="Deadline (DD/MM/YY )"
     />
+
+    <Field name="status" component={renderSelectField} label="Status">
+      <MenuItem value="todo" primaryText="To do" />
+      <MenuItem value="pending" primaryText="Pending" />
+      <MenuItem value="done" primaryText="Done" />
+    </Field>
+
     <RaisedButton
-      label="Add task"
-      primary
+      label={formLabel(formType)}
+      primary={formType === 'add'}
+      secondary={formType === 'edit'}
       type="submit"
       style={style.button}
     />
   </form>;
 
-
 TaskForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  formType: PropTypes.string.isRequired,
 };
 
 export default TaskForm;

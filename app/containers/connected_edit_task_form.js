@@ -1,6 +1,7 @@
+import React, { PropTypes } from 'react';
 import { reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
-import { compose } from 'ramda';
+import { compose, evolve } from 'ramda';
 import moment from 'moment';
 import TaskForm from '../components/task_form';
 import createValidate from '../lib/create_validate';
@@ -28,36 +29,46 @@ const validate = createValidate({
   },
 });
 
+
+const formatDeadlineToUnixTimestamp =
+  evolve({
+    deadline: (deadline) => moment(deadline, DATE_FORMAT).unix(),
+  });
+
 const mapStateToProps = (state) =>
   ({
-    onSubmit: ({ deadline, description }) => {
-      const currentCase = fromReducers.getCurrentCase(state);
-
-      return api.addTask({
-        caseId: currentCase.id,
-        deadline: moment(deadline, DATE_FORMAT).unix(),
-        description,
-      });
-    },
+    onSubmit: compose(api.editTask, formatDeadlineToUnixTimestamp),
     onSubmitSuccess: (payload, dispatch) => {
       dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseId));
       dispatch(reset('TaskForm'));
     },
-    initialValues: {
-      deadline: moment().format(DATE_FORMAT),
+    formType: 'edit',
+  });
+
+
+const deadlineToString =
+  evolve({
+    deadline(deadline) {
+      return moment.unix(deadline).format(DATE_FORMAT);
     },
   });
 
-// ConnectedTaskForm :: React.Component
-const ConnectedTaskForm = compose(
-  connect(mapStateToProps),
-  reduxForm({
-    form: 'TaskForm',
-    initialValues: {
-      deadline: moment().format(DATE_FORMAT),
-      description: '',
-    },
-    validate,
-  }))(TaskForm);
 
-export default ConnectedTaskForm;
+// ConnectedEditTaskForm :: React.Component
+const ConnectedEditTaskForm = ({ task }) => {
+  const Component = compose(
+    connect(mapStateToProps),
+    reduxForm({
+      form: `EditTaskForm_${task.id}`,
+      initialValues: deadlineToString(task),
+      validate,
+    }))(TaskForm);
+
+  return <Component />;
+};
+
+ConnectedEditTaskForm.propTypes = {
+  task: PropTypes.object.isRequired,
+};
+
+export default ConnectedEditTaskForm;
