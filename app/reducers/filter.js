@@ -1,4 +1,7 @@
-import { SET_FILTER_ENTERED, SET_FILTER_ACTIVATED } from '../action_types';
+import {
+  REQUEST_NEW_CASE_FILTER,
+  ACTIVATE_NEW_CASE_FILTER,
+} from '../action_types';
 
 const defaults = {
   entered: '',
@@ -7,12 +10,12 @@ const defaults = {
 
 const filter = (state = defaults, action) => {
   switch (action.type) {
-    case SET_FILTER_ENTERED:
+    case REQUEST_NEW_CASE_FILTER:
       return {
         ...state,
         entered: action.filter,
       };
-    case SET_FILTER_ACTIVATED:
+    case ACTIVATE_NEW_CASE_FILTER:
       return {
         ...state,
         activated: action.filter,

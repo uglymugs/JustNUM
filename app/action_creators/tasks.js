@@ -13,7 +13,7 @@ const setFetchingTasks = (bool) => {
   return { type: STOP_FETCHING_TASKS };
 };
 
-export const fetchTasks = () => (dispatch) => {
+export const fetchTasks = (filter = '') => (dispatch) => {
   const success = (response) => {
     dispatch({
       type: FETCH_TASKS_SUCCESS,
@@ -26,7 +26,7 @@ export const fetchTasks = () => (dispatch) => {
       err,
     });
   };
-  const safeFetch = preventRace(api.getTaskList(), isFetchingTasks, setFetchingTasks);
+  const safeFetch = preventRace(api.getTaskList(filter), isFetchingTasks, setFetchingTasks);
   dispatch(safeFetch(success, failure));
 };
 

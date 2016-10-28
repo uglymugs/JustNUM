@@ -5,7 +5,7 @@ import Main from './main';
 import requiresAuthentication from '../containers/requires_authentication';
 import ConnectedCaseList from '../containers/connected_case_list';
 import ConnectedCaseForm from '../containers/connected_case_form';
-import ConnectedTaskList from '../containers/connected_task_list.js';
+import ConnectedTaskTabs from '../containers/connected_task_tabs.js';
 import Login from '../containers/login.js';
 import PageLayout from './page_layout.js';
 
@@ -24,7 +24,7 @@ const App = ({ store }) =>
         <Route path="login" component={redirectIfAuthenticated(Login, '/authenticated')} />
         <Route path="authenticated" component={redirectIfNotAuthenticated(PageLayout, '/login')}>
           <IndexRedirect to="tasks" />
-          <Route path="tasks" component={ConnectedTaskList} />
+          <Route path="tasks" component={ConnectedTaskTabs} />
           <Route path="cases" component={ConnectedCaseList} />
           <Route path="cases/:view(/:caseId)" component={ConnectedCaseForm} />
         </Route>

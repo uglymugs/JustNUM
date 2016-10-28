@@ -36,11 +36,17 @@ export const getIsLoggingIn = (state) =>
 export const isFetchingCases = (state) => fromCases.isFetching(state.cases);
 export const isFetchingTasks = (state) => fromTasks.isFetching(state.tasks);
 
-export const getActivatedFilter = (state) =>
-  state.filter.activated;
+export const getActivatedCasesFilter = (state) =>
+  fromCases.getActivatedFilter(state.cases);
 
-export const getEnteredFilter = (state) =>
-  state.filter.entered;
+export const getEnteredCasesFilter = (state) =>
+  fromCases.getEnteredFilter(state.cases);
+
+export const getActivatedTasksFilter = (state) =>
+  fromTasks.getActivatedFilter(state.tasks);
+
+export const getEnteredTasksFilter = (state) =>
+  fromTasks.getEnteredFilter(state.tasks);
 
 export const getLastUrl = (state) =>
   fromAuth.getLastUrl(state.auth);

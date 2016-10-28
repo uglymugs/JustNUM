@@ -14,8 +14,10 @@ export {
 } from './authenticate';
 
 export {
-  updateActivatedFilter,
-  updateEnteredFilter,
+  updateActivatedCasesFilter,
+  updateActivatedTasksFilter,
+  updateEnteredCasesFilter,
+  updateEnteredTasksFilter,
 } from './filter';
 
 export {
