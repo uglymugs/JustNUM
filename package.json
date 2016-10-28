@@ -15,7 +15,7 @@
     "dpd": "dpd",
     "go": "npm-run-all --parallel dev dpd",
     "lint": "eslint './+(app|test|stories)/**/*.js'",
-    "start": "node server",
+    "start": "node index.js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "repository": {
@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "deployd": "^0.8.9",
     "faker": "^3.1.0",
     "history": "^4.3.0",
     "lodash.escaperegexp": "^4.1.2",
