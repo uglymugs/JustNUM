@@ -4,7 +4,9 @@ import { red500 } from 'material-ui/styles/colors';
 import { renderTextField } from '../material_ui_form_lib';
 import CaseCheckboxes from './case_checkboxes';
 import FormButton from '../material_ui_form_lib/form_button';
-import TaskList from '../task_list';
+import ConnectedCaseTaskList from '../../containers/connected_case_task_list';
+import ConnectedTaskForm from '../../containers/connected_task_form';
+
 
 // import validate from './validate';
 
@@ -29,7 +31,6 @@ const style = {
 
 
 class CaseForm extends Component {
-
   componentDidMount() {
     const { view, fetchCase, caseId, clearCaseForm } = this.props;
     clearCaseForm();
@@ -120,7 +121,8 @@ class CaseForm extends Component {
         </form>
         { errorComponent }
         <div>
-          <TaskList />
+          <ConnectedTaskForm />
+          <ConnectedCaseTaskList />
         </div>
       </div>
     );

@@ -64,7 +64,7 @@ export const fetchCase = (caseId) => (dispatch) => {
       err,
     });
   };
-  dispatch(api.getCase(caseId).then(success, failure));
+  api.getCase(caseId).then(success, failure);
 };
 
 

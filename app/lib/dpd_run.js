@@ -1,6 +1,11 @@
 import { SubmissionError } from 'redux-form';
 import { curry, compose } from 'ramda';
 
+// const trace = m => v => {
+//   console.log(m, v);
+//   return v;
+// };
+
 // toSubmissionError :: Error -> SubmissionError
 const toSubmissionError = err =>
   new SubmissionError({
@@ -10,7 +15,7 @@ const toSubmissionError = err =>
 
 
 // Wraps dpd's weird promises into a proper native promise
-// And wrap any errors into redux forms submission error
+// And wrap any errors into redux-form's submission error
 const dpdRun = curry((f, payload) =>
   new Promise((resolve, reject) =>
     f(payload)
