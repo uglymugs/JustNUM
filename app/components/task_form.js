@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Field } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
-import { renderTextField } from './material_ui_form_lib';
+import MenuItem from 'material-ui/MenuItem';
+import { renderTextField, renderSelectField } from './material_ui_form_lib';
 
 
 const style = {
@@ -48,6 +49,13 @@ const TaskForm = ({ handleSubmit, formType }) =>
       component={renderTextField}
       label="Deadline (DD/MM/YY )"
     />
+
+    <Field name="status" component={renderSelectField} label="Status">
+      <MenuItem value="todo" primaryText="To do" />
+      <MenuItem value="pending" primaryText="Pending" />
+      <MenuItem value="done" primaryText="Done" />
+    </Field>
+
     <RaisedButton
       label={formLabel(formType)}
       primary={formType === 'add'}

@@ -45,6 +45,7 @@ const mapStateToProps = (state) =>
       dispatch(reset('TaskForm'));
     },
     initialValues: {
+      status: 'todo',
       deadline: moment().format(DATE_FORMAT),
     },
     formType: 'add',
@@ -55,10 +56,6 @@ const ConnectedNewTaskForm = compose(
   connect(mapStateToProps),
   reduxForm({
     form: 'TaskForm',
-    initialValues: {
-      deadline: moment().format(DATE_FORMAT),
-      description: '',
-    },
     validate,
   }))(TaskForm);
 
