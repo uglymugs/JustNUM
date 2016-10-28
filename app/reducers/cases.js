@@ -35,8 +35,8 @@ const casesById = (state = {}, action) => {
 };
 
 const filterDefaults = {
-  entered: 'todo',
-  activated: 'todo',
+  entered: '',
+  activated: '',
 };
 
 const filter = (state = filterDefaults, action) => {

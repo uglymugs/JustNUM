@@ -6,7 +6,8 @@ import {
 } from '../action_types';
 
 import { getEnteredCasesFilter, getEnteredTasksFilter } from '../reducers';
-import { fetchCases, fetchTasks } from './cases';
+import { fetchCases } from './cases';
+import { fetchTasks } from './tasks';
 
 const minSearchTermLength = 3;
 

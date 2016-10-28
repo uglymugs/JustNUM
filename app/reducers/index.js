@@ -3,7 +3,6 @@ import { reducer as form } from 'redux-form';
 import cases, * as fromCases from './cases';
 import currentCase, * as fromCurrentCase from './case';
 import auth, * as fromAuth from './auth';
-import filter from './filter';
 import tasks, * as fromTasks from './tasks';
 
 
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
   form,
   currentCase,
   auth,
-  filter,
   tasks,
 });
 

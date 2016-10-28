@@ -41,21 +41,18 @@ const mapStateToProps = state => {
   return ({
     tasks: Object.keys(tasks)
     .map((id) => tasks[id])
-    .filter((task) => task.status === filter),
+    .filter((task) => !filter.length || task.status === filter),
   });
 };
 
-const fetchTodo = () => {
+const fetchTodo = () =>
   actions.updateEnteredTasksFilter('todo');
-};
 
-const fetchPending = () => {
+const fetchPending = () =>
   actions.updateEnteredTasksFilter('pending');
-};
 
-const fetchAll = () => {
+const fetchAll = () =>
   actions.updateEnteredTasksFilter('');
-};
 
 // connector :: Function
 const connector = connect(
