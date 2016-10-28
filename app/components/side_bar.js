@@ -45,7 +45,7 @@ const menuItemStyles = {
   color: 'white',
 };
 
-const SideNavBar = () =>
+const SideBar = () =>
   <Paper style={style.paper}>
     <div style={style.header}>
       <img src="logo_sml.png" role="presentation" style={style.headerImg} />
@@ -75,4 +75,4 @@ const SideNavBar = () =>
     </Menu>
   </Paper>;
 
-export default SideNavBar;
+export default SideBar;

@@ -1,38 +1,23 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { Tabs, Tab } from 'material-ui/Tabs';
 import { getTasks, getEnteredTasksFilter } from '../reducers';
 import * as actions from '../action_creators';
-import TaskListView from '../components/task_list_view';
+import TaskTabs from '../components/task_tabs';
 
-const TaskTabs = ({ tasks, fetchTodo, fetchPending, fetchAll }) => (
-  <Tabs>
-    <Tab
-      label="To do"
-      onActive={fetchTodo}
-    >
-      <TaskListView tasks={tasks} />
-    </Tab>
-    <Tab
-      label="Pending"
-      onActive={fetchPending}
-    >
-      <TaskListView tasks={tasks} />
-    </Tab>
-    <Tab
-      label="All"
-      onActive={fetchAll}
-    >
-      <TaskListView tasks={tasks} />
-    </Tab>
-  </Tabs>
-);
+class ConnectedTaskTabs extends Component {
+  componentDidMount() {
+    const { fetchTodo } = this.props;
+    fetchTodo();
+  }
+  render() {
+    return (
+      <TaskTabs {...this.props} />
+    );
+  }
+}
 
-TaskTabs.propTypes = {
+ConnectedTaskTabs.propTypes = {
   fetchTodo: PropTypes.func.isRequired,
-  fetchPending: PropTypes.func.isRequired,
-  fetchAll: PropTypes.func.isRequired,
-  tasks: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -64,7 +49,6 @@ const connector = connect(
   },
 );
 
-const ConnectedTaskTabs = connector(TaskTabs);
-
+ConnectedTaskTabs = connector(ConnectedTaskTabs); // eslint-disable-line no-class-assign
 
 export default ConnectedTaskTabs;
