@@ -1,5 +1,7 @@
 import { destroy } from 'redux-form';
 import {
+  START_FETCHING_CASES,
+  STOP_FETCHING_CASES,
   FETCH_CASES_SUCCESS,
   FETCH_CASE_SUCCESS,
   FETCH_CASE_FAILURE,
@@ -12,9 +14,14 @@ import {
 } from '../action_types';
 
 import * as api from '../api';
-import { preventingRace } from '../action_creators';
+import { preventRace } from '../action_creators';
 import { updateActivatedFilter } from './filter';
+import { isFetchingCases } from '../reducers';
 
+const setFetchingCases = (bool) => {
+  if (bool) return { type: START_FETCHING_CASES };
+  return { type: STOP_FETCHING_CASES };
+};
 
 export const fetchCases = (filter = '') => (dispatch) => {
   const success = (response) => {
@@ -30,7 +37,8 @@ export const fetchCases = (filter = '') => (dispatch) => {
       err,
     });
   };
-  dispatch(preventingRace(api.getCaseList(filter), success, failure));
+  const safeFetch = preventRace(api.getCaseList(filter), isFetchingCases, setFetchingCases);
+  dispatch(safeFetch(success, failure));
 };
 
 export const clearCaseForm = () => (dispatch) => {
@@ -56,7 +64,7 @@ export const fetchCase = (caseId) => (dispatch) => {
       err,
     });
   };
-  dispatch(preventingRace(api.getCase(caseId), success, failure));
+  api.getCase(caseId).then(success, failure);
 };
 
 

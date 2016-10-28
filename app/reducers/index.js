@@ -1,30 +1,28 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import casesById, * as fromCases from './cases';
+import cases, * as fromCases from './cases';
 import currentCase, * as fromCurrentCase from './case';
 import auth, * as fromAuth from './auth';
-import fetching from './fetching';
 import filter from './filter';
-import tasks from './tasks';
+import tasks, * as fromTasks from './tasks';
 
 
 // rootReducer :: State -> State
 const rootReducer = combineReducers({
-  casesById,
+  cases,
   form,
   currentCase,
   auth,
-  fetching,
   filter,
   tasks,
 });
 
 export default rootReducer;
 
-export const getCasesById = (state) => state.casesById;
+export const getCasesById = (state) => state.cases.casesById;
 
 export const getCaseById = (state, id) => fromCases.getCaseById(
-  getCasesById(state),
+  state.cases,
   id
 );
 export const getCurrentCase = (state) => state.currentCase;
@@ -35,8 +33,8 @@ export const getIsLoggedIn = (state) =>
 export const getIsLoggingIn = (state) =>
   fromAuth.getIsLoggingIn(state.auth);
 
-export const isFetching = (state) =>
-  state.fetching;
+export const isFetchingCases = (state) => fromCases.isFetching(state.cases);
+export const isFetchingTasks = (state) => fromTasks.isFetching(state.tasks);
 
 export const getActivatedFilter = (state) =>
   state.filter.activated;
@@ -50,7 +48,7 @@ export const getLastUrl = (state) =>
 export const getUserId = (state) =>
   fromAuth.getUserId(state.auth);
 
-export const getTasks = (state) => state.tasks;
-
 export const getCurrentCaseTasks = state =>
   fromCurrentCase.getTasks(state.currentCase);
+
+export const getTasks = (state) => state.tasks.tasksById;
