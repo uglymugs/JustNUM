@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import cases, * as fromCases from './cases';
-import currentCase from './case';
+import currentCase, * as fromCurrentCase from './case';
 import auth, * as fromAuth from './auth';
 import filter from './filter';
 import tasks, * as fromTasks from './tasks';
@@ -53,5 +53,8 @@ export const getLastUrl = (state) =>
 
 export const getUserId = (state) =>
   fromAuth.getUserId(state.auth);
+
+export const getCurrentCaseTasks = state =>
+  fromCurrentCase.getTasks(state.currentCase);
 
 export const getTasks = (state) => state.tasks.tasksById;

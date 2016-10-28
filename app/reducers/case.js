@@ -17,3 +17,5 @@ const currentCase = (state = {}, action) => {
 
 export default currentCase;
 
+export const getTasks = (state) =>
+  state.tasks;
