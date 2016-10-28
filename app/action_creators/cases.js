@@ -15,7 +15,7 @@ import {
 
 import * as api from '../api';
 import { preventRace } from '../action_creators';
-import { updateActivatedFilter } from './filter';
+import { updateActivatedCasesFilter } from './filter';
 import { isFetchingCases } from '../reducers';
 
 const setFetchingCases = (bool) => {
@@ -29,7 +29,7 @@ export const fetchCases = (filter = '') => (dispatch) => {
       type: FETCH_CASES_SUCCESS,
       response,
     });
-    dispatch(updateActivatedFilter(filter));
+    dispatch(updateActivatedCasesFilter(filter));
   };
   const failure = (err) => {
     dispatch({

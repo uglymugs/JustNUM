@@ -20,6 +20,6 @@ Filter.propTypes = {
   changeHandler: PropTypes.func.isRequired,
 };
 
-const CaseListFilter = connect(null, { changeHandler: actions.updateEnteredFilter })(Filter);
+const CaseListFilter = connect(null, { changeHandler: actions.updateEnteredCasesFilter })(Filter);
 
 export default CaseListFilter;

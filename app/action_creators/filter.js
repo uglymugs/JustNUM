@@ -1,30 +1,50 @@
 import {
-  SET_FILTER_ENTERED,
-  SET_FILTER_ACTIVATED,
+  ACTIVATE_NEW_CASE_FILTER,
+  REQUEST_NEW_CASE_FILTER,
+  ACTIVATE_NEW_TASK_FILTER,
+  REQUEST_NEW_TASK_FILTER,
 } from '../action_types';
 
-import { getEnteredFilter } from '../reducers';
+import { getEnteredCasesFilter, getEnteredTasksFilter } from '../reducers';
 import { fetchCases } from './cases';
+import { fetchTasks } from './tasks';
 
 const minSearchTermLength = 3;
 
-export const updateActivatedFilter = (newFilter) => (dispatch, getState) => {
+export const updateActivatedCasesFilter = (newFilter) => (dispatch, getState) => {
   dispatch({
-    type: SET_FILTER_ACTIVATED,
+    type: ACTIVATE_NEW_CASE_FILTER,
     filter: newFilter,
   });
-  const enteredFilter = getEnteredFilter(getState());
+  const enteredFilter = getEnteredCasesFilter(getState());
   if (enteredFilter !== newFilter &&
     enteredFilter.length >= minSearchTermLength) dispatch(fetchCases(enteredFilter));
 };
 
-export const updateEnteredFilter = (newFilter) => (dispatch) => {
+export const updateEnteredCasesFilter = (newFilter) => (dispatch) => {
   dispatch({
-    type: SET_FILTER_ENTERED,
+    type: REQUEST_NEW_CASE_FILTER,
     filter: newFilter,
   });
   if (newFilter.length >= minSearchTermLength) {
     dispatch(fetchCases(newFilter));
   }
+};
+
+export const updateEnteredTasksFilter = (newFilter) => (dispatch) => {
+  dispatch({
+    type: REQUEST_NEW_TASK_FILTER,
+    filter: newFilter,
+  });
+  dispatch(fetchTasks(newFilter));
+};
+
+export const updateActivatedTasksFilter = (newFilter) => (dispatch, getState) => {
+  dispatch({
+    type: ACTIVATE_NEW_TASK_FILTER,
+    filter: newFilter,
+  });
+  const enteredFilter = getEnteredTasksFilter(getState());
+  if (enteredFilter !== newFilter) dispatch(fetchTasks(enteredFilter));
 };
 
