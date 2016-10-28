@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ConnectedEditTaskForm from '../containers/connected_edit_task_form';
 
 const style = {
   // textField: {
@@ -21,14 +22,14 @@ const style = {
 const CaseTaskList = ({ tasks }) =>
   <div style={style.taskList}>
     {tasks.map((task, idx) =>
-      <div key={idx}>{task.description}, {task.deadline}</div>)}
+      <ConnectedEditTaskForm key={idx} task={task} />)}
   </div>;
 
 const Task = PropTypes.shape({
   deadline: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   caseId: PropTypes.string.isRequired,
-  done: PropTypes.bool.isRequired,
+  status: PropTypes.string.isRequired,
 });
 
 CaseTaskList.propTypes = {

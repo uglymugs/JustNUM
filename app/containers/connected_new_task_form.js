@@ -37,6 +37,7 @@ const mapStateToProps = (state) =>
         caseId: currentCase.id,
         deadline: moment(deadline, DATE_FORMAT).unix(),
         description,
+        status: 'todo',
       });
     },
     onSubmitSuccess: (payload, dispatch) => {
@@ -46,10 +47,11 @@ const mapStateToProps = (state) =>
     initialValues: {
       deadline: moment().format(DATE_FORMAT),
     },
+    formType: 'add',
   });
 
-// ConnectedTaskForm :: React.Component
-const ConnectedTaskForm = compose(
+// ConnectedNewTaskForm :: React.Component
+const ConnectedNewTaskForm = compose(
   connect(mapStateToProps),
   reduxForm({
     form: 'TaskForm',
@@ -60,4 +62,4 @@ const ConnectedTaskForm = compose(
     validate,
   }))(TaskForm);
 
-export default ConnectedTaskForm;
+export default ConnectedNewTaskForm;

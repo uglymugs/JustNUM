@@ -5,7 +5,7 @@ import { renderTextField } from '../material_ui_form_lib';
 import CaseCheckboxes from './case_checkboxes';
 import FormButton from '../material_ui_form_lib/form_button';
 import ConnectedCaseTaskList from '../../containers/connected_case_task_list';
-import ConnectedTaskForm from '../../containers/connected_task_form';
+import ConnectedNewTaskForm from '../../containers/connected_new_task_form';
 
 
 // import validate from './validate';
@@ -121,7 +121,7 @@ class CaseForm extends Component {
         </form>
         { errorComponent }
         <div>
-          <ConnectedTaskForm />
+          <ConnectedNewTaskForm />
           <ConnectedCaseTaskList />
         </div>
       </div>

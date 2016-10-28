@@ -20,7 +20,17 @@ const style = {
   },
 };
 
-const TaskForm = ({ handleSubmit }) =>
+const formLabel = formType => {
+  switch (formType) {
+    case 'edit':
+      return 'Edit Task';
+    case 'add':
+    default:
+      return 'Add Task';
+  }
+};
+
+const TaskForm = ({ handleSubmit, formType }) =>
   <form
     style={style.addTask}
     onSubmit={handleSubmit}
@@ -39,16 +49,17 @@ const TaskForm = ({ handleSubmit }) =>
       label="Deadline (DD/MM/YY )"
     />
     <RaisedButton
-      label="Add task"
-      primary
+      label={formLabel(formType)}
+      primary={formType === 'add'}
+      secondary={formType === 'edit'}
       type="submit"
       style={style.button}
     />
   </form>;
 
-
 TaskForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  formType: PropTypes.string.isRequired,
 };
 
 export default TaskForm;
