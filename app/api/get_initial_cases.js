@@ -14,7 +14,7 @@ const genCaseData = () =>
     contacts: genContacts().join('\n'),
     db: coinFlip(),
     email: coinFlip(),
-    caseId: faker.random.uuid(),
+    caseRef: faker.random.uuid(),
     info: coinFlip(),
     nc: coinFlip(),
     notes: [],

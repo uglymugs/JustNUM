@@ -32,16 +32,16 @@ const mapStateToProps = (state) =>
   ({
     onSubmit: ({ deadline, description }) => {
       const currentCase = fromReducers.getCurrentCase(state);
-
       return api.addTask({
         caseId: currentCase.id,
+        caseRef: currentCase.caseRef,
         deadline: moment(deadline, DATE_FORMAT).unix(),
         description,
         status: 'todo',
       });
     },
     onSubmitSuccess: (payload, dispatch) => {
-      dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseId));
+      dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseRef));
       dispatch(reset('TaskForm'));
     },
     initialValues: {

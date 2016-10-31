@@ -21,19 +21,19 @@ const createCase = (newCase) =>
 const editCase = (newCase) =>
   dpd.cases.put(newCase);
 
-export const getCase = (caseId) =>
-  dpd.cases.get({ caseId }).then((currentCase) => currentCase[0]);
+export const getCase = (caseRef) =>
+  dpd.cases.get({ caseRef }).then((currentCase) => currentCase[0]);
 
 export const getCaseList = (filter) => {
   const opts = {};
   opts.$sort = { dateCreated: -1 };
   opts.$limit = 20;
   opts.$fields = {
-    caseId: 1,
+    caseRef: 1,
     dateCreated: 1,
     operation: 1,
   };
-  if (filter.length > 3) opts.caseId = { $regex: `^${escaperegexp(filter)}`, $options: 'i' };
+  if (filter.length > 3) opts.caseRef = { $regex: `^${escaperegexp(filter)}`, $options: 'i' };
 
   return dpd.cases
     .get(opts)

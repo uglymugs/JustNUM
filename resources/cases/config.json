@@ -41,12 +41,12 @@
 			"id": "email",
 			"order": 4
 		},
-		"caseId": {
-			"name": "caseId",
+		"caseRef": {
+			"name": "caseRef",
 			"type": "string",
 			"typeLabel": "string",
 			"required": true,
-			"id": "caseId",
+			"id": "caseRef",
 			"order": 5
 		},
 		"info": {

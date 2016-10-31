@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { getTasks, getEnteredTasksFilter } from '../reducers';
 import * as actions from '../action_creators';
 import TaskTabs from '../components/task_tabs';
@@ -25,7 +26,10 @@ const mapStateToProps = state => {
   const filter = getEnteredTasksFilter(state);
   return ({
     tasks: Object.keys(tasks)
-    .map((id) => tasks[id])
+    .map((id) => ({
+      ...tasks[id],
+      deadline: moment(tasks[id].deadline, 'x').format('DD/MM/YY'),
+    }))
     .filter((task) => !filter.length || task.status === filter),
   });
 };

@@ -50,7 +50,7 @@ export const clearCaseForm = () => (dispatch) => {
   });
 };
 
-export const fetchCase = (caseId) => (dispatch) => {
+export const fetchCase = (caseRef) => (dispatch) => {
   dispatch(clearCaseForm());
   const success = (response) => {
     dispatch({
@@ -64,7 +64,7 @@ export const fetchCase = (caseId) => (dispatch) => {
       err,
     });
   };
-  api.getCase(caseId).then(success, failure);
+  api.getCase(caseRef).then(success, failure);
 };
 
 

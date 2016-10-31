@@ -15,7 +15,7 @@ const style = {
   form: {
     width: '100%',
     maxWidth: '900px',
-    minWidth: '300px',
+    minWidth: '900px',
     backgroundColor: '#F6F7FA',
     display: 'flex',
     flexDirection: 'column',
@@ -32,9 +32,9 @@ const style = {
 
 class CaseForm extends Component {
   componentDidMount() {
-    const { view, fetchCase, caseId, clearCaseForm } = this.props;
+    const { view, fetchCase, caseRef, clearCaseForm } = this.props;
     clearCaseForm();
-    if (view === 'edit') fetchCase(caseId);
+    if (view === 'edit') fetchCase(caseRef);
   }
   componentWillReceiveProps(nextProps) {
     const { view, clearCaseForm } = this.props;
@@ -62,7 +62,7 @@ class CaseForm extends Component {
           style={style.form}
         >
           <Field
-            name="caseId"
+            name="caseRef"
             component={renderTextField}
             label="Case ID"
             style={style.textField}
@@ -139,7 +139,7 @@ CaseForm.propTypes = {
   view: PropTypes.string.isRequired,
   fetchCase: PropTypes.func,
   clearCaseForm: PropTypes.func,
-  caseId: PropTypes.string,
+  caseRef: PropTypes.string,
 };
 
 export default CaseForm;

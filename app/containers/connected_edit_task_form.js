@@ -35,11 +35,12 @@ const formatDeadlineToUnixTimestamp =
     deadline: (deadline) => moment(deadline, DATE_FORMAT).unix(),
   });
 
+
 const mapStateToProps = (state) =>
   ({
     onSubmit: compose(api.editTask, formatDeadlineToUnixTimestamp),
     onSubmitSuccess: (payload, dispatch) => {
-      dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseId));
+      dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseRef));
       dispatch(reset('TaskForm'));
     },
     formType: 'edit',
