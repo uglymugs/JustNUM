@@ -58,7 +58,7 @@ class CaseForm extends Component {
           onSubmit={handleSubmit}
           style={style.form}
         >
-          {view === 'edit' ?
+          {view !== 'new' ?
             <div style={{ fontSize: '1.2em', fontFamily: 'Roboto' }}>
               { `Case ID: ${caseRef}` }
             </div> :
