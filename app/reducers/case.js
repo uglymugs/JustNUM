@@ -19,3 +19,6 @@ export default currentCase;
 
 export const getTasks = (state) =>
   state.tasks;
+
+export const getNotes = (state) =>
+  state.notes;

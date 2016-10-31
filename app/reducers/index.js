@@ -61,4 +61,7 @@ export const getLastName = (state) =>
 export const getCurrentCaseTasks = state =>
   fromCurrentCase.getTasks(state.currentCase);
 
+export const getCurrentCaseNotes = state =>
+  fromCurrentCase.getNotes(state.currentCase);
+
 export const getTasks = (state) => state.tasks.tasksById;
