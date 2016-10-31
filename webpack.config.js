@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { HotModuleReplacementPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 

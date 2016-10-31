@@ -1,10 +1,10 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import { identity } from 'ramda';
 
 import rootReducer from '../reducers';
 
-const middleware = [thunk];
+// const middleware = [thunk];
 
 /* eslint-disable no-underscore-dangle */
 const devToolsEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -13,13 +13,13 @@ const devToolsEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__
 /* eslint-enable */
 
 
-const enhancer =
+const enhancer = (middleware) =>
   compose(
     applyMiddleware(...middleware),
     devToolsEnhancer);
 
-const configureStore = initialState => {
-  const store = createStore(rootReducer, initialState, enhancer);
+const configureStore = (middleware = [], initialState) => {
+  const store = createStore(rootReducer, initialState, enhancer(middleware));
 
   if (module.hot) {
     // eslint-disable-next-line global-require
