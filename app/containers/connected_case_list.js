@@ -39,7 +39,7 @@ const mapStateToProps = state => {
       ...cases[id],
       dateCreated: moment(cases[id].dateCreated, 'x').format('DD/MM/YY'),
     }))
-    .filter((caseObj) => caseObj.caseId.startsWith(filter)),
+    .filter((caseObj) => caseObj.caseRef.startsWith(filter)),
   });
 };
 

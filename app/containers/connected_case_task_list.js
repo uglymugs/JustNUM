@@ -4,7 +4,7 @@ import * as fromReducers from '../reducers';
 
 const mapStateToProps = (state) =>
   ({
-    caseId: fromReducers.getCurrentCase(state).caseId,
+    // use default [] because component is rendered before current case is received
     tasks: fromReducers.getCurrentCaseTasks(state) || [],
   });
 

@@ -2,8 +2,8 @@ import { compose, evolve, keys, pickAll } from 'ramda';
 
 
 const validator = {
-  caseId: (caseId) => {
-    if (!caseId) return 'Required';
+  caseRef: (caseRef) => {
+    if (!caseRef) return 'Required';
     return undefined;
   },
 };

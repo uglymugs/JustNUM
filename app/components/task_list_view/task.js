@@ -8,7 +8,7 @@ import Hourglass from 'material-ui/svg-icons/action/hourglass-empty';
 import { white, green500, red500, amber500 } from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
 
-const Task = ({ caseId, status, description, deadline }) => {
+const Task = ({ caseRef, status, description, deadline }) => {
   let icon;
   let cardActions;
   let backgroundColor;
@@ -61,8 +61,8 @@ const Task = ({ caseId, status, description, deadline }) => {
     <CardHeader
       title={`Deadline: ${deadline}`}
       subtitle={
-        <Link to={`/authenticated/cases/edit/${caseId}`}>
-          {`Case: ${caseId}`}
+        <Link to={`/authenticated/cases/edit/${caseRef}`}>
+          {`Case: ${caseRef}`}
         </Link>
       }
       avatar={<Avatar color={white} backgroundColor={backgroundColor} icon={icon} />}
@@ -78,6 +78,7 @@ const Task = ({ caseId, status, description, deadline }) => {
 Task.propTypes = {
   description: PropTypes.string.isRequired,
   deadline: PropTypes.string.isRequired,
+  caseRef: PropTypes.string.isRequired,
   caseId: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
 };

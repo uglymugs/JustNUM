@@ -28,6 +28,7 @@ const CaseTaskList = ({ tasks }) =>
 const Task = PropTypes.shape({
   deadline: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  caseRef: PropTypes.string.isRequired,
   caseId: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
 });
