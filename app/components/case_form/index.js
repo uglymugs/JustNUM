@@ -4,8 +4,7 @@ import { red500 } from 'material-ui/styles/colors';
 import { renderTextField } from '../material_ui_form_lib';
 import CaseCheckboxes from './case_checkboxes';
 import FormButton from '../material_ui_form_lib/form_button';
-import ConnectedCaseTaskList from '../../containers/connected_case_task_list';
-import ConnectedNewTaskForm from '../../containers/connected_new_task_form';
+import CaseTaskManager from '../case_task_manager';
 
 
 const style = {
@@ -117,10 +116,8 @@ class CaseForm extends Component {
           </div>
         </form>
         { errorComponent }
-        <div>
-          <ConnectedNewTaskForm />
-          <ConnectedCaseTaskList />
-        </div>
+        <br /><br /><br />
+        <CaseTaskManager />
       </div>
     );
   }
