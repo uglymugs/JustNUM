@@ -27,7 +27,7 @@ const style = {
 const Note = ({ note, muiTheme: { palette } }) =>
   <Paper style={style.paper} zDepth={2}>
     <h1 style={{ ...style.h1, color: palette.accent3Color }}>
-      Created by: {note.author.username}
+      Created by: {note.author.firstName} {note.author.lastName}
     </h1>
     <h2 style={{ ...style.h2, color: palette.accent1Color }}>
       {moment(note.dateCreated).format('dddd, D MMMM YYYY')}

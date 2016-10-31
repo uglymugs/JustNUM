@@ -4,7 +4,6 @@ import * as fromReducers from '../reducers';
 
 const mapStateToProps = (state) =>
   ({
-    caseId: fromReducers.getCurrentCase(state).id,
     notes: fromReducers.getCurrentCaseNotes(state) || [],
   });
 
