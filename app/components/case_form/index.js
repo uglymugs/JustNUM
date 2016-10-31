@@ -8,9 +8,6 @@ import ConnectedCaseTaskList from '../../containers/connected_case_task_list';
 import ConnectedNewTaskForm from '../../containers/connected_new_task_form';
 
 
-// import validate from './validate';
-
-
 const style = {
   form: {
     width: '100%',
@@ -130,15 +127,15 @@ class CaseForm extends Component {
 }
 
 CaseForm.propTypes = {
-  handleSubmit: PropTypes.any,
-  reset: PropTypes.any,
-  error: PropTypes.any,
-  muiTheme: PropTypes.any,
-  pristine: PropTypes.any,
-  submitting: PropTypes.any,
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  error: PropTypes.object,
+  muiTheme: PropTypes.object.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
   view: PropTypes.string.isRequired,
-  fetchCase: PropTypes.func,
-  clearCaseForm: PropTypes.func,
+  fetchCase: PropTypes.func.isRequired,
+  clearCaseForm: PropTypes.func.isRequired,
   caseId: PropTypes.string,
 };
 

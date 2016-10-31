@@ -7,8 +7,7 @@ import CaseForm from '../components/case_form';
 import * as actions from '../action_creators';
 import { submitCaseForm } from '../api';
 import { isFetchingCases, getCurrentCase } from '../reducers';
-
-// import validate from './form_validators';
+import validate from '../form_validators/case';
 
 const mapStateToProps = (state, { params }) => {
   let initialValues;
@@ -50,7 +49,7 @@ const ConnectedCaseForm = compose(
   muiThemeable(),
   reduxForm({
     form: 'CaseForm',
-    // validate,
+    validate,
   })
 )(CaseForm);
 
