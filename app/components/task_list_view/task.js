@@ -77,8 +77,8 @@ const Task = ({ caseId, status, description, deadline }) => {
 
 Task.propTypes = {
   description: PropTypes.string.isRequired,
-  deadline: PropTypes.any,
-  caseId: PropTypes.any,
+  deadline: PropTypes.string.isRequired,
+  caseId: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
 };
 

@@ -4,7 +4,7 @@ import * as fromReducers from '../reducers';
 
 const mapStateToProps = (state) =>
   ({
-    caseId: fromReducers.getCurrentCase(state).id,
+    caseId: fromReducers.getCurrentCase(state).caseId,
     tasks: fromReducers.getCurrentCaseTasks(state) || [],
   });
 

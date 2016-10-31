@@ -15,7 +15,7 @@ const style = {
   form: {
     width: '100%',
     maxWidth: '900px',
-    minWidth: '300px',
+    minWidth: '900px',
     backgroundColor: '#F6F7FA',
     display: 'flex',
     flexDirection: 'column',
