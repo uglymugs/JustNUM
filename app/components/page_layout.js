@@ -4,7 +4,7 @@ import TopAppBar from './top_app_bar';
 
 const style = {
   leftContent: {
-    marginLeft: '200px',
+    marginLeft: '224px',
   },
   container: {
     display: 'flex',

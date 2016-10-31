@@ -17,7 +17,7 @@ const style = {
     left: 0,
     zIndex: 100,
     height: '100%',
-    width: '200px',
+    width: '224px',
     backgroundColor: '#5E7B8D',
   },
   rightIcon: {
