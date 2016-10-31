@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import thunk from 'redux-thunk';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import './scss/main.scss';
@@ -12,7 +13,7 @@ import * as actionCreators from './action_creators';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const store = configureStore();
+const store = configureStore([thunk]);
 
 store.dispatch(actionCreators.authenticateCookie(document.location.hash.slice(1)));
 
