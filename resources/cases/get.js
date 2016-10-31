@@ -7,5 +7,11 @@ dpd.notes.get({id: {$in: this.notes}})
     dpd.tasks.get({id: {$in: this.tasks}})
     .then((tasks) => {
         this.tasks = tasks;
-    })
+    });
+})
+.then(() => {
+    dpd.notes.get({$id: {$in: this.notes}})
+    .then((notes) => {
+        this.notes = notes;
+    });
 })
