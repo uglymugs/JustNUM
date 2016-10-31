@@ -1,25 +1,26 @@
 import React, { PropTypes } from 'react';
+import Note from './note';
 
 const style = {
   noteList: {
     display: 'flex',
     flexDirection: 'column',
+    width: '100%',
   },
 };
 
 const CaseNoteList = ({ notes }) =>
   <div style={style.noteList}>
     {notes.map((note, idx) =>
-      <div key={idx}>{note.text}</div>)}
+      <Note key={idx} note={note} />)}
   </div>;
 
-const Note = PropTypes.shape({
-  caseId: PropTypes.string.isRequired,
+const NoteData = PropTypes.shape({
   text: PropTypes.string.isRequired,
 });
 
 CaseNoteList.propTypes = {
-  notes: PropTypes.arrayOf(Note).isRequired,
+  notes: PropTypes.arrayOf(NoteData).isRequired,
 };
 
 export default CaseNoteList;
