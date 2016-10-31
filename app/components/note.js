@@ -37,12 +37,12 @@ const Note = ({ note, muiTheme: { palette } }) =>
 
 
 const NoteData = PropTypes.shape({
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 });
 
 Note.propTypes = {
-  note: PropTypes.shape(NoteData).isRequired,
-  muiTheme: PropTypes.object.isRequired,
+  note: PropTypes.shape(NoteData),
+  muiTheme: PropTypes.object,
 };
 
 export default muiThemeable()(Note);

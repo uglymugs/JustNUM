@@ -40,6 +40,14 @@
 			"required": true,
 			"id": "status",
 			"order": 4
+		},
+		"caseRef": {
+			"name": "caseRef",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "caseRef",
+			"order": 5
 		}
 	}
 }

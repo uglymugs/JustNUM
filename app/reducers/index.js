@@ -52,6 +52,12 @@ export const getLastUrl = (state) =>
 export const getUserId = (state) =>
   fromAuth.getUserId(state.auth);
 
+export const getFirstName = (state) =>
+  fromAuth.getFirstName(state.auth);
+
+export const getLastName = (state) =>
+  fromAuth.getLastName(state.auth);
+
 export const getCurrentCaseTasks = state =>
   fromCurrentCase.getTasks(state.currentCase);
 

@@ -21,7 +21,7 @@ const mapStateToProps = (state, { params }) => {
   return ({
     view: params.view,
     initialValues,
-    caseId: params.caseId,
+    caseRef: params.caseRef,
   });
 };
 
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, { params, router }) => ({
     dispatch(actions.submitCaseFormSuccess(params.view, router, payload)),
   onSubmitFail: (error) =>
       dispatch(actions.submitCaseFormFailure(params.view, error)),
-  fetchCase: (id) => dispatch(actions.fetchCase(id)),
+  fetchCase: (caseRef) => dispatch(actions.fetchCase(caseRef)),
   clearCaseForm: () => dispatch(actions.clearCaseForm()),
 });
 

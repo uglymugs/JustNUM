@@ -26,18 +26,13 @@ const mapStateToProps = (state) =>
     onSubmit: ({ text }) => {
       const currentCase = fromReducers.getCurrentCase(state);
 
-      console.log({
-        caseId: currentCase.id,
-        text,
-      });
-
       return api.addNote({
         caseId: currentCase.id,
         text,
       });
     },
     onSubmitSuccess: (payload, dispatch) => {
-      dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseId));
+      dispatch(actions.fetchCase(fromReducers.getCurrentCase(state).caseRef));
       dispatch(reset('NoteForm'));
     },
   });

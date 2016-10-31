@@ -52,3 +52,9 @@ export const getLastUrl = (state) =>
 
 export const getUserId = (state) =>
   state.id;
+
+export const getFirstName = (state) =>
+  state.firstName;
+
+export const getLastName = (state) =>
+  state.lastName;

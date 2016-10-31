@@ -4,7 +4,7 @@ const CASE_TEMPLATE = {
   contacts: '',
   db: false,
   email: false,
-  caseId: '',
+  caseRef: '',
   info: false,
   nc: false,
   notes: [],
