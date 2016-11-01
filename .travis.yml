@@ -11,13 +11,3 @@ script:
 - npm run precommit
 after_success:
 - "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls"
-before_deploy:
-- npm run build
-deploy:
-  provider: heroku
-  api_key:
-    secure: riky+sn+TGhrb2iJ818aAa32cH6U16xEsamFtzvJXyaPBjuMxqB+tc/XQi5oK1s7xCKQOyYt1aamjHH3WZYUVrF3HeRZOoSVECdkok/WjHLJSp3EAFr2fW2q6zaaCPk22opxk1D+7v88iiaOCBdaseXxLn1dpVodT0TAJzabuGltfLN8mlbxY4EhAubtHouLKFlK2lYgcxB8r7M5JOWqcu0ZHZtMqycVAMzNcHiQOaqriVGlHky/Tupn4RFX2UaLXw4/LoFJIaUu1hwCQHS8962O/kspJAbqX92fxwNv0DJE2SR2ZofmynYeGpSxk/q31YNMdcDNaFboWQr2VkWH4fO3pHghr/626uZ7UZMmZIB4Zp6/DHtMsEb+N3jb5l8aHGN+k3sFdA15lWOj8rvtL9CV/oQGZk234LG8pWBqUiYBIUCQgGEtf4KBR3pAHyAcJwThq8q4v/rcS8okYCx5xDBsTdrkRpxe2rinoJ4QTwHzzQLriGxx+IftrG+APp9rTIcfpSC9g/GRZLoO7l+/3q3DAdqB99+yAzqIxr06+XcZzDol76MlSBCkL0FK3Vy64M3PsVhid/uknpKIUpwxXoZnYgBf6Eyg0Kua/2kTRim+SyK692Xkk92xxoYWMMIas5JVMnN9OQXMctOIi00motEQPO+W0PPRkYPT5tg4N8o=
-  app: uglymugs-justnum
-  skip-cleanup: true
-  on:
-    branch: staging
