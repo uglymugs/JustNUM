@@ -39,7 +39,8 @@ class CaseForm extends Component {
   }
 
   render() {
-    const { muiTheme, error, handleSubmit, pristine, submitting, reset } = this.props;
+    const { caseRef, view, muiTheme, error,
+      handleSubmit, pristine, submitting, reset } = this.props;
     const errorComponent = error ?
       <div
         style={{
@@ -51,19 +52,22 @@ class CaseForm extends Component {
         {error}
         <br />
       </div> : undefined;
+    const caseIDComponent = (view !== 'new') ?
+      <div style={{ fontSize: '1.2em', fontFamily: 'Roboto' }}>
+        { `Case ID: ${caseRef}` }
+      </div> : <Field
+        name="caseRef"
+        component={renderTextField}
+        label="Case ID"
+        style={style.textField}
+      />;
     return (
       <div>
         <form
           onSubmit={handleSubmit}
           style={style.form}
         >
-          <Field
-            name="caseRef"
-            component={renderTextField}
-            label="Case ID"
-            style={style.textField}
-          />
-
+          {caseIDComponent}
           <div style={{ display: 'flex' }}>
             <div style={{ width: '50%' }}>
               <CaseCheckboxes />
