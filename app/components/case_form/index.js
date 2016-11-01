@@ -19,8 +19,21 @@ const style = {
   textField: {
     width: '500px',
   },
-  formButtons: {
+  button: {
     marginTop: '50px',
+  },
+  checklist: {
+    display: 'flex',
+  },
+  checkboxes: {
+    flexGrow: 1,
+  },
+  listItems: {
+    width: 250,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
 };
 
@@ -40,6 +53,7 @@ class CaseForm extends Component {
   render() {
     const { caseRef, view, muiTheme, error,
       handleSubmit, pristine, submitting, reset } = this.props;
+
     const errorComponent = error ?
       <div
         style={{
@@ -60,6 +74,7 @@ class CaseForm extends Component {
         label="Case ID"
         style={style.textField}
       />;
+
     return (
       <div>
         <form
@@ -67,11 +82,11 @@ class CaseForm extends Component {
           style={style.form}
         >
           {caseIDComponent}
-          <div style={{ display: 'flex' }}>
-            <div style={{ width: '50%' }}>
+          <div style={style.checklist}>
+            <div style={style.checkboxes}>
               <CaseCheckboxes />
             </div>
-            <div style={{ width: '50%', paddingLeft: '10px' }}>
+            <div style={style.listItems}>
               <Field
                 name="referral"
                 component={renderTextField}
@@ -104,7 +119,7 @@ class CaseForm extends Component {
             style={style.textField}
           />
 
-          <div style={style.formButtons}>
+          <div style={style.button}>
             <FormButton
               label="Submit"
               disabled={pristine || submitting}
