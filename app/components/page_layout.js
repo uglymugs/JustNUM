@@ -15,8 +15,7 @@ const style = {
   },
   box: {
     width: '100%',
-    maxWidth: '900px',
-    minWidth: '300px',
+    minWidth: '900px',
     margin: '10px',
     marginLeft: '30px',
     marginTop: '80px',
