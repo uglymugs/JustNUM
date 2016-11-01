@@ -10,7 +10,6 @@ import CaseTaskNotesManager from '../case_task_notes_manager';
 const style = {
   form: {
     width: '100%',
-    maxWidth: '900px',
     minWidth: '900px',
     backgroundColor: '#F6F7FA',
     display: 'flex',
