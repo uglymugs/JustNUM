@@ -4,36 +4,35 @@ import Checkbox from '../material_ui_form_lib/checkbox';
 
 
 const style = {
-  table: {
-    width: '100%',
+  grid: {
     height: '100%',
   },
-  td: {
-    paddingTop: '10px',
+  topRowCell: {
+    marginTop: 40,
   },
 };
 
-
 const CaseCheckboxes = () =>
-  <table style={style.table}>
-    <tbody>
-      <tr>
-        <td style={style.td}><Field name="web" component={Checkbox} label="WEB" /></td>
-        <td style={style.td}><Field name="nc" component={Checkbox} label="NC" /></td>
-        <td style={style.td}><Field name="pc" component={Checkbox} label="PC" /></td>
-        <td style={style.td}><Field name="case_info" component={Checkbox} label="INFO" /></td>
-      </tr>
-      <tr style={style.tr}>
-        <td style={style.td}><Field name="email" component={Checkbox} label="EMAIL" /></td>
-        <td style={style.td}><Field name="police" component={Checkbox} label="POLICE" /></td>
-        <td style={style.td}><Field name="db" component={Checkbox} label="DB" /></td>
-      </tr>
-      <tr style={style.tr}>
-        <td style={style.td}><Field name="sms" component={Checkbox} label="SMS" /></td>
-        <td style={style.td}><Field name="app" component={Checkbox} label="APP" /></td>
-        <td style={style.td}><Field name="sp" component={Checkbox} label="SP" /></td>
-      </tr>
-    </tbody>
-  </table>;
+  <div className="grid" style={style.grid}>
+    <div>
+      <div style={style.topRowCell}><Field name="web" component={Checkbox} label="WEB" /></div>
+      <div style={style.topRowCell}><Field name="nc" component={Checkbox} label="NC" /></div>
+      <div style={style.topRowCell}><Field name="pc" component={Checkbox} label="PC" /></div>
+      <div style={style.topRowCell}>
+        <Field name="case_info" component={Checkbox} label="INFO" /></div>
+    </div>
+    <div>
+      <div><Field name="email" component={Checkbox} label="EMAIL" /></div>
+      <div><Field name="police" component={Checkbox} label="POLICE" /></div>
+      <div><Field name="db" component={Checkbox} label="DB" /></div>
+      <div />
+    </div>
+    <div>
+      <div><Field name="sms" component={Checkbox} label="SMS" /></div>
+      <div><Field name="app" component={Checkbox} label="APP" /></div>
+      <div><Field name="sp" component={Checkbox} label="SP" /></div>
+      <div />
+    </div>
+  </div>;
 
 export default CaseCheckboxes;
