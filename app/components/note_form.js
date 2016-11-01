@@ -5,42 +5,52 @@ import { renderTextField } from './material_ui_form_lib';
 
 
 const style = {
-  textField: {
-  },
-  addNote: {
+  form: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
+    width: '100%',
+  },
+  note: {
+    flexGrow: 1,
+    width: '100%',
+    paddingRight: 10,
+    paddingLeft: 10,
   },
   button: {
     width: '100px',
-    marginBottom: '8px',
-    marginLeft: '20px',
+    marginTop: 10,
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 };
 
 
 const NoteForm = ({ handleSubmit }) =>
   <form
-    style={style.addNote}
+    style={style.form}
     onSubmit={handleSubmit}
   >
-    <Field
-      name="text"
-      component={renderTextField}
-      label="Note"
-      multiLine
-      rows={1}
-      style={style.textField}
-    />
+    <div style={style.note}>
+      <Field
+        name="text"
+        component={renderTextField}
+        label="Note"
+        multiLine
+        rows={1}
+        fullWidth
+      />
+    </div>
 
-    <RaisedButton
-      label="Add note"
-      primary
-      type="submit"
-      style={style.button}
-    />
+    <div style={style.button}>
+      <RaisedButton
+        label="Add note"
+        primary
+        type="submit"
+        style={style.button}
+      />
+    </div>
   </form>;
 
 NoteForm.propTypes = {
