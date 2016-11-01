@@ -1,0 +1,25 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+body {
+  background-color: #F6F7FA; }
+
+div {
+  box-sizing: border-box; }
+
+a {
+  color: #5F7C8C; }
+  a:focus {
+    color: #4a616e; }
+
+#app {
+  width: 100%;
+  height: 100%; }
+
+#content {
+  width: 100%;
+  height: 100%; }
+
+/*# sourceMappingURL=main-420c141b514b292a92fd.css.map*/
