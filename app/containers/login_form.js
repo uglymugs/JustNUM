@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { compose, evolve, keys, pickAll } from 'ramda';
+import { compose } from 'ramda';
 import { red500 } from 'material-ui/styles/colors';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import RaisedButton from 'material-ui/RaisedButton';
 import renderTextField from '../components/material_ui_form_lib/text_field';
 import { loginSuccess, loginFailure } from '../action_creators';
 import * as api from '../api';
+import validate from '../form_validators/login';
 
 const containerStyles = {
   width: '100%',
@@ -15,25 +16,6 @@ const containerStyles = {
   alignItems: 'center',
   justifyContent: 'center',
 };
-
-const validator = {
-  username: (username) => {
-    if (!username) return 'Required';
-    if (username.length < 3) return 'Must be 4 characters or more';
-    return undefined;
-  },
-
-  password: (password) => {
-    if (!password) return 'Required';
-    return undefined;
-  },
-};
-
-
-const validate =
-  compose(
-    evolve(validator),
-    pickAll(keys(validator)));
 
 
 const SimpleLogin = ({ error, handleSubmit, muiTheme }) =>

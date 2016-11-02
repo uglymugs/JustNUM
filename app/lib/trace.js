@@ -1,5 +1,5 @@
 const t = m => v => {
-  console.log(m, v);
+  console.log(m, v); // eslint-disable-line no-console
   return v;
 };
 
