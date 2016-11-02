@@ -144,13 +144,13 @@ class CaseForm extends Component {
 CaseForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.string,
   muiTheme: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   view: PropTypes.string.isRequired,
-  fetchCase: PropTypes.func,
-  clearCaseForm: PropTypes.func,
+  fetchCase: PropTypes.func.isRequired,
+  clearCaseForm: PropTypes.func.isRequired,
   caseRef: PropTypes.string,
 };
 
