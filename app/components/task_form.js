@@ -41,7 +41,7 @@ const formLabel = formType => {
 };
 
 const TaskForm = ({ handleSubmit, formType }) =>
-  (<form
+  <form
     style={style.form}
     onSubmit={handleSubmit}
   >
@@ -84,7 +84,7 @@ const TaskForm = ({ handleSubmit, formType }) =>
         type="submit"
       />
     </div>
-  </form>);
+  </form>;
 
 TaskForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,

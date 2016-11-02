@@ -12,7 +12,7 @@ const style = {
 };
 
 const CaseTaskList = ({ tasks, taskFilter, updateCaseTaskFilter }) =>
-  (<div style={style.taskList}>
+  <div style={style.taskList}>
     <div>
       <SelectField
         floatingLabelText="Filter"
@@ -27,7 +27,7 @@ const CaseTaskList = ({ tasks, taskFilter, updateCaseTaskFilter }) =>
     </div>
     {tasks.map((task) =>
       <ConnectedEditTaskForm key={task.id} task={task} />)}
-  </div>);
+  </div>;
 
 const Task = PropTypes.shape({
   deadline: PropTypes.number.isRequired,
