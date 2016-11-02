@@ -41,7 +41,7 @@ const NoteData = PropTypes.shape({
 });
 
 Note.propTypes = {
-  note: PropTypes.shape(NoteData),
+  note: NoteData,
   muiTheme: PropTypes.object,
 };
 

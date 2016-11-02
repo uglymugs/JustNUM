@@ -65,6 +65,7 @@ const cases = combineReducers({
 export default cases;
 
 export const getCaseById = (state, id) => state.casesById[id];
+export const getCasesById = (state) => state.casesById;
 export const isFetching = (state) => state.fetching;
 export const getEnteredFilter = (state) => state.filter.entered;
 export const getActivatedFilter = (state) => state.filter.activated;

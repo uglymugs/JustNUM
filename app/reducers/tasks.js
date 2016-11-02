@@ -58,6 +58,7 @@ const tasks = combineReducers({
 export default tasks;
 
 export const getTaskById = (state, id) => state.tasksById[id];
+export const getTasksById = (state) => state.tasksById;
 export const isFetching = (state) => state.fetching;
 export const getEnteredFilter = (state) => state.filter.entered;
 export const getActivatedFilter = (state) => state.filter.activated;

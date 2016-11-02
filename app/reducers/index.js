@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export const getCasesById = (state) => state.cases.casesById;
+export const getCasesById = (state) => fromCases.getCasesById(state.cases);
 
 export const getCaseById = (state, id) => fromCases.getCaseById(
   state.cases,
@@ -64,4 +64,4 @@ export const getCurrentCaseTasks = state =>
 export const getCurrentCaseNotes = state =>
   fromCurrentCase.getNotes(state.currentCase);
 
-export const getTasks = (state) => state.tasks.tasksById;
+export const getTasks = (state) => fromTasks.getTasksById(state.tasks);

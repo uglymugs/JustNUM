@@ -9,7 +9,7 @@
     "ava": "ava --verbose --require babel-register",
     "coverage": "nyc check-coverage --lines 100, --functions 100, --branches 100",
     "test": "nyc npm run ava",
-    "clean": "rimraf './public/*.+(js|css|html)'",
+    "clean": "rimraf './public/*.+(js|css|html|map)'",
     "build": "webpack --config ./webpack.production.config.js --progress",
     "dev": "node webpack_server",
     "dpd": "dpd",
