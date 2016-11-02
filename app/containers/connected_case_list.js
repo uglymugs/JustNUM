@@ -3,7 +3,7 @@ import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
 import CaseListTable from '../components/case_list/case_list_table';
 import * as actions from '../action_creators';
-import { getEnteredCasesFilter, getCasesById } from '../reducers';
+import { getFetchCasesError, getEnteredCasesFilter, getCasesById } from '../reducers';
 import CaseListFilter from './case_list_filter';
 
 class ConnectedCaseList extends Component {
@@ -13,12 +13,16 @@ class ConnectedCaseList extends Component {
   }
 
   render() {
-    const { cases } = this.props;
+    const { cases, error } = this.props;
     return (
-      <div>
-        <CaseListFilter />
-        <CaseListTable cases={cases} />
-      </div>
+      error ? <div style={{ marginLeft: '100px' }}>
+        Error{error.status ? ` ${error.status} ` : ' '}
+        fetching cases{error.message ? `: ${error.message}.` : '.'}
+      </div> :
+        <div>
+          <CaseListFilter />
+          <CaseListTable cases={cases} />
+        </div>
     );
   }
 }
@@ -26,12 +30,14 @@ class ConnectedCaseList extends Component {
 ConnectedCaseList.propTypes = {
   fetchCases: PropTypes.func.isRequired,
   cases: PropTypes.array.isRequired,
+  error: PropTypes.any,
 };
 
 // mapStateToProps :: State -> { cases: [Case] }
 const mapStateToProps = state => {
   const cases = getCasesById(state);
   const filter = getEnteredCasesFilter(state);
+  const error = getFetchCasesError(state);
   // filter results on client if we are still waiting for api call
   return ({
     cases: Object.keys(cases)
@@ -40,6 +46,7 @@ const mapStateToProps = state => {
       dateCreated: moment(cases[id].dateCreated, 'x').format('DD/MM/YY'),
     }))
     .filter((caseObj) => caseObj.caseRef.startsWith(filter)),
+    error,
   });
 };
 

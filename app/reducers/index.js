@@ -17,13 +17,17 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export const getCasesById = (state) => fromCases.getCasesById(state.cases);
+export const getCasesById = (state) =>
+  fromCases.getCasesById(state.cases);
 
-export const getCaseById = (state, id) => fromCases.getCaseById(
-  state.cases,
-  id
-);
-export const getCurrentCase = (state) => state.currentCase;
+export const getCaseById = (state, id) =>
+  fromCases.getCaseById(state.cases, id);
+
+export const getFetchCasesError = (state) =>
+  fromCases.getFetchCasesError(state.cases);
+
+export const getCurrentCase = (state) =>
+  state.currentCase;
 
 export const getIsLoggedIn = (state) =>
   fromAuth.getIsLoggedIn(state.auth);
@@ -31,8 +35,10 @@ export const getIsLoggedIn = (state) =>
 export const getIsLoggingIn = (state) =>
   fromAuth.getIsLoggingIn(state.auth);
 
-export const isFetchingCases = (state) => fromCases.isFetching(state.cases);
-export const isFetchingTasks = (state) => fromTasks.isFetching(state.tasks);
+export const isFetchingCases = (state) =>
+  fromCases.isFetching(state.cases);
+export const isFetchingTasks = (state) =>
+  fromTasks.isFetching(state.tasks);
 
 export const getActivatedCasesFilter = (state) =>
   fromCases.getActivatedFilter(state.cases);
@@ -64,4 +70,5 @@ export const getCurrentCaseTasks = state =>
 export const getCurrentCaseNotes = state =>
   fromCurrentCase.getNotes(state.currentCase);
 
-export const getTasks = (state) => fromTasks.getTasksById(state.tasks);
+export const getTasks = (state) =>
+  fromTasks.getTasksById(state.tasks);
