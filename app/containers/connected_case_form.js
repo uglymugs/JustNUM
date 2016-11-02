@@ -10,18 +10,25 @@ import { isFetchingCases, getCurrentCase } from '../reducers';
 import validate from '../form_validators/case';
 
 const mapStateToProps = (state, { params }) => {
-  let initialValues;
   const currentCase = getCurrentCase(state);
+  let initialValues;
+  let caseRef = params.caseRef;
+  let view = params.view;
   if (
-    (params.view === 'edit')
+    (view === 'edit')
     && (Object.keys(currentCase).length > 0)
     && !isFetchingCases(state)
-  ) initialValues = currentCase;
+  ) {
+    initialValues = currentCase;
+    caseRef = currentCase.caseRef;
+  }
+// ugly way to handle incorrect url paramaters
+  if (view !== 'new' && view !== 'edit') view = 'edit';
 
   return ({
-    view: params.view,
+    view,
     initialValues,
-    caseRef: params.caseRef,
+    caseRef,
   });
 };
 

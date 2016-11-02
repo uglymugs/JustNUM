@@ -29,7 +29,7 @@ export const getFetchCasesError = (state) =>
   fromCases.getFetchCasesError(state.cases);
 
 export const getCurrentCase = (state) =>
-  state.currentCase;
+  fromCurrentCase.getCaseData(state.currentCase);
 
 export const getIsLoggedIn = (state) =>
   fromAuth.getIsLoggedIn(state.auth);
@@ -71,6 +71,9 @@ export const getCurrentCaseTasks = state =>
 
 export const getCurrentCaseNotes = state =>
   fromCurrentCase.getNotes(state.currentCase);
+
+export const getFetchCaseError = state =>
+  fromCurrentCase.getFetchCaseError(state.currentCase);
 
 export const getTasks = (state) =>
   fromTasks.getTasksById(state.tasks);

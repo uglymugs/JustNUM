@@ -1,4 +1,5 @@
 import { destroy } from 'redux-form';
+import { hashHistory } from 'react-router';
 import {
   START_FETCHING_CASES,
   STOP_FETCHING_CASES,
@@ -63,6 +64,8 @@ export const fetchCase = (caseRef) => (dispatch) => {
       type: FETCH_CASE_FAILURE,
       err,
     });
+    // ugly way to handle incorrect caseRef paramater
+    hashHistory.push('/authenticated/page-not-found');
   };
   api.getCase(caseRef).then(success, failure);
 };
