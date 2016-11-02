@@ -18,6 +18,7 @@ export {
   updateActivatedTasksFilter,
   updateEnteredCasesFilter,
   updateEnteredTasksFilter,
+  updateCaseTaskFilter,
 } from './filter';
 
 export {
