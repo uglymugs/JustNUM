@@ -22,7 +22,13 @@ const editCase = (newCase) =>
   dpd.cases.put(newCase);
 
 export const getCase = (caseRef) =>
-  dpd.cases.get({ caseRef }).then((currentCase) => currentCase[0]);
+  dpd.cases.get({ caseRef }).then((caseList) => {
+    if (caseList.length) return caseList[0];
+    return Promise.reject({
+      message: 'No cases match ID',
+      status: '404',
+    });
+  });
 
 export const getCaseList = (filter) => {
   const opts = {};

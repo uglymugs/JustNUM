@@ -8,6 +8,7 @@ import ConnectedCaseForm from '../containers/connected_case_form';
 import ConnectedTaskTabs from '../containers/connected_task_tabs.js';
 import Login from '../containers/login.js';
 import PageLayout from './page_layout.js';
+import NoMatch from './nomatch.js';
 
 const redirectIfNotAuthenticated = (Component, redirectPath) =>
   requiresAuthentication(Component, redirectPath, true);
@@ -27,6 +28,7 @@ const App = ({ store }) =>
           <Route path="tasks" component={ConnectedTaskTabs} />
           <Route path="cases" component={ConnectedCaseList} />
           <Route path="cases/:view(/:caseRef)" component={ConnectedCaseForm} />
+          <Route path="*" component={NoMatch} />
         </Route>
       </Route>
     </Router>
