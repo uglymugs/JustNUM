@@ -1,4 +1,4 @@
-import { filter, identity, equals, compose, prop } from 'ramda';
+import { filter, always, equals, compose, prop } from 'ramda';
 import {
   UPDATE_CASE_TASK_FILTER,
 } from '../action_types';
@@ -9,7 +9,7 @@ const statusEquals = status =>
   compose(equals(status), prop('status'));
 
 const filterFns = {
-  all: identity,
+  all: filter(always(true)),
   done: filter(statusEquals('done')),
   todo: filter(statusEquals('todo')),
   pending: filter(statusEquals('pending')),
