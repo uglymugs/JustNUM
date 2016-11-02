@@ -11,12 +11,12 @@ const style = {
   },
 };
 
-const CaseTaskList = ({ tasks, filter, updateCaseTaskFilter }) =>
-  <div style={style.taskList}>
+const CaseTaskList = ({ tasks, taskFilter, updateCaseTaskFilter }) =>
+  (<div style={style.taskList}>
     <div>
       <SelectField
         floatingLabelText="Filter"
-        value={filter}
+        value={taskFilter}
         onChange={(e, i, v) => updateCaseTaskFilter(v)}
       >
         <MenuItem value="all" primaryText="All" />
@@ -25,24 +25,9 @@ const CaseTaskList = ({ tasks, filter, updateCaseTaskFilter }) =>
         <MenuItem value="done" primaryText="Done" />
       </SelectField>
     </div>
-    {/* <div>
-      filter{ }
-      <a onClick={() => updateCaseTaskFilter('all')} style={{ cursor: 'pointer' }}>
-        all
-      </a>{ }
-      <a onClick={() => updateCaseTaskFilter('done')} style={{ cursor: 'pointer' }}>
-        done
-      </a>{ }
-      <a onClick={() => updateCaseTaskFilter('todo')} style={{ cursor: 'pointer' }}>
-        todo
-      </a>{ }
-      <a onClick={() => updateCaseTaskFilter('pending')} style={{ cursor: 'pointer' }}>
-        pending
-      </a>
-    </div> */}
-    {tasks.map((task, idx) =>
-      <ConnectedEditTaskForm key={idx} task={task} />)}
-  </div>;
+    {tasks.map((task) =>
+      <ConnectedEditTaskForm key={task.id} task={task} />)}
+  </div>);
 
 const Task = PropTypes.shape({
   deadline: PropTypes.number.isRequired,
@@ -54,7 +39,7 @@ const Task = PropTypes.shape({
 
 CaseTaskList.propTypes = {
   tasks: PropTypes.arrayOf(Task).isRequired,
-  filter: PropTypes.string.isRequired,
+  taskFilter: PropTypes.string.isRequired,
   updateCaseTaskFilter: PropTypes.func.isRequired,
 };
 

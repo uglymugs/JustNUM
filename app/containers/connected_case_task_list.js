@@ -17,13 +17,17 @@ const mapDispatchToProps = (dispatch) =>
   });
 
 
-const mergeProps = (stateProps, dispatchProps, ownProps) =>
-  ({
-    tasks: stateProps.caseTaskListFilterFn(stateProps.tasks),
-    filter: stateProps.filter,
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const tasks = stateProps.caseTaskListFilterFn(stateProps.tasks);
+  const taskFilter = stateProps.filter;
+
+  return ({
+    tasks,
+    taskFilter,
     ...dispatchProps,
     ...ownProps,
   });
+};
 
 const ConnectedCaseTaskList =
   connect(mapStateToProps, mapDispatchToProps, mergeProps)(CaseTaskList);
