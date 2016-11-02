@@ -2,17 +2,6 @@ import React, { PropTypes } from 'react';
 import ConnectedEditTaskForm from '../containers/connected_edit_task_form';
 
 const style = {
-  // textField: {
-  // },
-  // addTask: {
-  //   display: 'flex',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'flex-end',
-  // },
-  // button: {
-  //   marginBottom: '8px',
-  //   marginLeft: '20px',
-  // },
   taskList: {
     display: 'flex',
     flexDirection: 'column',
