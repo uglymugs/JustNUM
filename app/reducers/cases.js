@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {
   FETCH_CASES_SUCCESS,
+  FETCH_CASES_FAILURE,
   EDIT_CASE_SUCCESS,
   STOP_FETCHING_CASES,
   START_FETCHING_CASES,
@@ -24,11 +25,24 @@ const casesById = (state = {}, action) => {
   switch (action.type) {
     case FETCH_CASES_SUCCESS:
       return action.response;
+    case FETCH_CASES_FAILURE:
+      return {};
     case EDIT_CASE_SUCCESS:
       return {
         ...state,
         [action.response.caseId]: action.response,
       };
+    default:
+      return state;
+  }
+};
+
+const error = (state = null, action) => {
+  switch (action.type) {
+    case FETCH_CASES_FAILURE:
+      return action.err;
+    case FETCH_CASES_SUCCESS:
+      return null;
     default:
       return state;
   }
@@ -56,9 +70,11 @@ const filter = (state = filterDefaults, action) => {
   }
 };
 
+
 const cases = combineReducers({
   casesById,
   fetching,
+  error,
   filter,
 });
 
@@ -69,3 +85,4 @@ export const getCasesById = (state) => state.casesById;
 export const isFetching = (state) => state.fetching;
 export const getEnteredFilter = (state) => state.filter.entered;
 export const getActivatedFilter = (state) => state.filter.activated;
+export const getFetchCasesError = (state) => state.error;
