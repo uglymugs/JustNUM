@@ -4,7 +4,7 @@
 
 ## Quickstart guide
 
-The app is hosted from the master branch [here](http://uglymugs-justnum.herokuapp.com/). To run the app locally, do the following:
+The app is hosted from the `release` branch [here](http://uglymugs-justnum.herokuapp.com/). To run the app locally, do the following:
 
 If you do not already have `npm-run-all` installed globally, install it:
 
