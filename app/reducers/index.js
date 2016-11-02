@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import cases, * as fromCases from './cases';
 import currentCase, * as fromCurrentCase from './case';
+import caseTaskFilter, * as fromCaseTaskFilter from './case_task_filter';
 import auth, * as fromAuth from './auth';
 import tasks, * as fromTasks from './tasks';
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   currentCase,
   auth,
   tasks,
+  caseTaskFilter,
 });
 
 export default rootReducer;
@@ -72,3 +74,9 @@ export const getCurrentCaseNotes = state =>
 
 export const getTasks = (state) =>
   fromTasks.getTasksById(state.tasks);
+
+export const getCaseTaskFilter = (state) =>
+  fromCaseTaskFilter.getFilter(state.caseTaskFilter);
+
+export const getCaseTaskFilterFn = (state) =>
+  fromCaseTaskFilter.getFilterFn(state.caseTaskFilter);

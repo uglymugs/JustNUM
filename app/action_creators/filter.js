@@ -3,6 +3,7 @@ import {
   REQUEST_NEW_CASE_FILTER,
   ACTIVATE_NEW_TASK_FILTER,
   REQUEST_NEW_TASK_FILTER,
+  UPDATE_CASE_TASK_FILTER,
 } from '../action_types';
 
 import { getEnteredCasesFilter, getEnteredTasksFilter } from '../reducers';
@@ -48,3 +49,8 @@ export const updateActivatedTasksFilter = (newFilter) => (dispatch, getState) =>
   if (enteredFilter !== newFilter) dispatch(fetchTasks(enteredFilter));
 };
 
+export const updateCaseTaskFilter = (filter) =>
+  ({
+    type: UPDATE_CASE_TASK_FILTER,
+    filter,
+  });
