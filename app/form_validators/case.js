@@ -33,6 +33,6 @@ export const asyncValidate = (values) =>
     // if promise resolves caseRef exists
     const error = { caseRef: 'That Case ID already exists' };
     return Promise.reject(error);
-  });
+  }).fail(() => Promise.resolve());
 
 export default validate;

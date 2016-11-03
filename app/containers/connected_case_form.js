@@ -9,7 +9,7 @@ import { submitCaseForm } from '../api';
 import { isFetchingCases, getCurrentCase } from '../reducers';
 import validate, { asyncValidate } from '../form_validators/case';
 
-const mapStateToProps = (state, { params }) => {
+const mapStateToProps = (state, { params, router }) => {
   const currentCase = getCurrentCase(state);
   const caseRef = params.caseRef;
   let view = params.view;
@@ -28,6 +28,7 @@ const mapStateToProps = (state, { params }) => {
     view,
     initialValues,
     caseRef,
+    router,
   });
 };
 
