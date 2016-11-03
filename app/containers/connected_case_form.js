@@ -7,7 +7,7 @@ import CaseForm from '../components/case_form';
 import * as actions from '../action_creators';
 import { submitCaseForm } from '../api';
 import { isFetchingCases, getCurrentCase } from '../reducers';
-import validate from '../form_validators/case';
+import validate, { asyncBlurFields, asyncValidate } from '../form_validators/case';
 
 const mapStateToProps = (state, { params, router }) => {
   const currentCase = getCurrentCase(state);
@@ -24,12 +24,12 @@ const mapStateToProps = (state, { params, router }) => {
 // ugly way to handle incorrect url paramaters
   if (view !== 'new' && view !== 'edit') view = 'edit';
 
-  return ({
+  return Object.assign({
     view,
     initialValues,
     caseRef,
     router,
-  });
+  }, (view === 'new' ? { asyncValidate } : {}));
 };
 
 const mapDispatchToProps = (dispatch, { params, router }) => ({
@@ -57,6 +57,7 @@ const ConnectedCaseForm = compose(
   reduxForm({
     form: 'CaseForm',
     validate,
+    asyncBlurFields,
   })
 )(CaseForm);
 

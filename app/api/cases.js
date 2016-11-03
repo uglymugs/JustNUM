@@ -23,10 +23,10 @@ const editCase = (newCase) =>
 export const getCase = (caseRef) =>
   dpd.cases.get({ caseRef }).then((caseList) => {
     if (caseList.length) return caseList[0];
-    return {
+    return Promise.reject({
       message: 'No cases match ID',
       status: '404',
-    };
+    });
   });
 
 export const getCaseList = (filter) => {
