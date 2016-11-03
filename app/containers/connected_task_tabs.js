@@ -28,7 +28,7 @@ const mapStateToProps = state => {
     tasks: Object.keys(tasks)
     .map((id) => ({
       ...tasks[id],
-      deadline: moment(tasks[id].deadline, 'x').format('DD/MM/YY'),
+      deadline: moment.unix(tasks[id].deadline).format('DD/MM/YY'),
     }))
     .filter((task) => !filter.length || task.status === filter),
   });
