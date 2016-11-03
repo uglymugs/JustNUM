@@ -41,8 +41,8 @@ const style = {
 class CaseForm extends Component {
   componentDidMount() {
     const { view, fetchCase, caseRef, clearCaseForm } = this.props;
-    clearCaseForm();
     if (view === 'edit') fetchCase(caseRef);
+    clearCaseForm();
   }
   componentWillReceiveProps(nextProps) {
     const { view, clearCaseForm } = this.props;
