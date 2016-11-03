@@ -7,7 +7,7 @@ import CaseForm from '../components/case_form';
 import * as actions from '../action_creators';
 import { submitCaseForm } from '../api';
 import { isFetchingCases, getCurrentCase } from '../reducers';
-import validate, { asyncValidate } from '../form_validators/case';
+import validate, { asyncBlurFields, asyncValidate } from '../form_validators/case';
 
 const mapStateToProps = (state, { params, router }) => {
   const currentCase = getCurrentCase(state);
@@ -58,6 +58,7 @@ const ConnectedCaseForm = compose(
     form: 'CaseForm',
     validate,
     asyncValidate,
+    asyncBlurFields,
   })
 )(CaseForm);
 
