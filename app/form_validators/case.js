@@ -4,21 +4,7 @@ import * as api from '../api';
 const validate = createValidate({
   caseRef: (caseRef) => {
     if (!caseRef) return 'Case ID required';
-    return undefined;
-  },
-
-  referral: (referral) => {
-    if (!referral) return 'Referral required';
-    return undefined;
-  },
-
-  area: (area) => {
-    if (!area) return 'Area required';
-    return undefined;
-  },
-
-  operation: (operation) => {
-    if (!operation) return 'Operation required';
+    if (/\//.test(caseRef)) return 'Case Id cannot contain "/"';
     return undefined;
   },
 
@@ -33,6 +19,6 @@ export const asyncValidate = (values) =>
     // if promise resolves caseRef exists
     const error = { caseRef: 'That Case ID already exists' };
     return Promise.reject(error);
-  });
+  }).fail(() => Promise.resolve());
 
 export default validate;
