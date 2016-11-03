@@ -1,4 +1,5 @@
 import createValidate from '../lib/create_validate';
+import * as api from '../api';
 
 const validate = createValidate({
   caseRef: (caseRef) => {
@@ -26,5 +27,12 @@ const validate = createValidate({
     return undefined;
   },
 });
+
+export const asyncValidate = (values) =>
+  api.getCase(values.caseRef).then(() => {
+    // if promise resolves caseRef exists
+    const error = { caseRef: 'That Case ID already exists' };
+    return Promise.reject(error);
+  });
 
 export default validate;
