@@ -48,7 +48,7 @@ class CaseForm extends Component {
     const { view, clearCaseForm, caseRef, router } = this.props;
     const nextView = nextProps.view;
     if (view === 'edit' && nextView === 'new') clearCaseForm();
-    if (nextProps.caseRef !== caseRef) router.push(`/authenticated/edit/${caseRef}`);
+    if (nextProps.caseRef !== caseRef) router.push('/authenticated/page-not-found');
   }
 
   render() {
