@@ -45,7 +45,6 @@
     "eslint-plugin-react": "^6.1.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "flow-bin": "^0.32.0",
-    "history": "^4.2.0",
     "html-webpack-plugin": "^2.22.0",
     "husky": "^0.11.6",
     "json-loader": "^0.5.4",
@@ -60,10 +59,9 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "deployd": "^0.8.9",
     "faker": "^3.1.0",
-    "history": "^4.3.0",
+    "history": "^2.1.2",
     "lodash.escaperegexp": "^4.1.2",
     "material-ui": "^0.15.4",
     "moment": "^2.15.1",
@@ -73,7 +71,6 @@
     "react-hot-loader": "^3.0.0-beta.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
-    "react-router-redux": "^4.0.5",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
     "redux-form": "^6.0.5",
