@@ -24,12 +24,12 @@ const mapStateToProps = (state, { params, router }) => {
 // ugly way to handle incorrect url paramaters
   if (view !== 'new' && view !== 'edit') view = 'edit';
 
-  return ({
+  return Object.assign({
     view,
     initialValues,
     caseRef,
     router,
-  });
+  }, (view === 'new' ? { asyncValidate } : {}));
 };
 
 const mapDispatchToProps = (dispatch, { params, router }) => ({
@@ -57,7 +57,6 @@ const ConnectedCaseForm = compose(
   reduxForm({
     form: 'CaseForm',
     validate,
-    asyncValidate,
     asyncBlurFields,
   })
 )(CaseForm);
