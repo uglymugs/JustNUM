@@ -19,7 +19,8 @@ export const asyncValidate = (values) =>
   new Promise(
     (resolve, reject) =>
       api.getCase(values.caseRef)
-      .then(() => {
+      .then((val) => {
+        console.log(val);
         // if promise resolves caseRef exists
         const error = { caseRef: 'That Case ID already exists' };
         reject(error);
