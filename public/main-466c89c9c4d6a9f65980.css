@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+body {
+  background-color: #F6F7FA; }
+
+div {
+  box-sizing: border-box; }
+
+a {
+  color: #5F7C8C; }
+  a:focus {
+    color: #4a616e; }
+
+#app {
+  width: 100%;
+  height: 100%; }
+
+#content {
+  width: 100%;
+  height: 100%; }
+
+.grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.grid > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+
+.grid > div > div {
+  width: 100%; }
+
+/*# sourceMappingURL=main-466c89c9c4d6a9f65980.css.map*/
