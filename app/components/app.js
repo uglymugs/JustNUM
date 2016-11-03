@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
+import { Router, Route, IndexRedirect, useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
 import Main from './main';
 import requiresAuthentication from '../containers/requires_authentication';
 import ConnectedCaseList from '../containers/connected_case_list';
@@ -10,6 +11,7 @@ import Login from '../containers/login.js';
 import PageLayout from './page_layout.js';
 import NoMatch from './nomatch.js';
 
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 const redirectIfNotAuthenticated = (Component, redirectPath) =>
   requiresAuthentication(Component, redirectPath, true);
 
@@ -19,7 +21,7 @@ const redirectIfAuthenticated = (Component, redirectPath) =>
 
 const App = ({ store }) =>
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={appHistory}>
       <Route path="/" component={Main}>
         <IndexRedirect to="/authenticated" />
         <Route path="login" component={redirectIfAuthenticated(Login, '/authenticated')} />
