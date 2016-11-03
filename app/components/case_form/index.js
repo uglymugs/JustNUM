@@ -45,9 +45,10 @@ class CaseForm extends Component {
     clearCaseForm();
   }
   componentWillReceiveProps(nextProps) {
-    const { view, clearCaseForm } = this.props;
+    const { view, clearCaseForm, caseRef, router } = this.props;
     const nextView = nextProps.view;
     if (view === 'edit' && nextView === 'new') clearCaseForm();
+    if (nextProps.caseRef !== caseRef) router.push('/authenticated/page-not-found');
   }
 
   render() {
@@ -152,6 +153,7 @@ CaseForm.propTypes = {
   fetchCase: PropTypes.func.isRequired,
   clearCaseForm: PropTypes.func.isRequired,
   caseRef: PropTypes.string,
+  router: PropTypes.object,
 };
 
 export default CaseForm;
