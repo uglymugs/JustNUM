@@ -2,7 +2,6 @@
 import escaperegexp from 'lodash.escaperegexp';
 import { SubmissionError } from 'redux-form';
 import { compose } from 'ramda';
-import generateCases from './get_initial_cases';
 import fillDefaults from './add_case.js';
 
 const toSubmissionError = err => {
@@ -42,10 +41,7 @@ export const getCaseList = (filter) => {
   if (filter.length > 3) opts.caseRef = { $regex: `^${escaperegexp(filter)}`, $options: 'i' };
 
   return dpd.cases
-    .get(opts)
-    .then((cases) =>
-        (!cases.length && !filter.length ?
-          Promise.all(generateCases().map(createCase)) : cases));
+    .get(opts);
 };
 
 export const submitCaseForm = (view) => (newCase) =>
