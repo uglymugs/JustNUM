@@ -11,16 +11,15 @@ import validate, { asyncValidate } from '../form_validators/case';
 
 const mapStateToProps = (state, { params }) => {
   const currentCase = getCurrentCase(state);
-  let initialValues;
-  let caseRef = params.caseRef;
+  const caseRef = params.caseRef;
   let view = params.view;
+  let initialValues;
   if (
     (view === 'edit')
     && (Object.keys(currentCase).length > 0)
     && !isFetchingCases(state)
   ) {
     initialValues = currentCase;
-    caseRef = currentCase.caseRef;
   }
 // ugly way to handle incorrect url paramaters
   if (view !== 'new' && view !== 'edit') view = 'edit';
