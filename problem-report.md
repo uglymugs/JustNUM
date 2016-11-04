@@ -34,7 +34,7 @@ Run `dpd keygen && dpd showkey && npm start` from the Procfile and get the key f
 
 ###### Solution
 
-It is possible to manually create a hash history object without a query string and pass it to React-router. This only works if you use the same version of ´history´ as React-router:
+It is possible to manually create a hash history object without a query string and pass it to React-router. This only works if you use the same version of `history` as React-router:
 
 ```jsx
 import { Router, useRouterHistory } from 'react-router';
@@ -45,7 +45,7 @@ const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 <Router history={appHistory}>
 ```
 
-Be aware that the querystring is used by ´hashHistory´ to access any state you set for your locations like this:
+Be aware that the querystring is used by `hashHistory` to access any state you set for your locations like this:
 
 ```jsx
 router.push('/home', { some: 'state' })
