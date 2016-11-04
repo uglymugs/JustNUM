@@ -14,7 +14,7 @@ Submitting a form to the database was returning a generic error even though form
 
 ###### Solution
 
-Deployd debug logs revealed validation on the backend was failing on certain boolean fields. The fields were set to `isRequired` and Deployd was failing to distinguish between values of `false` and `null` or `undefined`. The workaround was to remove `isRequired` for these fields--if they are missing Deployd sets them to false anyway.
+Deployd debug logs (turn them on with `export DEBUG="*"`) revealed validation on the backend was failing on certain boolean fields. The fields were set to `isRequired` and Deployd was failing to distinguish between values of `false` and `null` or `undefined`. The workaround was to remove `isRequired` for these fields--if they are missing Deployd sets them to false anyway.
 
 #### Deployd Dashboard Key
 
@@ -26,7 +26,7 @@ This is easy to get from the local command line but what about when the app is h
 
 Run `dpd keygen && dpd showkey && npm start` from the Procfile and get the key from Heroku log.
 
-#### Hash history querystring
+#### Hash History Querystring
 
 ###### Problem
 
@@ -55,7 +55,7 @@ We do not use location state, so removing the querystring is fine.
 
 This may not be an issue with React-router v.3 (still alpha). See [here](https://github.com/ReactTraining/react-router/issues/1967).
 
-#### Tasks form list
+#### Tasks Form List
 
 ###### Problem
 
@@ -78,3 +78,43 @@ The solution was to use the unique id from the database:
 {tasks.map((task) =>
       <ConnectedEditTaskForm key={task.id} task={task} />)}
 ```
+
+#### Storing Dates
+
+###### Problem
+
+Deployd does not offer a date data type.
+
+###### Solution
+
+We convert dates to UTC milliseconds for storage in the database. Conversion is done with `moment`. Currently these conversions are defined independently in various components (case list, task tabs and task forms) -- it would be better to extract date conversion functions and import them where needed.
+
+#### Abstracting 'Create' Forms and 'Edit' Forms
+
+###### Problem
+
+The forms that are used to create a case or task and edit a case or task are almost identical. But what is the best way to extract the common functionality?
+
+###### Solution
+
+We implemented the case form before the task form. Operating on the principle that something should work before it is refactored, we have extracted a common form for cases, but did not get onto doing the same for tasks. The way in which we did it is somewhat problematic.
+
+#### Populating components asynchronously
+
+###### Problem
+
+There are several places where the data for components is obtained by an asynchronous API call. How do we get the data into a component after it is rendered?
+
+###### Solution
+
+Two possibilities we rejected were:
+
+1. Dispatching the action inside the `onClick` handler of the link used to navigate to the component.
+2. Dispatching it inside the `onEnter` handler on React-router's routes. 
+
+Since we wanted users to be able to navigate to components from the address bar we discounted the first option. The second option blocks the route transition until the data has loaded, which feels sluggish (discussion [here](https://github.com/ReactTraining/react-router/issues/1389)).
+
+Instead, we dispatch an action inside `componentDidMount`. Unfortunately this solution means our component is no longer purely functional. In some cases we have extracted the API call into a class which does nothing else but wrap the component to be populated, which mitigates the problem of side effects. It would probably be a good idea to extract this functionality further into a single higher order component that takes a dispatcher and can be used to wrap anything.
+
+
+
