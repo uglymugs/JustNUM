@@ -110,11 +110,20 @@ There are several places where the data for components is obtained by an asynchr
 Two possibilities we rejected were:
 
 1. Dispatching the action inside the `onClick` handler of the link used to navigate to the component.
-2. Dispatching it inside the `onEnter` handler on React-router's routes. 
+2. Dispatching it inside the `onEnter` handler on React-router's routes.
 
-Since we wanted users to be able to navigate to components from the address bar we discounted the first option. The second option blocks the route transition until the data has loaded, which feels sluggish (discussion [here](https://github.com/ReactTraining/react-router/issues/1389)).
+Since we wanted users to be able to navigate to components from the address bar we discounted the first option. The second option is criticised [here](https://github.com/ReactTraining/react-router/issues/1389) on the basis that the route transition will be blocked until the data is received.
 
-Instead, we dispatch an action inside `componentDidMount`. Unfortunately this solution means our component is no longer purely functional. In some cases we have extracted the API call into a class which does nothing else but wrap the component to be populated, which mitigates the problem of side effects. It would probably be a good idea to extract this functionality further into a single higher order component that takes a dispatcher and can be used to wrap anything.
+We dispatch an action inside `componentDidMount`. Unfortunately this solution means our component is no longer purely functional. In some cases we have extracted the API call into a class which does nothing else but wrap the component to be populated, which mitigates the problem of side effects. If continuing with this solution, it would probably be a good idea to extract this functionality further into a single higher order component that takes a dispatcher and can be used to wrap anything.
 
+In retrospect, though, I see no problem with dispatching an action in `onEnter`. The transition will not be blocked unless the callback is deliberately delayed. The component will render without data and redux will populate it when the data arrives, which is the same effect as firing the action in `componentDidMount`. Something like this would do the trick:
+
+```jsx
+const load = ({dispatch}) =>
+	(nextState, replace) => { // no need to pass the callback
+      dispatch(asyncAction)
+    }
+<Route path='path' component={comp} onEnter={load(store)} />
+```
 
 
