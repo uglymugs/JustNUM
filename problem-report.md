@@ -97,7 +97,26 @@ The forms that are used to create a case or task and edit a case or task are alm
 
 ###### Solution
 
-We implemented the case form before the task form. Operating on the principle that something should work before it is refactored, we have extracted a common form for cases, but did not get onto doing the same for tasks. The way in which we did it is somewhat problematic.
+We implemented the case form before the task form. Operating on the principle that something should work before it is refactored, we have extracted a common form for cases, but did not get onto doing the same for tasks. The way in which we did it -- taking parameters from the location path and passing different props accordingly from the container component -- is somewhat problematic.
+
+###### Problem
+
+For example, navigating from an edit form to a new form would not remount the component, so the data was not cleared. 
+
+###### Solution
+
+We listen for this transition in `componentWillReceiveProps` and fire an action `clearCaseForm` to dispatch Redux Form's `destroy` action creator and empty the `currentCase.caseData` state.
+
+I believe a better approach would be to conditionally create different Redux Form components instead of wrapping the same instance and changing the props. Redux Form should handle destoying automatically.
+
+###### Problem
+
+Another group of problems related to our solution concerned handling routing edgecases. Because two levels of the url were parametrised (`path="cases/:view(/:caseRef)"`) we could not simply add a catch-all route to match nonexistent views. And how to handle a bad caseRef?
+
+###### Solution
+
+We had to add logic to `mapStateToProps` and `componentWillReceiveProps`, as well as a redirect to 'page-not-found' in the action creator dispatched after a failure to retrieve a case (i.e. an erroneous caseRef url parameter). Getting the `caseRef` through a prop other than the router path would have enabled us to ensure the case existed beforehand. But we wanted to be able to navigate directly to cases through the address bar. The route's `onEnter` handler might have been a better place to check for a valid `caseRef`, but we didn't consider it. That leads us into the next issue...
+
 
 #### Populating components asynchronously
 
@@ -116,14 +135,20 @@ Since we wanted users to be able to navigate to components from the address bar 
 
 We dispatch an action inside `componentDidMount`. Unfortunately this solution means our component is no longer purely functional. In some cases we have extracted the API call into a class which does nothing else but wrap the component to be populated, which mitigates the problem of side effects. If continuing with this solution, it would probably be a good idea to extract this functionality further into a single higher order component that takes a dispatcher and can be used to wrap anything.
 
-In retrospect, though, I see no problem with dispatching an action in `onEnter`. The transition will not be blocked unless the callback is deliberately delayed. The component will render without data and redux will populate it when the data arrives, which is the same effect as firing the action in `componentDidMount`. Something like this would do the trick:
+In retrospect, though, I see no problem with dispatching an async action in `onEnter`. The transition will not be blocked unless the callback is deliberately delayed. The component will render without data and redux will populate it when the data arrives, which is the same effect as firing the action in `componentDidMount`. Something like this would do the trick:
 
 ```jsx
 const load = ({dispatch}) =>
-	(nextState, replace) => { // no need to pass the callback
+	(nextState, replace /*, callback*/) => { // no need to pass the callback
       dispatch(asyncAction)
     }
 <Route path='path' component={comp} onEnter={load(store)} />
 ```
 
+###### Problem
 
+Redux Form uses an `initialValues` prop to preload a form with data. Unless you pass `enableReinitialize: true` to the form, this prop can only be passed once -- no good if it is filled with async data that arrives after the form has mounted as it will be empty when first passed. 
+
+###### Solution
+
+Just pass `enableReinitialize: true`? No! There is reportedly [a bug in Redux Form](https://github.com/erikras/redux-form/issues/1901) that breaks validation when passing this prop. Instead we dispatch our `clearCaseForm` after the async data has been received to force the form to remount from scratch. Ugly. It may be that the supposed bug is a phantom, one of many haunting Redux Form's 457 open issues, but we decided not to take the risk.
