@@ -90,8 +90,6 @@ router.push('/home', { some: 'state' })
 
 We do not use location state, so removing the querystring is fine.
 
-This may not be an issue with React-router v.3 (still alpha). See [here](https://github.com/ReactTraining/react-router/issues/1967).
-
 #### Tasks Form List
 
 ###### Problem
