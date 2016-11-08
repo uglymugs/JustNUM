@@ -199,9 +199,9 @@ In theory, Redux-form makes it easy to dispatch actions conditional upon the res
 
 ###### Solution
 
-Where it is necessary to throw a `submissionError` we wrap the promise returned by `dpd` in a Javascript native promise and pipe the argument of the reject handler through a function to convert it into a `submissionError` before passing it to the reject handler. Note that it is not possible simply to catch the error and return a `submissionError` as once the error is caught, the promise resolves. It would be possible to throw the `submissionError` anew or return `Promise.reject(submissionError)`, but wrapping the whole promise has the added benefit of ensuring that `catch` can be called on it in the future (rather than `fail`). We extracted the wrapper into a function called `dpdRun`.  
+Where it is necessary to throw a `submissionError` we wrap the promise returned by `dpd` in a Javascript native promise and pipe the argument of the reject handler through a function to convert it into a `submissionError` before passing it to the reject handler. Note that it is not possible simply to catch the error and return a `submissionError` as once the error is caught, the promise resolves. It would be possible to throw the `submissionError` anew or return `Promise.reject(submissionError)`, but wrapping the whole promise has the added benefit of ensuring that `catch` can be called on it in the future (rather than needing to remember to use `fail`). We extracted the wrapper into a function called `dpdRun`.  
 
-The weird behaviour of `asyncValidate` is fine as long as you are aware of it. Make sure the promise resolves with an object if you want to throw the error, and resolves (or rejects) with `null` if you do not.
+What matters for `asyncValidate` is not whether or not the promise resolves, but whether it resolves or rejects with an object (which becomes the validation error). That's fine as long as you are aware of it! Make sure the promise resolves (or rejects) with an object if you want to throw the error, and resolves (or rejects) with `null` if you do not.
 
 #### Error handling
 
