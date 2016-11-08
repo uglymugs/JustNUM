@@ -187,3 +187,28 @@ Redux Form uses an `initialValues` prop to preload a form with data. Unless you 
 ###### Solution
 
 Just pass `enableReinitialize: true`? No! There is reportedly [a bug in Redux Form](https://github.com/erikras/redux-form/issues/1901) that breaks validation when passing this prop. Instead we dispatch our `clearCaseForm` after the async data has been received to force the form to remount from scratch. Ugly. It may be that the supposed bug is a phantom, one of many haunting Redux Form's 457 open issues, but we decided not to take the risk.
+
+#### Promises with Redux-form
+
+###### Problem
+
+In theory, Redux-form makes it easy to dispatch actions conditional upon the resolution or rejection of a promise returned by `onSubmit` and other async actions, but there were a few issues in getting this to work:
+- To populate its error object after `onSubmit`, Redux-form needs the returned promise to throw with a special `submissionError` object. It turns out that `onSubmitFail` isn’t called with the error thrown in the promise, but with some Redux-form state which is only populated if the promise threw a `submissionError`.
+- The promises returned by `dpd` have no `catch` method (they use `fail` instead).
+- Redux-form’s `asyncValidate` was failing even when returning a resolved promise, and passing even when returning a rejected promise.
+
+###### Solution
+
+Where it is necessary to throw a `submissionError` we wrap the promise returned by `dpd` in a Javascript native promise and pipe the argument of the reject handler through a function to convert it into a `submissionError` before passing it to the reject handler. Note that it is not possible simply to catch the error and return a `submissionError` as once the error is caught, the promise resolves. It would be possible to throw the `submissionError` anew or return `Promise.reject(submissionError)`, but wrapping the whole promise has the added benefit of ensuring that `catch` can be called on it in the future (rather than `fail`). We extracted the wrapper into a function called `dpdRun`.  
+
+The weird behaviour of `asyncValidate` is fine as long as you are aware of it. Make sure the promise resolves with an object if you want to throw the error, and resolves (or rejects) with `null` if you do not.
+
+#### Error handling
+
+###### Problem
+
+We make use of the error handling built into Redux-form and have implemented some actions and reducers for handling other types of error (for example, from fetching data), but not all which are required. We also have no generalised way of responding to the errors that do find their way into the Redux store.
+
+###### Solution
+
+We render an `error` component defined inside the case form and dependent on the `error` prop from Redux-form. One or two fetching errors are handled ad-hoc in a similar manner. In the future, it would make sense to implement a single higher order component that would check for various kinds of error and display the appropriate messages.
