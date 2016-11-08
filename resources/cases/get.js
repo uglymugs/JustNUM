@@ -1,6 +1,6 @@
 cancelUnless(me, "Please log in", 401);
 
-dpd.notes.get({id: {$in: this.notes}})
+dpd.notes.get({id: {$in: this.notes}, $sort: { dateCreate: 1 }})
 .then((notes) => {
     this.notes = notes;
 })
