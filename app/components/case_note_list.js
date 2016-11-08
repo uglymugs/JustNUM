@@ -11,8 +11,8 @@ const style = {
 
 const CaseNoteList = ({ notes }) =>
   <div style={style.noteList}>
-    {notes.map((note, idx) =>
-      <Note key={idx} note={note} />)}
+    {notes.map((note) =>
+      <Note key={note.id} note={note} />)}
   </div>;
 
 const NoteData = PropTypes.shape({

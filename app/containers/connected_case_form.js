@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import { compose } from 'ramda';
+import { compose, omit } from 'ramda';
 import { reduxForm } from 'redux-form';
 import { withRouter } from 'react-router';
 import CaseForm from '../components/case_form';
@@ -19,7 +19,7 @@ const mapStateToProps = (state, { params, router }) => {
     && (Object.keys(currentCase).length > 0)
     && !isFetchingCases(state)
   ) {
-    initialValues = currentCase;
+    initialValues = omit(['tasks', 'notes'], currentCase);
   }
 // ugly way to handle incorrect url paramaters
   if (view !== 'new' && view !== 'edit') view = 'edit';

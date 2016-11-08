@@ -12,7 +12,7 @@ const CaseListTable = ({ cases }) =>
       </TableRow>
     </TableHeader>
     <TableBody>
-      {cases.map((c, idx) => <CaseListRow key={idx} {...c} />)}
+      {cases.map((c) => <CaseListRow key={c.id} {...c} />)}
     </TableBody>
   </Table>;
 

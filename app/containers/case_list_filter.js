@@ -7,6 +7,7 @@ const Filter = ({ changeHandler }) => {
   const boundChangeHandler = (e) => {
     changeHandler(e.target.value);
   };
+  changeHandler('');
   return (
     <TextField
       hintText="Case ID"
